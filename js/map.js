@@ -24,17 +24,15 @@ function drawWorldMap(selector){
 
         var countrywise = topojson.feature(mapboundary, mapboundary.objects.countries).features;
 
-        // console.log(countrywise);
+        console.log(countrywise);
 
         g.selectAll(".constituency")
             .data(countrywise).enter().append("path")
                 .attr("d", geoPath)
                 .attr("class", "country")
-                .attr('fill', "green")
-                .attr('stroke-opacity', "1")
+                .attr('fill', "#dcdcdc")
             .append("title")
                 .text(function(d,i){
-                    console.log(d.id);
                     return "Hello World!"
                 })
         
