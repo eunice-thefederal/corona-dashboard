@@ -59,7 +59,7 @@ function drawLinechart(selector){
     g.append("path")
         .datum(reversedData)
         .attr("fill", "none")
-        .attr("stroke", "steelblue")
+        .attr("stroke", "#E20613")
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr("stroke-width", 1.5)
@@ -71,6 +71,7 @@ function drawLinechart(selector){
         .attr("class", "dot") // Assign a class for styling
         .attr("cx", function(d, i) { return x(d.Date) })
         .attr("cy", function(d) { return y( d["Total Deaths"]) })
+        .attr("fill", "brown")
         .attr("r", 2);
 
 
