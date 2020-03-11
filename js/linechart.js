@@ -1,8 +1,8 @@
-function drawBarchart(selector){
+function drawLinechart(selector){
 
-    console.log("dailyDeathData", dailyDeathData);
-    
-    
+    console.log("dailyTotalDeathData", dailyTotalDeathData);
+
+    var reversedData = dailyTotalDeathData.reverse()
 
     var width = 600, height = 350;
 
@@ -16,14 +16,19 @@ function drawBarchart(selector){
     var x = d3.scaleBand()
         .range([0, width - 100])
         .padding(0.4)
-        .domain(dailyDeathData.map(function(d) { return d.Date; }));
+        .domain(reversedData.map(function(d) { return d.Date; }));
     
     var y = d3.scaleLinear()
         .range([height-80, 0])
-        .domain([0, d3.max(dailyDeathData, function(d) { return d["Daily Deaths"]; })]);
+        .domain([0, d3.max(reversedData, function(d) { return d["Total Deaths"]; })]);
 
     var g = svg.append("g")
         .attr("transform", "translate(" + 70 + "," + 25 + ")");
+
+        var line = d3.line()
+            .x(function(d) { return x(d.Date)})
+            .y(function(d) { return y( d["Total Deaths"])})
+            .curve(d3.curveMonotoneX)
 
 
     g.append("g")
@@ -51,22 +56,23 @@ function drawBarchart(selector){
         .attr("fill", "black")
         .text("Number of Deaths");
 
+    g.append("path")
+        .datum(reversedData)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-linejoin", "round")
+        .attr("stroke-linecap", "round")
+        .attr("stroke-width", 1.5)
+        .attr("d", line);
 
-    g.selectAll(".bar")
-        .data(dailyDeathData)
-        .enter().append("rect")
-        .attr("class", "bar")
-        .attr("fill", "#E20613")
-        .attr("x", function(d) { return x(d.Date); })
-        .attr("y", function(d) { return y(d["Daily Deaths"]); })
-        .attr("width", x.bandwidth())
-        .transition()
-        .ease(d3.easeLinear)
-        .duration(400)
-        .delay(function (d, i) {
-            return i * 50;
-        })
-        .attr("height", function(d) { return (height - 80) - y(d["Daily Deaths"]); });
+    g.selectAll(".dot")
+        .data(reversedData)
+      .enter().append("circle") // Uses the enter().append() method
+        .attr("class", "dot") // Assign a class for styling
+        .attr("cx", function(d, i) { return x(d.Date) })
+        .attr("cy", function(d) { return y( d["Total Deaths"]) })
+        .attr("r", 2);
+
 
 
         

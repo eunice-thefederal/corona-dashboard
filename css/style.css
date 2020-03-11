@@ -94,6 +94,10 @@
 	/* align-items: center; */
 	margin: 45px 0;
 }
+
+.dailydeathbar .barchart, .dailydeathline .barchart  {
+	margin: 10px 0;
+}
 .barchart .mildCondition {
 	color: #f8b133;
 }
@@ -352,7 +356,7 @@
 	
 }
 
-.barchart{
+svg.barchart{
 	background-color: #f5f5f5;
 }
 
@@ -360,3 +364,6 @@
 	font-family: 'Rubik', sans-serif;
 }
 
+.tick text{
+	font-size:9px;
+}
