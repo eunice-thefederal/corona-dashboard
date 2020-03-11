@@ -4,11 +4,17 @@ function drawWorldMap(selector){
 
     var source = "https://unpkg.com/visionscarto-world-atlas@0.0.4/world/50m.json";
 
+
+
     var svg = d3.select(selector)
     .append("svg")
     .attr("class", "worldmap")
     .attr("viewBox", "0 0 " + width + " " + height)
     .attr("preserveAspectRatio", "xMinYMin")
+
+    var tooltip = d3.select(selector)
+        .append("div")
+        .attr("class", "maptooltip")
     
     var g = svg.append("g")
     
@@ -35,6 +41,8 @@ function drawWorldMap(selector){
     d3.json(source, function(error, mapboundary){
 
         var countrywise = topojson.feature(mapboundary, mapboundary.objects.countries).features;
+
+
 
         var stateCentroid = centroids(countrywise);
 
@@ -91,14 +99,22 @@ function drawWorldMap(selector){
                 }
             })
             .attr("r", 1)
-            .append("title")
-                .text(function(d,i){         
-
-                    console.log(d['Country']);
-                    
-                    return d['Country'];
-                    
-                })
+            .on("mouseover", function(d,i){
+                var pos = $(this).position()
+                console.log(pos);
+                
+                tooltip.html(d.Country)
+                    .style("display", "block")
+                    .style("top", (pos.top - 10) + "px" )
+                    .style("left", (pos.left - 50) + "px" )
+            })
+            .on("mouseout", function(d,i){
+                var pos = $(this).position()
+                console.log(pos);
+                
+                tooltip.html(d.Country)
+                    .style("display", "none")
+            })
           
           
         
