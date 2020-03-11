@@ -35,7 +35,7 @@
 				</figure>
 				<div class="deathCount">
 					<h2>Total Deaths</h2>
-					<h1>4,028</h1>
+					<h1 id="totDeath">4,028</h1>
 				</div>
 			</div>
 			<div class="recoverdata">
@@ -44,7 +44,7 @@
 				</figure>
 				<div class="recoverCount">
 					<h2>Total Recovered</h2>
-					<h1>64,266</h1>
+					<h1 id="totRecovered">64,266</h1>
 				</div>
 			</div>
 		</section>
@@ -54,15 +54,15 @@
 				 <div class="totalData">
 				 	<div class="currentlyInfected">
 				 		<h2>Currently infected</h2>
-				 		<h1>47,524</h1>
+				 		<h1 id="currInfected">47,524</h1>
 				 	</div>
 				 	<div class="mildCondition">
 				 		<h2>Mild condition</h2>
-				 		<h1>41,736</h1>
+				 		<h1 id="currMild">41,736</h1>
 				 	</div>
 				 	<div class="criticalCondition">
 				 		<h2>Critical condition</h2>
-				 		<h1>5,788</h1>
+				 		<h1 id="currCritical">5,788</h1>
 				 	</div>
 				 </div>
 			</div>
@@ -146,6 +146,27 @@
     <script src="js/testdata.js"></script>
     <script src="js/map.js"></script>
     <script type='text/javascript'>
+
+        var filterData = testData.filter(function(item){
+            return item['Total Cases'] !== null ;
+        })
+
+        var globalTotalData = testData.filter(function(item){
+            // console.log(item);
+            return item['Country'] === "Total" ;
+            // return item['Total Cases'] !== null ;
+        })
+
+        var formatComma = d3.format(",")
+
+        d3.select("#totAffected").text(formatComma(globalTotalData[0]["Total Cases"]))
+        d3.select("#totDeath").text(formatComma(globalTotalData[0]["Total Deaths"]))
+        d3.select("#totRecovered").text(formatComma(globalTotalData[0]["Total Recovered"]))
+        d3.select("#currInfected").text(formatComma(globalTotalData[0]["Active Cases"]))
+        d3.select("#currMild").text(formatComma(globalTotalData[0]["Active Cases"] - globalTotalData[0]["Serious"]))
+        d3.select("#currCritical").text(formatComma(globalTotalData[0]["Serious"]))
+
+
         drawWorldMap(".worldmap");
     </script>
 

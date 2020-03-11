@@ -46,9 +46,7 @@ function drawWorldMap(selector){
 
         console.log("stateCentroid", stateCentroid);
 
-        var filterData = testData.filter(function(item){
-            return item['Total Cases'] !== null ;
-        })
+        
         
 
 
