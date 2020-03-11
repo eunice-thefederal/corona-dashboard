@@ -20,34 +20,38 @@ function drawWorldMap(selector){
     var geoPath = d3.geoPath()
         .projection(projection)
 
+
+        function centroids(boundarydata){
+            return boundarydata.map(function (d){
+
+                // return d
+                return {
+                    center: projection(d3.geoCentroid(d)),
+                    id: parseInt(d.id)
+                }
+            });
+        }
+
     d3.json(source, function(error, mapboundary){
 
         var countrywise = topojson.feature(mapboundary, mapboundary.objects.countries).features;
 
-        // var countryCentroid = centroids(countrywise);
+        var stateCentroid = centroids(countrywise);
 
-        // console.log(countryCentroid);
+        console.log("stateCentroid", stateCentroid);
+
+        var filterData = testData.filter(function(item){
+            return item['Total Cases'] !== null ;
+        })
+        
+
 
         g.selectAll(".country")
             .data(countrywise).enter().append("path")
                 .attr("d", geoPath)
                 .attr("class", "country")
                 .attr('fill', "#dcdcdc")
-            // .append("title")
-            //     .text(function(d,i){
 
-            //         var fd = _.filter(testData, function(obj){
-            //             return obj.countryId === parseInt(d.id);
-            //         })
-            //         console.log(fd[0]);
-
-            //         if(fd[0] !== undefined){
-            //             return d.id + " " + fd[0]["Country"];
-            //         }else{
-            //             return d.id;
-            //         }
-                    
-            //     })
         
         svg.call(d3.zoom()
             .extent([[0, 0], [width, height]])
@@ -56,33 +60,46 @@ function drawWorldMap(selector){
                 g.attr("transform", d3.event.transform);
             }));
 
-   
 
         g.selectAll(".country-center")
-            .data(countrywise).enter().append("circle")
-                .attr("class", "country-center")
-                .attr("cx", function(d){
-                    return projection(d3.geoCentroid(d))[0] 
+            .data(filterData).enter().append("circle")
+            .attr("class", "country-center")
+            .attr("cx", function(d){
+
+                // console.log("d.id", d.countryId);
+
+                var fd = _.filter(stateCentroid, function(obj){
+                    return obj.id === d.countryId;
                 })
-                .attr("cy", function(d){
-                    return projection(d3.geoCentroid(d))[1] 
+
+                // console.log("fd", fd[0]['center']);
+                if(fd[0] !== undefined){                
+                    return fd[0]['center'][0]
+                }
+            })
+            .attr("cy", function(d){
+
+                // console.log("d.id", d.countryId);
+
+                var fd = _.filter(stateCentroid, function(obj){
+                    return obj.id === d.countryId;
                 })
-                .attr("r", 1)
+
+                // console.log("fd", fd[0]['center']);
+                if(fd[0] !== undefined){                
+                    return fd[0]['center'][1]
+                }
+            })
+            .attr("r", 1)
             .append("title")
-                .text(function(d,i){
+                .text(function(d,i){         
 
-                    var fd = _.filter(testData, function(obj){
-                        return obj.countryId === parseInt(d.id);
-                    })
-                    // console.log(fd[0]);
-
-                    if(fd[0] !== undefined){
-                        return d.id + " " + fd[0]["Country"];
-                    }else{
-                        return d.id;
-                    }
+                    console.log(d['Country']);
+                    
+                    return d['Country'];
                     
                 })
+          
           
         
 
