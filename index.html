@@ -25,7 +25,7 @@
 			</div>
 		</section>
 		<section class="total-affected">
-			<h1 id="totAffected">114,542</h1>
+			<h1 id="totAffected"></h1>
 			<p>TOTAL AFFECTED PERSONS</p>
 		</section>
 		<section class="deaths-recoverData">
@@ -35,7 +35,7 @@
 				</figure>
 				<div class="deathCount">
 					<h2>Total Deaths</h2>
-					<h1 id="totDeath">4,028</h1>
+					<h1 id="totDeath"></h1>
 				</div>
 			</div>
 			<div class="recoverdata">
@@ -44,13 +44,18 @@
 				</figure>
 				<div class="recoverCount">
 					<h2>Total Recovered</h2>
-					<h1 id="totRecovered">64,266</h1>
+					<h1 id="totRecovered"></h1>
 				</div>
 			</div>
 		</section>
 		<section class="barchart">
 			<div class="left-chart">
-				 <img src="img/Asset5.png">
+				 <div class="horstackchart">
+                     <div class="bar100">
+                         <div id="barmild"></div>
+                         <div id="barcritical"></div>
+                     </div>
+                 </div>
 				 <div class="totalData">
 				 	<div class="currentlyInfected">
 				 		<h2>Currently infected</h2>
@@ -148,10 +153,16 @@
     <script type='text/javascript'>
 
         var currentData = {
-            infect: 44852,
-            mild: 5979,
-            serious: 44852 - 5979,
-            outcome: 44852 - 5979
+            infect: 48393,
+            mild: 42646,
+            "mild%": 88,
+            serious: 5747,
+            "serious%": 12,
+            outcomeTotal: 70882,
+            "outcomeRecovered": 66582,
+            "outcomeRecovered%": 94,
+            "outcomeDeaths": 4300,
+            "outcomeDeaths%": 6
         }
  
         var filterData = countrywisedata.filter(function(item){
@@ -171,7 +182,17 @@
         d3.select("#currInfected").text(formatComma(currentData["infect"]))
         d3.select("#currMild").text(formatComma(currentData["mild"]))
         d3.select("#currCritical").text(formatComma(currentData["serious"]))
-        d3.select("#outcome-cases").text(formatComma(currentData["outcome"]))
+        d3.select("#outcome-cases").text(formatComma(currentData["outcomeTotal"]))
+        
+        
+        
+        // Mild and Critical Chart
+       
+        d3.select("#barcritical")
+            .style("width", currentData["serious%"]+"%")
+            .text(currentData["serious%"]+"%")
+
+        d3.select("#barmild").text(currentData["mild%"]+"%")
 
 
         drawWorldMap(".worldmap");
