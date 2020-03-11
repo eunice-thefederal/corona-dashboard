@@ -79,15 +79,15 @@
 			<div class="countrywiseData">
 				<div class="country">
 					<h2>Country,  Other</h2>
-					<h1>China</h1>
+					<h1 id="countryname">China</h1>
 				</div>
 				<div class="totCases">
 					<h2>Total Cases</h2>
-					<h1>80,757</h1>
+					<h1 id="countrytotalcases">80,757</h1>
 				</div>
 				<div class="newCases">
 					<h2>New Cases</h2>
-					<h1>22</h1>
+					<h1 id="countrynewcases">22</h1>
 				</div>
 			</div>
 		</section>
@@ -103,7 +103,7 @@
 						</figure>
 						<div class="countValue">
 							<h2>Total Deaths</h2>
-							<h1>3,136</h1>
+							<h1 id="countrytotaldeaths">3,136</h1>
 						</div>
 					</div>
 					<div class="downCounts">
@@ -112,7 +112,7 @@
 						</figure>
 						<div class="countValue">
 							<h2>New Deaths</h2>
-							<h1>+17</h1>
+							<h1 id="countrynewdeaths">+17</h1>
 						</div>
 					</div>
 				</div>
@@ -120,11 +120,11 @@
 			<div class="criticalData">
 				<div class="recoverCounts">
 					<h2>Total Recovered</h2>
-					<h1>60,104</h1>
+					<h1 id="countrytotalRecovered">60,104</h1>
 				</div>
 				<div class="criticalCounts">
 					<h2>Serious/critical</h2>
-					<h1>4,794</h1>
+					<h1 id="countrySerious">4,794</h1>
 				</div>
 			</div>
 		</section>
@@ -153,15 +153,13 @@
             serious: 44852 - 5979,
             outcome: 44852 - 5979
         }
-
-        var filterData = testData.filter(function(item){
+ 
+        var filterData = countrywisedata.filter(function(item){
             return item['Total Cases'] !== null ;
         })
 
-        var globalTotalData = testData.filter(function(item){
-            // console.log(item);
+        var globalTotalData = countrywisedata.filter(function(item){
             return item['Country'] === "Total" ;
-            // return item['Total Cases'] !== null ;
         })
 
         var formatComma = d3.format(",")
@@ -170,7 +168,6 @@
         d3.select("#totDeath").text(formatComma(globalTotalData[0]["Total Deaths"]))
         d3.select("#totRecovered").text(formatComma(globalTotalData[0]["Total Recovered"]))
        
-        // Todo: Change data source for following
         d3.select("#currInfected").text(formatComma(currentData["infect"]))
         d3.select("#currMild").text(formatComma(currentData["mild"]))
         d3.select("#currCritical").text(formatComma(currentData["serious"]))

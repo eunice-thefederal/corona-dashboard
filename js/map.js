@@ -101,6 +101,9 @@ function drawWorldMap(selector){
                 // var parentdetail = parent.getBoundingClientRect();
                 var posX = d3.select(this).attr("cx") + 20
                 var posY = d3.select(this).attr("cy") + 20
+                
+                d3.select(this).attr("fill", "red")
+                
                 console.log(posY);
                 
                 d3.select(".maptooltip")
@@ -112,8 +115,20 @@ function drawWorldMap(selector){
                 .style("left", (d3.event.pageY/2) + "px" )
             })
             .on("mouseout", function(d,i){
-                
+                d3.select(this).attr("fill", "black")
                 tooltip.style("display", "none")
+            })
+            .on("click", function(d,i){
+                console.log(d);
+
+                d3.select("#countryname").text(d.Country)
+                d3.select("#countrytotalcases").text(d["Total Cases"])
+                d3.select("#countrynewcases").text(d["New Cases"])
+                d3.select("#countrytotaldeaths").text(d["Total Deaths"])
+                d3.select("#countrynewdeaths").text(d["New Deaths"])
+                d3.select("#countrytotalRecovered").text(d["Total Recovered"])
+                d3.select("#countrySerious").text(d["Serious"])
+                
             })
 
             
