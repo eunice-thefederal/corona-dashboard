@@ -68,7 +68,7 @@
 			</div>
 			<div class="right-chart">
 				<h1>Cases with <br />outcome</h1>
-				<p>68,722</p>
+				<p id="outcome-cases">68,722</p>
 				<img src="img/Asset10.png">
 			</div>
 		</section>
@@ -147,6 +147,13 @@
     <script src="js/map.js"></script>
     <script type='text/javascript'>
 
+        var currentData = {
+            infect: 44852,
+            mild: 5979,
+            serious: 44852 - 5979,
+            outcome: 44852 - 5979
+        }
+
         var filterData = testData.filter(function(item){
             return item['Total Cases'] !== null ;
         })
@@ -162,9 +169,12 @@
         d3.select("#totAffected").text(formatComma(globalTotalData[0]["Total Cases"]))
         d3.select("#totDeath").text(formatComma(globalTotalData[0]["Total Deaths"]))
         d3.select("#totRecovered").text(formatComma(globalTotalData[0]["Total Recovered"]))
-        d3.select("#currInfected").text(formatComma(globalTotalData[0]["Active Cases"]))
-        d3.select("#currMild").text(formatComma(globalTotalData[0]["Active Cases"] - globalTotalData[0]["Serious"]))
-        d3.select("#currCritical").text(formatComma(globalTotalData[0]["Serious"]))
+       
+        // Todo: Change data source for following
+        d3.select("#currInfected").text(formatComma(currentData["infect"]))
+        d3.select("#currMild").text(formatComma(currentData["mild"]))
+        d3.select("#currCritical").text(formatComma(currentData["serious"]))
+        d3.select("#outcome-cases").text(formatComma(currentData["outcome"]))
 
 
         drawWorldMap(".worldmap");
