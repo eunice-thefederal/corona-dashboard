@@ -1,10 +1,16 @@
 /* font-family: 'Rubik', sans-serif; */
 
+.tfcontainer {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
 .country {
      stroke: #000000;
     stroke-width: 0.1; 
 }
 
-.country:hover {
+/* .country:hover {
     fill: #000000;
-}
+} */
