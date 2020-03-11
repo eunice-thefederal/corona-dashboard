@@ -74,7 +74,11 @@
 			<div class="right-chart">
 				<h1>Cases with <br />outcome</h1>
 				<p id="outcome-cases">68,722</p>
-				<img src="img/Asset10.png">
+				<div class="horstackchart">
+                    <div class="bar100">
+                        <div id="baroutcome"></div>
+                    </div>
+                </div>
 			</div>
 		</section>
 		<section class="world-impact">
@@ -193,6 +197,12 @@
             .text(currentData["serious%"]+"%")
 
         d3.select("#barmild").text(currentData["mild%"]+"%")
+        
+        
+        // Cases with outcomechart Chart
+        d3.select("#baroutcome")
+            .style("width", currentData["outcomeRecovered%"]+"%")
+            .text(currentData["outcomeRecovered%"]+"%")
 
 
         drawWorldMap(".worldmap");
