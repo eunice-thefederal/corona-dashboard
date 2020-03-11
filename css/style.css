@@ -1,4 +1,109 @@
-/* font-family: 'Rubik', sans-serif; */
+.covidDash-wrapper {
+	max-width: 100%;
+	width: 80%;
+	display: block;
+	padding: 10px;
+	box-sizing: border-box;
+	margin: 0 auto;
+}
+.covidDash-wrapper .dashboard-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.covidDash-wrapper .dashboard-title {
+	font-family: 'Rubik', sans-serif;
+	font-size: 68px;
+	line-height: 65px;
+	font-weight: 400;
+}
+.covidDash-wrapper .dashboard-header figure, .deathdata figure, 
+.recoverdata figure {
+	margin: 0;
+}
+.covidDash-wrapper .dashboard-header figure img, .deathdata figure img, 
+.recoverdata figure img {
+	max-width: 100%;
+}
+.covidDash-wrapper .total-affected {
+	text-align: center;
+	margin: 35px 0;
+}
+.covidDash-wrapper .total-affected h1#totAffected {
+	font-family: 'Rubik', sans-serif;
+	font-size: 262px;
+	/*line-height: 315px;*/
+	line-height: 262px;
+	font-weight: 400;
+	margin: 0 auto;
+}
+.covidDash-wrapper .total-affected p {
+	font-family: 'Rubik', sans-serif;
+	font-size: 37px;
+	line-height: 44px;
+	font-weight: 300;
+	margin: 0 auto;
+}
+.deathdata, .recoverdata {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.deaths-recoverData {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.deathdata {
+	background: #1d1d1b
+}
+
+.recoverdata {
+	background: #f5f5f5;
+}
+.deathdata {
+	color: #fff;
+}
+.deathdata h2, .recoverdata h2 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 61px;
+	line-height: 73px;
+	font-weight: 300;
+	margin: 0 auto;
+}
+.deathdata h1, .recoverdata h1 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 123px;
+	line-height: 147px;
+	font-weight: 300;
+	margin: 0 auto;
+}
+.deathdata, .recoverdata {
+	padding: 30px;
+	margin: 5px;
+	box-sizing: border-box;
+	border-radius: 6%;
+}
+.barchart {
+	display: flex;
+	justify-content: space-evenly;
+	/* align-items: center; */
+	margin: 35px 0;
+}
+.totalData {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.countrywiseData {
+	display: flex;
+	justify-content: space-between;
+}
+.dangerData, .totalandNew, .topCounts, .downCounts {
+	display: flex;
+	justify-content: space-between;
+}
+
 
 .country {
     stroke: #000000;
