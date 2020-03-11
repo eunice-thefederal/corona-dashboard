@@ -113,8 +113,11 @@
 }
 .topCounts, .downCounts {
 	display: flex;
-	justify-content: center;
+	/* justify-content: center; */
 	align-items: center;
+}
+.topCounts {
+	border-bottom: 1px solid #6f6f6e;
 }
 .totalandNew {
 	background: #ececec;
@@ -127,6 +130,13 @@
 }
 .dangerData figure {
 	margin: 0;
+}
+.deathCounts {
+	margin-left: 50px;
+}
+.countValue {
+	padding: 10px 20px;
+	box-sizing: border-box;
 }
 .topCounts h2, .downCounts h2 {
 	font-family: 'Rubik', sans-serif;
@@ -141,6 +151,7 @@
 	line-height: 108px;
 	font-weight: 400;
 	margin: 0 auto;
+	color: #e20613;
 }
 /*.barchart .left-chart img {
 	width: 900px;
