@@ -32,8 +32,8 @@
 }
 .covidDash-wrapper .total-affected h1#totAffected {
 	font-family: 'Rubik', sans-serif;
-	font-size: 193px;
-	line-height: 193px;
+	font-size: 170px;
+	line-height: 170px;
 	/*line-height: 236px;*/
 	font-weight: 400;
 	margin: 0 auto;
@@ -67,23 +67,26 @@
 }
 .deathdata h2, .recoverdata h2 {
 	font-family: 'Rubik', sans-serif;
-	font-size: 46px;
-	line-height: 55px;
+	font-size: 40px;
+	line-height: 45px;
 	font-weight: 300;
 	margin: 0 auto;
 }
 .deathdata h1, .recoverdata h1 {
 	font-family: 'Rubik', sans-serif;
-	font-size: 92px;
-	line-height: 110px;
+	font-size: 80px;
+	line-height: 90px;
 	font-weight: 300;
 	margin: 0 auto;
 }
 .deathdata, .recoverdata {
-	padding: 15px 30px;
+	padding: 15px 40px;
 	margin: 5px;
 	box-sizing: border-box;
 	border-radius: 6%;
+}
+.deathCount , .recoverCount {
+	margin-left: 25px;
 }
 .barchart {
 	display: flex;
@@ -138,14 +141,16 @@
 	padding: 10px 20px;
 	box-sizing: border-box;
 }
-.topCounts h2, .downCounts h2 {
+.topCounts h2, .downCounts h2,
+.criticalData h2 {
 	font-family: 'Rubik', sans-serif;
 	font-size: 22px;
 	line-height: 26px;
 	font-weight: 500;
 	margin: 0 auto;
 }
-.topCounts h1, .downCounts h1 {
+.topCounts h1, .downCounts h1,
+.criticalData h1 {
 	font-family: 'Rubik', sans-serif;
 	font-size: 91px;
 	line-height: 108px;
@@ -156,6 +161,24 @@
 /*.barchart .left-chart img {
 	width: 900px;
 }*/
+.criticalData {
+	border: 1px solid #d9d9d9;
+	border-radius: 6%;
+	padding: 6px 20px;
+	box-sizing: border-box;
+}
+.criticalCounts, .recoverCounts {
+	padding: 10px 0;
+}
+.criticalData h2 {
+	color: #868686
+}
+.recoverCounts {
+	border-bottom: 1px solid #d9d9d9;
+}
+.criticalData h1 {
+	color: #39a935
+}
 .barchart .totalData div {
 	margin: 15px;
 }
@@ -228,6 +251,28 @@
 }
 .countrywiseData .newCases h2, .countrywiseData .newCases h1 {
 	color: #f29100 !important;
+}
+.worldmap {
+	margin: 20px 0;
+}
+.dailyDeaths h1, .totalDeaths h1 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 46px;
+	line-height: 55px;
+	font-weight: 400;
+	/*color: #e20613;*/
+	margin: 0 auto;
+}
+.dailyDeaths p, .totalDeaths p {
+	font-family: 'Rubik', sans-serif;
+	font-size: 22px;
+	line-height: 26px;
+	font-weight: 400;
+	/*color: #e20613;*/
+	margin: 0 auto;
+}
+.dailyDeaths, .totalDeaths {
+	margin: 25px 0;
 }
 .country {
     stroke: #666666;
