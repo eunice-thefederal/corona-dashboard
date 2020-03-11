@@ -205,8 +205,17 @@
     stroke: #000000;
     stroke-width: 0.2;
 }
-
+/* 
 .country:hover {
     fill: #000000;
-}
+} */
 
+.maptooltip{
+	background-color: #000;
+	color: #FFFFFF;
+	position: absolute;
+	padding: 5px 10px;
+	box-sizing: border-box;
+	transition: all 0.2s;
+	display: none;
+}
