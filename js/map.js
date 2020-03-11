@@ -33,21 +33,21 @@ function drawWorldMap(selector){
                 .attr("d", geoPath)
                 .attr("class", "country")
                 .attr('fill', "#dcdcdc")
-            .append("title")
-                .text(function(d,i){
+            // .append("title")
+            //     .text(function(d,i){
 
-                    var fd = _.filter(testData, function(obj){
-                        return obj.countryId === parseInt(d.id);
-                    })
-                    console.log(fd[0]);
+            //         var fd = _.filter(testData, function(obj){
+            //             return obj.countryId === parseInt(d.id);
+            //         })
+            //         console.log(fd[0]);
 
-                    if(fd[0] !== undefined){
-                        return d.id + " " + fd[0]["Country"];
-                    }else{
-                        return d.id;
-                    }
+            //         if(fd[0] !== undefined){
+            //             return d.id + " " + fd[0]["Country"];
+            //         }else{
+            //             return d.id;
+            //         }
                     
-                })
+            //     })
         
         svg.call(d3.zoom()
             .extent([[0, 0], [width, height]])
@@ -56,16 +56,33 @@ function drawWorldMap(selector){
                 g.attr("transform", d3.event.transform);
             }));
 
+   
+
         g.selectAll(".country-center")
             .data(countrywise).enter().append("circle")
-            .attr("class", "country-center")
-            .attr("cx", function(d){
-                return projection(d3.geoCentroid(d))[0] 
-            })
-            .attr("cy", function(d){
-                return projection(d3.geoCentroid(d))[1] 
-            })
-            .attr("r", 1)
+                .attr("class", "country-center")
+                .attr("cx", function(d){
+                    return projection(d3.geoCentroid(d))[0] 
+                })
+                .attr("cy", function(d){
+                    return projection(d3.geoCentroid(d))[1] 
+                })
+                .attr("r", 1)
+            .append("title")
+                .text(function(d,i){
+
+                    var fd = _.filter(testData, function(obj){
+                        return obj.countryId === parseInt(d.id);
+                    })
+                    // console.log(fd[0]);
+
+                    if(fd[0] !== undefined){
+                        return d.id + " " + fd[0]["Country"];
+                    }else{
+                        return d.id;
+                    }
+                    
+                })
           
         
 
