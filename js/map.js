@@ -12,9 +12,7 @@ function drawWorldMap(selector){
     .attr("viewBox", "0 0 " + width + " " + height)
     .attr("preserveAspectRatio", "xMinYMin")
 
-    var tooltip = d3.select(selector)
-        .append("div")
-        .attr("class", "maptooltip")
+    var tooltip = d3.select(selector).append("div").attr("class","maptooltip")
     
     var g = svg.append("g")
     
@@ -100,21 +98,27 @@ function drawWorldMap(selector){
             })
             .attr("r", 1)
             .on("mouseover", function(d,i){
-                var pos = $(this).position()
-                console.log(pos);
+
+                // var parent = document.querySelector(selector);
+                // var parentdetail = parent.getBoundingClientRect();
+                var posX = d3.select(this).attr("cx") + 20
+                var posY = d3.select(this).attr("cy") + 20
+                console.log(posY);
                 
-                tooltip.html(d.Country)
-                    .style("display", "block")
-                    .style("top", (pos.top - 10) + "px" )
-                    .style("left", (pos.left - 50) + "px" )
+                d3.select(".maptooltip")
+                    
+
+                tooltip.text(d.Country)
+                .style("display", "block" )
+                .style("top", (d3.event.pageX/4) + "px" )
+                .style("left", (d3.event.pageY/2) + "px" )
             })
             .on("mouseout", function(d,i){
-                var pos = $(this).position()
-                console.log(pos);
                 
-                tooltip.html(d.Country)
-                    .style("display", "none")
+                tooltip.style("display", "none")
             })
+
+            
           
           
         
