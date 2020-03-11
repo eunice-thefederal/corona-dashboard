@@ -7,8 +7,8 @@
 }
 
 .covidDash-wrapper {
-	max-width: 100%;
-	width: 80%;
+	max-width: 1040px;
+	width: 100%;
 	display: block;
 	padding: 10px;
 	box-sizing: border-box;
