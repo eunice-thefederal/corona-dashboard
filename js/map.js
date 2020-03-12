@@ -5,7 +5,6 @@ function drawWorldMap(selector){
     var source = "https://unpkg.com/visionscarto-world-atlas@0.0.4/world/50m.json";
 
 
-
     var svg = d3.select(selector)
     .append("svg")
     .attr("class", "world map")
@@ -79,10 +78,10 @@ function drawWorldMap(selector){
             .attr("class", "country-center")
             .attr("cx", function(d){
 
-                // console.log("d.id", d.countryId);
+                // console.log("d.id", d);
 
                 var fd = _.filter(stateCentroid, function(obj){
-                    return obj.id === d.countryId;
+                    return obj.id === parseInt(d.countryId);
                 })
 
                 // console.log("fd", fd[0]['center']);
@@ -95,27 +94,143 @@ function drawWorldMap(selector){
                 // console.log("d.id", d.countryId);
 
                 var fd = _.filter(stateCentroid, function(obj){
-                    return obj.id === d.countryId;
+                    return obj.id === parseInt(d.countryId);
                 })
 
                 // console.log("fd", fd[0]['center']);
                 if(fd[0] !== undefined){                
                     return fd[0]['center'][1]
+                    // console.log(d);
                 }
             })
             .attr("r", 1.5)
             .on('mouseover', tool_tip.show)
             .on('mouseout', tool_tip.hide)   
             .on("click", function(d,i){
+
                 console.log(d);
+                
 
                 d3.select("#countryname").text(d.Country)
-                d3.select("#countrytotalcases").text(d["Total Cases"])
-                d3.select("#countrynewcases").text(d["New Cases"])
-                d3.select("#countrytotaldeaths").text(d["Total Deaths"])
-                d3.select("#countrynewdeaths").text(d["New Deaths"])
-                d3.select("#countrytotalRecovered").text(d["Total Recovered"])
-                d3.select("#countrySerious").text(d["Serious"])
+                
+                if(d["Total Cases"] !== "NULL" ){
+
+                    var countrytotalcases = d3.select("#countrytotalcases").text(0)
+                    countrytotalcases.transition()
+                        .tween("text", function() {
+                            
+                            var selection = d3.select(this);    // selection of node being transitioned
+                            var start = d3.select(this).text(); // start value prior to transition
+                            var end = parseInt(d["Total Cases"]);                     // specified end value
+                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
+
+                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
+                            
+                        })
+                        .duration(1000);
+
+                }else{
+                    d3.select("#countrytotalcases").text("-")
+                }
+                
+                
+                if(d["New Cases"] !== "NULL"){
+
+                    var countrynewcases = d3.select("#countrynewcases").text(0)
+                    countrynewcases.transition()
+                        .tween("text", function() {
+                            
+                            var selection = d3.select(this);    // selection of node being transitioned
+                            var start = d3.select(this).text(); // start value prior to transition
+                            var end = parseInt(d["New Cases"]);                     // specified end value
+                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
+        
+                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
+                            
+                        })
+                        .duration(1000);
+                        
+
+                }else{
+                    d3.select("#countrynewcases").text("-")
+                }
+                
+
+                if(d["Total Deaths"] !== "NULL"){
+                   var countrytotaldeaths = d3.select("#countrytotaldeaths").text(0)
+                   countrytotaldeaths.transition()
+                        .tween("text", function() {
+                            
+                            var selection = d3.select(this);    // selection of node being transitioned
+                            var start = d3.select(this).text(); // start value prior to transition
+                            var end = parseInt(d["Total Deaths"]);                     // specified end value
+                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
+        
+                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
+                            
+                        })
+                        .duration(1000);
+                }else{
+                    d3.select("#countrytotaldeaths").text("-")
+                }
+                
+                if(d["New Deaths"] !== "NULL"){
+                    var countrynewdeaths = d3.select("#countrynewdeaths").text(0)
+                    countrynewdeaths.transition()
+                        .tween("text", function() {
+                            
+                            var selection = d3.select(this);    // selection of node being transitioned
+                            var start = d3.select(this).text(); // start value prior to transition
+                            var end = parseInt(d["New Deaths"]);                     // specified end value
+                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
+        
+                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
+                            
+                        })
+                        .duration(1000);
+
+                }else{
+                    d3.select("#countrynewdeaths").text("-")
+                }
+                
+                if(d["Total Recovered"] !== "NULL"){
+                    var countrytotalRecovered = d3.select("#countrytotalRecovered").text(0)
+                    countrytotalRecovered.transition()
+                        .tween("text", function() {
+                            
+                            var selection = d3.select(this);    // selection of node being transitioned
+                            var start = d3.select(this).text(); // start value prior to transition
+                            var end = parseInt(d["Total Recovered"]);                     // specified end value
+                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
+        
+                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
+                            
+                        })
+                        .duration(1000);
+                }else{
+                    d3.select("#countrytotalRecovered").text("-")
+                }
+                
+                if(d["Serious"] !== "NULL"){
+                    var countrySerious = d3.select("#countrySerious").text(0)
+                    countrySerious.transition()
+                        .tween("text", function() {
+                            
+                            var selection = d3.select(this);    // selection of node being transitioned
+                            var start = d3.select(this).text(); // start value prior to transition
+                            var end = parseInt(d["Serious"]);                     // specified end value
+                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
+        
+                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
+                            
+                        })
+                        .duration(1000);
+                }else{
+                    d3.select("#countrySerious").text("-")
+                }
+                
+                
+                
                 
             })
 
