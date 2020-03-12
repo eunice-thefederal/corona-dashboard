@@ -12,6 +12,8 @@ function drawLinechart(selector){
         .attr("viewBox", "0 0 " + width + " " + height)
         .attr("preserveAspectRatio", "xMinYMin")
 
+    var tooltip = d3.select(selector)
+        .append(div)
 
     var x = d3.scaleBand()
         .range([0, width - 100])
@@ -26,22 +28,22 @@ function drawLinechart(selector){
         .attr("transform", "translate(" + 70 + "," + 25 + ")");
 
         var line = d3.line()
-            .x(function(d) { return x(d.Date)})
+            .x(function(d) { return x(d.Date)+4})
             .y(function(d) { return y( d["Total Deaths"])})
             .curve(d3.curveMonotoneX)
 
 
-    g.append("g")
-        .attr("transform", "translate(0," + (height - 80) + ")")
-        .attr("class", "bottomaxis")
-        .call(d3.axisBottom(x).ticks(10))
-        .selectAll("text")
-        .attr("y", 0)
-        .attr("x", 9)
-        .attr("dy", ".35em")
-        .attr("font-size", "9")
-        .attr("transform", "rotate(65)")
-        .style("text-anchor", "start");
+        g.append("g")
+            .attr("transform", "translate(0," + (height - 80) + ")")
+            .attr("class", "bottomaxis")
+            .call(d3.axisBottom(x).ticks(10))
+            .selectAll("text")
+            .attr("y", 5)
+            .attr("x", -9)
+            .attr("dy", ".35em")
+            .attr("font-size", "9")
+            .attr("transform", "rotate(-65)")
+            .style("text-anchor", "end");
         
 
     g.append("g")
@@ -69,7 +71,7 @@ function drawLinechart(selector){
         .data(reversedData)
       .enter().append("circle") // Uses the enter().append() method
         .attr("class", "dot") // Assign a class for styling
-        .attr("cx", function(d, i) { return x(d.Date) })
+        .attr("cx", function(d, i) { return x(d.Date)+4 })
         .attr("cy", function(d) { return y( d["Total Deaths"]) })
         .attr("fill", "brown")
         .attr("r", 2);
