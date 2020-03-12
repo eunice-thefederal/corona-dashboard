@@ -354,6 +354,9 @@
 	text-align: left;
 	margin: 11px 0;
 }
+.horstackchart, .horstackchart div{
+	transition: all 1.5s;
+}
 .horstackchart #barcritical{
 	height: 100%;
     width: 20%;
