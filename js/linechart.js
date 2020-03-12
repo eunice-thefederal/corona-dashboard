@@ -12,8 +12,17 @@ function drawLinechart(selector){
         .attr("viewBox", "0 0 " + width + " " + height)
         .attr("preserveAspectRatio", "xMinYMin")
 
-    var tooltip = d3.select(selector)
-        .append(div)
+    // var tooltip = d3.select(selector)
+    //         .append("div").attr("class", "linetooltip")
+    //         .style("background-color", "black")
+    //         .style("color", "white")
+
+    var tool_tip = d3.tip()
+        .attr("class", "d3-tipforline")
+        .offset([-8, 0])
+        .html(function(d) { return d["Total Deaths"]; });
+    
+    svg.call(tool_tip);
 
     var x = d3.scaleBand()
         .range([0, width - 100])
@@ -74,7 +83,20 @@ function drawLinechart(selector){
         .attr("cx", function(d, i) { return x(d.Date)+4 })
         .attr("cy", function(d) { return y( d["Total Deaths"]) })
         .attr("fill", "brown")
-        .attr("r", 2);
+        .attr("r", 3)
+        .on('mouseover', tool_tip.show)
+        .on('mouseout', tool_tip.hide);
+        // .on("mouseover", function(d,i){
+        //     var pos = $(this).position()
+        //     d3.select(".linetooltip").text(d["Total Deaths"])
+        //     .style("display", "block")
+        //     .style("left", d3.select(this).attr("cx") + "px")     
+        //     .style("top", d3.select(this).attr("cy") + "px")
+
+        // })
+        // .on("mouseout", function(d,i){
+        //     d3.select(".linetooltip").style("display", "none");
+        // })
 
 
 

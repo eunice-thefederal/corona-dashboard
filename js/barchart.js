@@ -12,6 +12,13 @@ function drawBarchart(selector){
         .attr("viewBox", "0 0 " + width + " " + height)
         .attr("preserveAspectRatio", "xMinYMin")
 
+    var tool_tip = d3.tip()
+        .attr("class", "d3-tipforline")
+        .offset([-8, 0])
+        .html(function(d) { return d["Daily Deaths"]; });
+    
+    svg.call(tool_tip);
+
 
     var x = d3.scaleBand()
         .range([0, width - 100])
@@ -61,12 +68,8 @@ function drawBarchart(selector){
         .attr("x", function(d) { return x(d.Date); })
         .attr("y", function(d) { return y(d["Daily Deaths"]); })
         .attr("width", x.bandwidth())
-        .on("mouseover", function(d , i){
-            d3.select(".td"+i).style("display", "block")
-        })
-        .on("mouseout", function(d){
-            d3.selectAll(".barvalues").style("display", "none")
-        })
+        .on('mouseover', tool_tip.show)
+        .on('mouseout', tool_tip.hide)   
         .transition()
         .ease(d3.easeLinear)
         .duration(200)

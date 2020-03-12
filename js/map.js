@@ -12,6 +12,13 @@ function drawWorldMap(selector){
     .attr("viewBox", "0 0 " + width + " " + height)
     .attr("preserveAspectRatio", "xMinYMin")
 
+    var tool_tip = d3.tip()
+        .attr("class", "d3-tipforline")
+        .offset([-8, 0])
+        .html(function(d) { return d.Country +":"+ d["Total Cases"]; });
+    
+    svg.call(tool_tip);
+
     var tooltip = d3.select(selector).append("div").attr("class","maptooltip")
     
     var g = svg.append("g")
@@ -55,6 +62,8 @@ function drawWorldMap(selector){
                 .attr("d", geoPath)
                 .attr("class", "country")
                 .attr('fill', "#dcdcdc")
+                // .on('mouseover', tool_tip.show)
+                // .on('mouseout', tool_tip.hide) 
 
         
         svg.call(d3.zoom()
@@ -94,30 +103,9 @@ function drawWorldMap(selector){
                     return fd[0]['center'][1]
                 }
             })
-            .attr("r", 1)
-            .on("mouseover", function(d,i){
-
-                // var parent = document.querySelector(selector);
-                // var parentdetail = parent.getBoundingClientRect();
-                var posX = d3.select(this).attr("cx") + 20
-                var posY = d3.select(this).attr("cy") + 20
-                
-                d3.select(this).attr("fill", "red")
-                
-                console.log(posY);
-                
-                d3.select(".maptooltip")
-                    
-
-                tooltip.text(d.Country)
-                .style("display", "block" )
-                .style("top", (d3.event.pageX/4) + "px" )
-                .style("left", (d3.event.pageY/2) + "px" )
-            })
-            .on("mouseout", function(d,i){
-                d3.select(this).attr("fill", "black")
-                tooltip.style("display", "none")
-            })
+            .attr("r", 1.5)
+            .on('mouseover', tool_tip.show)
+            .on('mouseout', tool_tip.hide)   
             .on("click", function(d,i){
                 console.log(d);
 
