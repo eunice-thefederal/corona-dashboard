@@ -21,6 +21,7 @@
 .covidDash-wrapper .dashboard-header figure, .deathdata figure, 
 .recoverdata figure {
 	margin: 0;
+	z-index: 999;
 }
 .covidDash-wrapper .dashboard-header figure img, .deathdata figure img, 
 .recoverdata figure img {
