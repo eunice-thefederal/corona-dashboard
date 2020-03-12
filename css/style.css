@@ -295,7 +295,7 @@
 }
 .country {
 	stroke: #ffffff;
-	fill: #000000;
+	/* fill: #000000; */
     stroke-width: 0.05;
 }
 
