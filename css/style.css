@@ -266,8 +266,8 @@
 	margin: 0 auto;
 }
 .countrywiseData .country h1 {
-	font-size: 48px;
-	line-height: 57px;
+	font-size: 46px;
+	line-height: 55px;
 }
 .countrywiseData .newCases h2, .countrywiseData .newCases h1 {
 	color: #f29100 !important;
@@ -299,7 +299,7 @@
 }
 .country {
 	stroke: #ffffff;
-	/* fill: #000000; */
+	fill: #000000;
     stroke-width: 0.05;
 }
 
