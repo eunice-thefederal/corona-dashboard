@@ -8,7 +8,7 @@ function drawWorldMap(selector){
 
     var svg = d3.select(selector)
     .append("svg")
-    .attr("class", "worldmap")
+    .attr("class", "world map")
     .attr("viewBox", "0 0 " + width + " " + height)
     .attr("preserveAspectRatio", "xMinYMin")
 
