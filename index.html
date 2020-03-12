@@ -198,30 +198,30 @@
     <script src="js/map.js"></script>
     <script type='text/javascript'>
 
-        var currentData = {
-            infect: 48393,
-            mild: 42646,
-            "mild%": 88,
-            serious: 5747,
-            "serious%": 12,
-            outcomeTotal: 70882,
-            "outcomeRecovered": 66582,
+        var globalTotalData = [{"Total Cases": 128122, "New Cases": 1628, "Total Deaths": 4717, "New Deaths": 100, "Total Recovered": 68654, "Active Cases": 54775, "Serious": 5711, "Total cases 1M": 16.4}]
+		
+		var currentData = {
+            infect: 54751,
+            mild: 49040,
+            "mild%": 90,
+            serious: 5711,
+            "serious%": 10,
+            outcomeTotal: 73371,
+            "outcomeRecovered": 68654,
             "outcomeRecovered%": 94,
-            "outcomeDeaths": 4300,
+            "outcomeDeaths": 4717,
             "outcomeDeaths%": 6
-        }
+		}
+		
+		// [{"infected":"54748","Mild condition":"49037 ","Mild condition%":"90","Critical":"5711 ","Critical%":"10","Cases with Outcome":"73051","Recovered":"68335 ","Recovered %":"94","Deaths":"4716 ","Deaths %":"6"}]
  
         var filterData = countrywisedata.filter(function(item){
             return item['Total Cases'] !== null ;
         })
 
-        var globalTotalData = countrywisedata.filter(function(item){
-            return item['Country'] === "Total" ;
-        })
-
         var formatComma = d3.format(",")
 
-        d3.select("#totAffected").text(formatComma(globalTotalData[0]["Total Cases"]))
+		d3.select("#totAffected").text(formatComma(globalTotalData[0]["Total Cases"]))
         d3.select("#totDeath").text(formatComma(globalTotalData[0]["Total Deaths"]))
         d3.select("#totRecovered").text(formatComma(globalTotalData[0]["Total Recovered"]))
        
