@@ -1,9 +1,5 @@
 function drawBarchart(selector){
 
-    console.log("dailyDeathData", dailyDeathData);
-    
-    
-
     var width = 600, height = 350;
 
     var svg = d3.select(selector)
@@ -82,7 +78,6 @@ function drawBarchart(selector){
         .data(dailyDeathData)
         .enter().append("text")
         .text(function(d){
-            console.log("bartext", d['Daily Deaths']);
             return d['Daily Deaths']
         })
         .attr("x", function(d) { return x(d.Date); })
