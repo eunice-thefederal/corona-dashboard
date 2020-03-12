@@ -31,12 +31,12 @@ function drawBarchart(selector){
         .attr("class", "bottomaxis")
         .call(d3.axisBottom(x).ticks(10))
         .selectAll("text")
-        .attr("y", 0)
-        .attr("x", 9)
+        .attr("y", 5)
+        .attr("x", -9)
         .attr("dy", ".35em")
         .attr("font-size", "9")
-        .attr("transform", "rotate(65)")
-        .style("text-anchor", "start");
+        .attr("transform", "rotate(-65)")
+        .style("text-anchor", "end");
         
 
     g.append("g")
@@ -47,7 +47,8 @@ function drawBarchart(selector){
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", "-5.1em")
-        .attr("text-anchor", "end")
+        .attr("dx", "-5.1em")
+        .attr("text-anchor", "middle")
         .attr("fill", "black")
         .text("Number of Deaths");
 
@@ -60,13 +61,35 @@ function drawBarchart(selector){
         .attr("x", function(d) { return x(d.Date); })
         .attr("y", function(d) { return y(d["Daily Deaths"]); })
         .attr("width", x.bandwidth())
+        .on("mouseover", function(d , i){
+            d3.select(".td"+i).style("display", "block")
+        })
+        .on("mouseout", function(d){
+            d3.selectAll(".barvalues").style("display", "none")
+        })
         .transition()
         .ease(d3.easeLinear)
-        .duration(400)
+        .duration(200)
         .delay(function (d, i) {
             return i * 50;
         })
         .attr("height", function(d) { return (height - 80) - y(d["Daily Deaths"]); });
+
+    g.selectAll(".barvalues")
+        .data(dailyDeathData)
+        .enter().append("text")
+        .text(function(d){
+            console.log("bartext", d['Daily Deaths']);
+            return d['Daily Deaths']
+        })
+        .attr("x", function(d) { return x(d.Date); })
+        .attr("y", function(d) { return y(d["Daily Deaths"]+5); })
+        .attr("font-size", 9)
+        .attr("text-anchor", "middle")
+        .attr("class", function(d,i){
+            return "barvalues td"+i
+        })
+        .style("display", "none")
 
 
         
