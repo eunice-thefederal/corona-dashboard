@@ -14,7 +14,12 @@ function drawWorldMap(selector){
     var tool_tip = d3.tip()
         .attr("class", "d3-tipforline")
         .offset([-15, 0])
-        .html(function(d) { return d.Country +":"+ d["Total Cases"]; });
+        .html(function(d) { 
+
+            var html = "<p>"+d.Country +"</p> "
+            html += "<p>Total Cases: <span>"+ d["Total Cases"] +"</span></p> "
+            return html; 
+        });
     
     svg.call(tool_tip);
 
