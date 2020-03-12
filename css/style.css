@@ -275,6 +275,9 @@
 .worldmap {
 	width: 75%;
 }
+.countrywiseData {
+	width: 25%;
+}
 .dailyDeaths h1, .totalDeaths h1 {
 	font-family: 'Rubik', sans-serif;
 	font-size: 46px;
