@@ -2,6 +2,9 @@ function drawBarchart(selector){
 
     var width = 600, height = 350;
 
+    var reversedData = dailyDeathData.reverse()
+    
+
     var svg = d3.select(selector)
         .append("svg")
         .attr("class", "barchart")
@@ -10,7 +13,7 @@ function drawBarchart(selector){
 
     var tool_tip = d3.tip()
         .attr("class", "d3-tipforline")
-        .offset([-8, 0])
+        .offset([-12, 0])
         .html(function(d) { return d["Daily Deaths"]; });
     
     svg.call(tool_tip);
@@ -19,11 +22,14 @@ function drawBarchart(selector){
     var x = d3.scaleBand()
         .range([0, width - 100])
         .padding(0.4)
-        .domain(dailyDeathData.map(function(d) { return d.Date; }));
+        .domain(reversedData.map(function(d) { return d.Date; }));
     
     var y = d3.scaleLinear()
         .range([height-80, 0])
-        .domain([0, d3.max(dailyDeathData, function(d) { return d["Daily Deaths"]; })]);
+        .domain([0, d3.max(reversedData, function(d) { 
+            // console.log(d["Daily Deaths"]);
+            return parseInt(d["Daily Deaths"]);
+         })]);
 
     var g = svg.append("g")
         .attr("transform", "translate(" + 70 + "," + 25 + ")");
@@ -57,12 +63,15 @@ function drawBarchart(selector){
 
 
     g.selectAll(".bar")
-        .data(dailyDeathData)
+        .data(reversedData)
         .enter().append("rect")
         .attr("class", "bar")
         .attr("fill", "#E20613")
         .attr("x", function(d) { return x(d.Date); })
-        .attr("y", function(d) { return y(d["Daily Deaths"]); })
+        .attr("y", function(d) {
+            console.log(d["Daily Deaths"], typeof(d["Daily Deaths"]));
+            
+             return y(parseInt(d["Daily Deaths"])); })
         .attr("width", x.bandwidth())
         .on('mouseover', tool_tip.show)
         .on('mouseout', tool_tip.hide)   
@@ -72,10 +81,10 @@ function drawBarchart(selector){
         .delay(function (d, i) {
             return i * 50;
         })
-        .attr("height", function(d) { return (height - 80) - y(d["Daily Deaths"]); });
+        .attr("height", function(d) { return (height - 80) - y(parseInt(d["Daily Deaths"])); });
 
     g.selectAll(".barvalues")
-        .data(dailyDeathData)
+        .data(reversedData)
         .enter().append("text")
         .text(function(d){
             return d['Daily Deaths']

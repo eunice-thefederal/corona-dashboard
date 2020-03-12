@@ -14,7 +14,7 @@ function drawLinechart(selector){
 
     var tool_tip = d3.tip()
         .attr("class", "d3-tipforline")
-        .offset([-8, 0])
+        .offset([-12, 0])
         .html(function(d) { return d["Total Deaths"]; });
     
     svg.call(tool_tip);
@@ -26,14 +26,14 @@ function drawLinechart(selector){
     
     var y = d3.scaleLinear()
         .range([height-80, 0])
-        .domain([0, d3.max(reversedData, function(d) { return d["Total Deaths"]; })]);
+        .domain([0, d3.max(reversedData, function(d) { return parseInt(d["Total Deaths"]); })]);
 
     var g = svg.append("g")
         .attr("transform", "translate(" + 70 + "," + 25 + ")");
 
         var line = d3.line()
             .x(function(d) { return x(d.Date)+4})
-            .y(function(d) { return y( d["Total Deaths"])})
+            .y(function(d) { return y( parseInt(d["Total Deaths"]))})
             .curve(d3.curveMonotoneX)
 
 
@@ -76,7 +76,7 @@ function drawLinechart(selector){
       .enter().append("circle") // Uses the enter().append() method
         .attr("class", "dot") // Assign a class for styling
         .attr("cx", function(d, i) { return x(d.Date)+4 })
-        .attr("cy", function(d) { return y( d["Total Deaths"]) })
+        .attr("cy", function(d) { return y( parseInt(d["Total Deaths"])) })
         .attr("fill", "brown")
         .attr("r", 3)
         .on('mouseover', tool_tip.show)
