@@ -2,7 +2,7 @@
 	max-width: 1040px;
 	/*width: 80%;*/
 	display: block;
-	padding: 10px;
+	padding: 20px 10px;
 	box-sizing: border-box;
 	margin: 0 auto;
 	overflow: hidden;
@@ -54,13 +54,14 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-bottom: 65px;
 }
 .deathdata {
 	background: #1d1d1b
 }
 
 .recoverdata {
-	background: #f5f5f5;
+	background: #eaf4ceba;
 }
 .deathdata {
 	color: #fff;
@@ -79,11 +80,15 @@
 	font-weight: 300;
 	margin: 0 auto;
 }
+
 .deathdata, .recoverdata {
 	padding: 15px 40px;
 	margin: 5px;
 	box-sizing: border-box;
-	border-radius: 6%;
+	border-radius: 20px;
+}
+.deathdata {
+	padding: 15px 60px;
 }
 .deathCount , .recoverCount {
 	margin-left: 25px;
@@ -111,7 +116,11 @@
 }
 .countrywiseData {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
+	flex-direction: column;
+}
+.countrywiseData div {
+	margin: 20px 0;
 }
 .dangerData, .totalandNew {
 	display: flex;
@@ -122,7 +131,7 @@
 	display: flex;
 	/* justify-content: center; */
 	align-items: center;
-	padding: 10px 0;
+	padding: 5px 0;
 }
 .topCounts {
 	border-bottom: 1px solid #6f6f6e;
@@ -185,12 +194,12 @@
 	color: #39a935
 }
 .barchart .totalData div {
-	margin: 15px;
+	margin: 10px 18px;
 }
 .barchart .totalData h2 {
 	font-family: 'Rubik', sans-serif;
-	font-size: 27px;
-	line-height: 32px;
+	font-size: 21px;
+	line-height: 28px;
 	font-weight: 300;
 	margin: 0 auto;
 }
@@ -207,6 +216,8 @@
 	line-height: 32px;
 	font-weight: 300;
 	margin: 0 auto;
+	/* padding-right: 25px;
+	box-sizing: border-box; */
 }
 .barchart .right-chart {
 	padding-left: 15px;
@@ -218,6 +229,9 @@
 	line-height: 74px;
 	font-weight: 700;
 	margin: 0 auto;
+}
+.map-wrapper {
+	display: flex;
 }
 .world-impact h1 {
 	font-family: 'Rubik', sans-serif;
@@ -244,10 +258,10 @@
 }
 .countrywiseData h1 {
 	font-family: 'Rubik', sans-serif;
-	font-size: 91px;
-	line-height: 108px;
+	font-size: 80px;
+	line-height: 89px;
 	font-weight: 400;
-	/*color: #e20613;*/
+	/* color: #e20613; */
 	margin: 0 auto;
 }
 .countrywiseData .country h1 {
@@ -257,9 +271,9 @@
 .countrywiseData .newCases h2, .countrywiseData .newCases h1 {
 	color: #f29100 !important;
 }
-.worldmap {
+/* .worldmap {
 	margin: 20px 0;
-}
+} */
 .dailyDeaths h1, .totalDeaths h1 {
 	font-family: 'Rubik', sans-serif;
 	font-size: 46px;
@@ -272,15 +286,16 @@
 	font-family: 'Rubik', sans-serif;
 	font-size: 22px;
 	line-height: 26px;
-	font-weight: 400;
+	font-weight: 300;
 	/*color: #e20613;*/
 	margin: 0 auto;
 }
 .dailyDeaths, .totalDeaths {
-	margin: 25px 0;
+	margin: 55px 0;
 }
 .country {
-    stroke: #666666;
+	stroke: #ffffff;
+	fill: #000000;
     stroke-width: 0.05;
 }
 
@@ -337,6 +352,7 @@
 	height: 48px;
 	background-color: #c6c6c5;
 	text-align: left;
+	margin: 11px 0;
 }
 .horstackchart #barcritical{
 	height: 100%;
@@ -367,4 +383,148 @@ svg.barchart{
 
 .tick text{
 	font-size:9px;
+}
+
+.dangerData figure img {
+	max-width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+	.covidDash-wrapper .dashboard-header figure {
+		width: 100px;
+	}
+	.covidDash-wrapper .dashboard-title {
+		font-size: 25px;
+		line-height: 27px;
+	}
+	.covidDash-wrapper .total-affected {
+		margin: 25px 0;
+	}
+	.covidDash-wrapper .total-affected h1#totAffected {
+		font-size: 80px;
+		line-height: 80px;
+	}
+	.covidDash-wrapper .total-affected p {
+		font-size: 14px;
+		line-height: 16px;
+	}
+	.deaths-recoverData {
+		flex-direction: column;
+		margin: 0;
+	}
+	.deathdata, .recoverdata {
+		padding: 10px;
+		margin: 10px 0;
+	}
+	.deathdata {
+		padding: 10px 27px;
+	}
+	.deathdata figure, .recoverdata figure {
+		width: 45px;
+	}
+	.deathdata h2, .recoverdata h2 {
+		font-size: 25px;
+		line-height: 27px;
+	}
+	.deathdata h1, .recoverdata h1 {
+		font-size: 50px;
+		line-height: 60px;
+	}
+	.barchart {
+		flex-direction: column;
+		margin: 25px 0;
+	}
+	.barchart .totalData div {
+		margin: 15px;
+	}
+	.barchart .totalData h1, .barchart .right-chart p {
+		font-size: 25px;
+		line-height: 30px;
+	}
+	.barchart .totalData h2, .barchart .right-chart h1 {
+		font-size: 18px;
+		line-height: 22px;
+	}
+	.horstackchart {
+		margin: 15px 0;
+	}
+	.left-chart .horstackchart .bar100 {
+		height: 55px;
+	}
+	.left-chart .horstackchart div{
+		line-height: 55px;
+	}
+	.world-impact h1 {
+		font-size: 28px;
+		line-height: 30px;
+	} 
+	.world-impact p,.countrywiseData h2 {
+		font-size: 15px;
+		line-height: 18px;
+	}
+	.countrywiseData .country h1 {
+		font-size: 28px;
+		line-height: 30px;
+	}
+	.countrywiseData h1 {
+		font-size: 40px;
+		line-height: 45px;
+	}
+	.dangerData {
+		flex-direction: column;
+		margin: 10px 0;
+	}
+	.left-chart .horstackchart div, .right-chart .horstackchart div {
+		font-size: 22px;
+	}
+	.barchart .right-chart {
+		margin: 16px 0 0 0;
+	}
+	.map-wrapper {
+		flex-direction: column;
+	}
+	.countrywiseData {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	.deathCounts {
+		margin-left: 15px;
+	}
+	.totalandNew {
+		padding: 10px;
+	}
+	.dangerData figure {
+		width: 80px;
+	}
+	.dangerData .deathCounts figure {
+		width: 40px;
+	}
+	.countValue {
+		padding: 5px 10px;
+	}
+	.topCounts h2, .downCounts h2, .criticalData h2 {
+		font-size: 14px;
+		line-height: 16px;
+	}
+	.topCounts h1, .downCounts h1, .criticalData h1 {
+		font-size: 30px;
+		line-height: 40px;
+	}
+	.criticalCounts, .recoverCounts {
+		padding: 10px 52px;
+	}
+	.criticalData {
+		margin-top: 15px;
+	}
+	.dailyDeaths h1, .totalDeaths h1 {
+		font-size: 30px;
+		line-height: 32px;
+	}
+	.dailyDeaths p, .totalDeaths p {
+		font-size: 15px;
+		line-height: 18px;
+	}
+	.dailyDeaths, .totalDeaths {
+		margin: 35px 0;
+	}
 }
