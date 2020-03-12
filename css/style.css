@@ -527,7 +527,14 @@ svg.barchart{
 	.dailyDeaths, .totalDeaths {
 		margin: 35px 0;
 	}
+	.loading#totAffected { 
+		height: 80px !important;
+	}
+	.loading#totDeath, .loading#totRecovered { 
+		height: 60px !important;
+	}
 }
+
 
 .loading {
 	position: relative;
@@ -535,38 +542,65 @@ svg.barchart{
 	width: 100%;
   }
 
-   .loading::after {
+  .loading::after {
 	display: block;
 	content: '';
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	-webkit-transform: translateX(0%);
-			transform: translateX(0%);
+	transform: translateX(-20%);
 	background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(rgba(255, 255, 255, 0.2)), to(transparent));
-	background: linear-gradient(90deg, transparent, #5b5a5924 , transparent);
-	-webkit-animation: loading 1.5s infinite;
-			animation: loading 1.5s infinite;
-  }
+	background: linear-gradient(125deg, transparent, #d9d9d9e0 , transparent);
+	-webkit-animation: loading 0.5s infinite;
+	animation: loading 0.5s infinite;
+}
 
 
   @-webkit-keyframes loading {
 	100% {
-	  -webkit-transform: translateX(20%);
-			  transform: translateX(20%);
+	  -webkit-transform: translateX(100%);
+			  transform: translateX(100%);
 	}
   }
   
   @keyframes loading {
 	100% {
-	  -webkit-transform: translateX(20%);
-			  transform: translateX(20%);
+	  -webkit-transform: translateX(100%);
+			  transform: translateX(100%);
 	}
   }
 
+  .loading#totDeath::after {
+		background: linear-gradient(125deg, #000, #c8c0c08a , black);
+		-webkit-animation: loading1 0.5s infinite;
+		animation: loading1 0.2s infinite;
+	}
+	.loading#totRecovered::after {
+		background: linear-gradient(110deg, #eff7dbc4, #dee8c4 , #eff7db);
+		-webkit-animation: loading1 0.5s infinite;
+		animation: loading1 0.2s infinite;
+	}
+
+  @-webkit-keyframes loading1 {
+	100% {
+	  -webkit-transform: translateX(12%);
+			  transform: translateX(12%);
+	}
+  }
+  
+  @keyframes loading1 {
+	100% {
+	  -webkit-transform: translateX(12%);
+			  transform: translateX(12%);
+	}
+  }
+
+  .loading#totAffected::after {
+	background: linear-gradient(125deg, #fff, #d9d9d9e0 , #fff);
+  }
   .loading#totAffected { 
 	  height: 170px;
-	  /* background: linear-gradient(0deg, transparent 25%,  #eeeeee 25%,	#eeeeee 30%, #eeeeee 35%, #eeeeee 70%, transparent 100% ); */
   }
   .loading#totDeath, .loading#totRecovered { 
 	height: 90px;
