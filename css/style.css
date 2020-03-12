@@ -271,9 +271,9 @@
 .countrywiseData .newCases h2, .countrywiseData .newCases h1 {
 	color: #f29100 !important;
 }
-/* .worldmap {
-	margin: 20px 0;
-} */
+.worldmap {
+	width: 100%;
+}
 .dailyDeaths h1, .totalDeaths h1 {
 	font-family: 'Rubik', sans-serif;
 	font-size: 46px;
