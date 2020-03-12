@@ -115,8 +115,17 @@ function drawWorldMap(selector){
 
                 console.log(d);
                 
+                if(d.countryId !== "70"){
 
-                d3.select("#countryname").text(d.Country)
+                    d3.select("#countryname").text(d.Country)
+
+                }else{
+                    
+                    d3.select("#countryname").text(d.Country)
+                        .style("font-size", "46px")
+                        .style("line-height", "55px")
+                }
+
                 
                 if(d["Total Cases"] !== "NULL" ){
 
