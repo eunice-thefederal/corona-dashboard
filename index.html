@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style.css?v=1232020">
 	<style>
 		/* .dailydeathline{
 			position: relative;
@@ -72,7 +72,7 @@
 				<figure>
 					<img src="img/Asset1.png" alt="The Federal" />
 				</figure>
-				<figcaption>Corona Virus <br/>dashboard</figcaption>
+				<figcaption>Coronavirus <br/>dashboard</figcaption>
 			</div>
 		</section>
 		<section class="total-affected">
@@ -236,7 +236,15 @@
         })
 
 		var formatComma = d3.format(",")
-		
+		function numberWithCommas(x) {
+            x=x.toString();
+            lastThree = x.substring(x.length-3);
+            otherNumbers = x.substring(0,x.length-3);
+            if(otherNumbers != '')
+                lastThree = ',' + lastThree;
+            res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+            return res;
+        }
 
 		const renderCard = () => {
 			d3.select("#totAffected").text(formatComma(globalTotalData[0]["Total Cases"]))
@@ -272,7 +280,10 @@
                             return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
                             
                         })
-                        .duration(1000);
+                        .duration(1000)
+                        .on("end", function() {
+                            d3.select("#countrytotalcases").text(numberWithCommas(d3.select("#countrytotalcases").text()));
+                        });
 
                 }else{
                     d3.select("#countrytotalcases").text("-")
@@ -293,7 +304,10 @@
                             return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
                             
                         })
-                        .duration(1000);
+                        .duration(1000)
+                        .on("end", function() {
+                            d3.select("#countrynewcases").text(numberWithCommas(d3.select("#countrynewcases").text()));
+                        });
                         
 
                 }else{
@@ -314,7 +328,10 @@
                             return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
                             
                         })
-                        .duration(1000);
+                        .duration(1000)
+                        .on("end", function() {
+                            d3.select("#countrytotaldeaths").text(numberWithCommas(d3.select("#countrytotaldeaths").text()));
+                        });
                 }else{
                     d3.select("#countrytotaldeaths").text("-")
                 }
@@ -332,7 +349,10 @@
                             return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
                             
                         })
-                        .duration(1000);
+                        .duration(1000)
+                        .on("end", function() {
+                            d3.select("#countrynewdeaths").text(numberWithCommas(d3.select("#countrynewdeaths").text()));
+                        });
 
                 }else{
                     d3.select("#countrynewdeaths").text("-")
@@ -351,7 +371,11 @@
                             return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
                             
                         })
-                        .duration(1000);
+                        .duration(1000)
+                        .on("end", function() {
+                            d3.select("#countrytotalRecovered").text(numberWithCommas(d3.select("#countrytotalRecovered").text()));
+                        });
+
                 }else{
                     d3.select("#countrytotalRecovered").text("-")
                 }
@@ -369,7 +393,10 @@
                             return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
                             
                         })
-                        .duration(1000);
+                        .duration(1000)
+                        .on("end", function() {
+                            d3.select("#countrySerious").text(numberWithCommas(d3.select("#countrySerious").text()));
+                        });
                 }else{
                     d3.select("#countrySerious").text("-")
                 }
