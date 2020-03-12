@@ -14,7 +14,12 @@ function drawBarchart(selector){
     var tool_tip = d3.tip()
         .attr("class", "d3-tipforline")
         .offset([-12, 0])
-        .html(function(d) { return d["Daily Deaths"]; });
+        .html(function(d) { 
+            // return d["Daily Deaths"];
+            var html = "<p>"+d.Date +"</p> "
+            html += "<p>Daily Deaths: <span>"+ d["Daily Deaths"] +"</span></p> "
+            return html; 
+         });
     
     svg.call(tool_tip);
 
