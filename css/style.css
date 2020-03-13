@@ -283,13 +283,17 @@
     left: 15px;
 }
 .zoomControls button{
-
+	cursor: pointer;
 	border: none;
     background-color: #93C01F;
     color: #FFFFFF;
     font-size: 20px;
     padding: 2px 10px;
     margin: 5px;
+}
+
+.zoomControls button:hover{
+    background-color: rgb(116, 155, 19);
 }
 .countrywiseData {
 	width: 25%;
