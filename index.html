@@ -211,39 +211,12 @@
     <script src="js/loadData.js?v=133202032"></script>
     <script src="js/map.js"></script>
     <script type='text/javascript'>
-
-      /* var globalTotalData = [{"Total Cases": "134806",
-      "New Cases": "250",
-      "Total Deaths": "4984",
-      "New Deaths": "10",
-      "Total Recovered": "70395",
-      "Active Cases": "59427",
-      "Serious": "5758",
-      "Total cases 1M": "17.3"
-    }
-  ]
-		
-		var currentData = {
-            infect: 55246,
-            mild: 49535,
-            "mild%": 90,
-            serious: 5711,
-            "serious%": 10,
-            outcomeTotal: 73371,
-            "outcomeRecovered": 68654,
-            "outcomeRecovered%": 94,
-            "outcomeDeaths": 4717,
-            "outcomeDeaths%": 6
-		}*/
-		
 		var defaultMapData = countrywisedata.filter(function(item){
             return item['countryId'] === "156" ;
         })
- 
         var filterData = countrywisedata.filter(function(item){
             return item['Total Cases'] !== null ;
         })
-
 		var formatComma = d3.format(",")
 		function numberWithCommas(x) {
             x=x.toString();
@@ -254,16 +227,7 @@
             res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
             return res;
         }
-
 		const renderCard = () => {
-			/*d3.select("#totAffected").text(formatComma(globalTotalData[0]["Total Cases"]))
-			d3.select("#totDeath").text(formatComma(globalTotalData[0]["Total Deaths"]))
-			d3.select("#totRecovered").text(formatComma(globalTotalData[0]["Total Recovered"]))
-		
-			d3.select("#currInfected").text(formatComma(currentData["infect"]))
-			d3.select("#currMild").text(formatComma(currentData["mild"]))
-			d3.select("#currCritical").text(formatComma(currentData["serious"]))
-			d3.select("#outcome-cases").text(formatComma(currentData["outcomeTotal"]))*/
 			d3.select("#totAffected").text(numberWithCommas(globalTotalData[0]["Total Cases"]))
 			d3.select("#totDeath").text(numberWithCommas(globalTotalData[0]["Total Deaths"]))
 			d3.select("#totRecovered").text(numberWithCommas(globalTotalData[0]["Total Recovered"]))
@@ -272,33 +236,25 @@
 			d3.select("#currMild").text(numberWithCommas(currentData[0]["mild_condition"]))
 			d3.select("#currCritical").text(numberWithCommas(currentData[0]["critical"]))
 			d3.select("#outcome-cases").text(numberWithCommas(currentData[0]["outcome"]))
-
 			$("#totAffected").removeClass('loading');
 			$("#totDeath").removeClass('loading');
 			$("#totRecovered").removeClass('loading');
 
 		}
-
 		// Default data =======================================
-
 		d3.select("#countryname").text(defaultMapData[0].Country)
         function animator(fieldName,fieldId) {
             if(defaultMapData[0][fieldName] !== "NULL" ){
-
                     var countrytotalcases = d3.select("#"+fieldId).text(0)
                     countrytotalcases.transition()
                         .tween("text", function() {
-                            
                             var selection = d3.select(this);    // selection of node being transitioned
                             var start = d3.select(this).text(); // start value prior to transition
                             var end = parseInt(defaultMapData[0][fieldName]);                     // specified end value
                             var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
-
                             return function(t) { 
-                                
-                                    selection.text(Math.round(interpolator(t))); 
+                                    selection.text(Math.round(interpolator(t)));
                             };  // return value
-                            
                         })
                         .duration(1000)
                         .on("end", function() {
@@ -315,53 +271,26 @@
         animator("New Deaths","countrynewdeaths");
         animator("Total Recovered","countrytotalRecovered");       
         animator("Serious","countrySerious");       
-                
-
 		//===================================================
-        
-        
-        
         // Mild and Critical Chart
-       
-        /*d3.select("#barcritical")
-            .style("width", currentData["serious%"]+"%")
-            .text(currentData["serious%"]+"%")
-
-        d3.select("#barmild").text(currentData["mild%"]+"%")
-        
-        
-        // Cases with outcomechart Chart
-        d3.select("#baroutcome")
-            .style("width", currentData["outcomeRecovered%"]+"%")
-            .text(currentData["outcomeRecovered%"]+"%")*/
         var recovered_p = currentData[0]["recovered_p"];
         var critical_p = currentData[0]["critical_p"];
         var mild_condition_p = currentData[0]["mild_condition_p"];
         currentData[0]["critical_p"] = currentData[0]["critical_p"].replace("%", "");
         currentData[0]["mild_condition_p"] = currentData[0]["mild_condition_p"].replace("%", "");
-        
         currentData[0]["recovered_p"] = currentData[0]["recovered_p"].replace("%", "");
         d3.select("#barcritical")
             .style("width", critical_p)
             .text(currentData[0]["critical_p"]+"%")
-
         d3.select("#barmild").text(currentData[0]["mild_condition_p"]+"%")
-        
-        
         // Cases with outcomechart Chart
         d3.select("#baroutcome")
             .style("width", recovered_p)
             .text(currentData[0]["recovered_p"]+"%")
-
-
         drawWorldMap(".worldmap");
         drawBarchart(".dailydeathbar")
 		drawLinechart(".dailydeathline")
-		
-		setTimeout(() => {
-		renderCard();
-		}, 1000);
+		setTimeout(() => {	renderCard();	}, 1000);
     </script>
-
 </body>
 </html>
