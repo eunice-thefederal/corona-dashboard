@@ -208,15 +208,24 @@
     <script src="https://thefederal.com/embed/common-js/underscore-min.js"></script>
     <script src="js/barchart.js"></script>
     <script src="js/linechart.js"></script>
-    <script src="js/testdata.js"></script>
+    <script src="js/loadData.js?v=133202032"></script>
     <script src="js/map.js"></script>
     <script type='text/javascript'>
 
-        var globalTotalData = [{"Total Cases": 128122, "New Cases": 1628, "Total Deaths": 4717, "New Deaths": 100, "Total Recovered": 68654, "Active Cases": 54775, "Serious": 5711, "Total cases 1M": 16.4}]
+      /* var globalTotalData = [{"Total Cases": "134806",
+      "New Cases": "250",
+      "Total Deaths": "4984",
+      "New Deaths": "10",
+      "Total Recovered": "70395",
+      "Active Cases": "59427",
+      "Serious": "5758",
+      "Total cases 1M": "17.3"
+    }
+  ]
 		
 		var currentData = {
-            infect: 54751,
-            mild: 49040,
+            infect: 55246,
+            mild: 49535,
             "mild%": 90,
             serious: 5711,
             "serious%": 10,
@@ -225,7 +234,7 @@
             "outcomeRecovered%": 94,
             "outcomeDeaths": 4717,
             "outcomeDeaths%": 6
-		}
+		}*/
 		
 		var defaultMapData = countrywisedata.filter(function(item){
             return item['countryId'] === "156" ;
@@ -247,14 +256,22 @@
         }
 
 		const renderCard = () => {
-			d3.select("#totAffected").text(formatComma(globalTotalData[0]["Total Cases"]))
+			/*d3.select("#totAffected").text(formatComma(globalTotalData[0]["Total Cases"]))
 			d3.select("#totDeath").text(formatComma(globalTotalData[0]["Total Deaths"]))
 			d3.select("#totRecovered").text(formatComma(globalTotalData[0]["Total Recovered"]))
 		
 			d3.select("#currInfected").text(formatComma(currentData["infect"]))
 			d3.select("#currMild").text(formatComma(currentData["mild"]))
 			d3.select("#currCritical").text(formatComma(currentData["serious"]))
-			d3.select("#outcome-cases").text(formatComma(currentData["outcomeTotal"]))
+			d3.select("#outcome-cases").text(formatComma(currentData["outcomeTotal"]))*/
+			d3.select("#totAffected").text(numberWithCommas(globalTotalData[0]["Total Cases"]))
+			d3.select("#totDeath").text(numberWithCommas(globalTotalData[0]["Total Deaths"]))
+			d3.select("#totRecovered").text(numberWithCommas(globalTotalData[0]["Total Recovered"]))
+		
+			d3.select("#currInfected").text(numberWithCommas(currentData[0]["infected"]))
+			d3.select("#currMild").text(numberWithCommas(currentData[0]["mild_condition"]))
+			d3.select("#currCritical").text(numberWithCommas(currentData[0]["critical"]))
+			d3.select("#outcome-cases").text(numberWithCommas(currentData[0]["outcome"]))
 
 			$("#totAffected").removeClass('loading');
 			$("#totDeath").removeClass('loading');
@@ -265,149 +282,40 @@
 		// Default data =======================================
 
 		d3.select("#countryname").text(defaultMapData[0].Country)
-                
-                if(defaultMapData[0]["Total Cases"] !== "NULL" ){
+        function animator(fieldName,fieldId) {
+            if(defaultMapData[0][fieldName] !== "NULL" ){
 
-                    var countrytotalcases = d3.select("#countrytotalcases").text(0)
+                    var countrytotalcases = d3.select("#"+fieldId).text(0)
                     countrytotalcases.transition()
                         .tween("text", function() {
                             
                             var selection = d3.select(this);    // selection of node being transitioned
                             var start = d3.select(this).text(); // start value prior to transition
-                            var end = parseInt(defaultMapData[0]["Total Cases"]);                     // specified end value
+                            var end = parseInt(defaultMapData[0][fieldName]);                     // specified end value
                             var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
 
-                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
+                            return function(t) { 
+                                
+                                    selection.text(Math.round(interpolator(t))); 
+                            };  // return value
                             
                         })
                         .duration(1000)
                         .on("end", function() {
-                            d3.select("#countrytotalcases").text(numberWithCommas(d3.select("#countrytotalcases").text()));
+                            d3.select("#"+fieldId).text(numberWithCommas(d3.select("#"+fieldId).text()));
                         });
 
                 }else{
-                    d3.select("#countrytotalcases").text("-")
+                    d3.select("#"+fieldId).text("-")
                 }
+        }      
+        animator("Total Cases","countrytotalcases");
+        animator("New Cases","countrynewcases");
+        animator("Total Deaths","countrytotaldeaths");
+        animator("New Deaths","countrynewdeaths");
+        animator("Total Recovered","countrytotalRecovered");       
+        animator("Serious","countrySerious");       
                 
-                
-                if(defaultMapData[0]["New Cases"] !== "NULL"){
-
-                    var countrynewcases = d3.select("#countrynewcases").text(0)
-                    countrynewcases.transition()
-                        .tween("text", function() {
-                            
-                            var selection = d3.select(this);    // selection of node being transitioned
-                            var start = d3.select(this).text(); // start value prior to transition
-                            var end = parseInt(defaultMapData[0]["New Cases"]);                     // specified end value
-                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
-        
-                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
-                            
-                        })
-                        .duration(1000)
-                        .on("end", function() {
-                            d3.select("#countrynewcases").text(numberWithCommas(d3.select("#countrynewcases").text()));
-                        });
-                        
-
-                }else{
-                    d3.select("#countrynewcases").text("-")
-                }
-                
-
-                if(defaultMapData[0]["Total Deaths"] !== "NULL"){
-                   var countrytotaldeaths = d3.select("#countrytotaldeaths").text(0)
-                   countrytotaldeaths.transition()
-                        .tween("text", function() {
-                            
-                            var selection = d3.select(this);    // selection of node being transitioned
-                            var start = d3.select(this).text(); // start value prior to transition
-                            var end = parseInt(defaultMapData[0]["Total Deaths"]);                     // specified end value
-                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
-        
-                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
-                            
-                        })
-                        .duration(1000)
-                        .on("end", function() {
-                            d3.select("#countrytotaldeaths").text(numberWithCommas(d3.select("#countrytotaldeaths").text()));
-                        });
-                }else{
-                    d3.select("#countrytotaldeaths").text("-")
-                }
-                
-                if(defaultMapData[0]["New Deaths"] !== "NULL"){
-                    var countrynewdeaths = d3.select("#countrynewdeaths").text(0)
-                    countrynewdeaths.transition()
-                        .tween("text", function() {
-                            
-                            var selection = d3.select(this);    // selection of node being transitioned
-                            var start = d3.select(this).text(); // start value prior to transition
-                            var end = parseInt(defaultMapData[0]["New Deaths"]);                     // specified end value
-                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
-        
-                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
-                            
-                        })
-                        .duration(1000)
-                        .on("end", function() {
-                            d3.select("#countrynewdeaths").text(numberWithCommas(d3.select("#countrynewdeaths").text()));
-                        });
-
-                }else{
-                    d3.select("#countrynewdeaths").text("-")
-                }
-                
-                if(defaultMapData[0]["Total Recovered"] !== "NULL"){
-                    var countrytotalRecovered = d3.select("#countrytotalRecovered").text(0)
-                    countrytotalRecovered.transition()
-                        .tween("text", function() {
-                            
-                            var selection = d3.select(this);    // selection of node being transitioned
-                            var start = d3.select(this).text(); // start value prior to transition
-                            var end = parseInt(defaultMapData[0]["Total Recovered"]);                     // specified end value
-                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
-        
-                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
-                            
-                        })
-                        .duration(1000)
-                        .on("end", function() {
-                            d3.select("#countrytotalRecovered").text(numberWithCommas(d3.select("#countrytotalRecovered").text()));
-                        });
-
-                }else{
-                    d3.select("#countrytotalRecovered").text("-")
-                }
-                
-                if(defaultMapData[0]["Serious"] !== "NULL"){
-                    var countrySerious = d3.select("#countrySerious").text(0)
-                    countrySerious.transition()
-                        .tween("text", function() {
-                            
-                            var selection = d3.select(this);    // selection of node being transitioned
-                            var start = d3.select(this).text(); // start value prior to transition
-                            var end = parseInt(defaultMapData[0]["Serious"]);                     // specified end value
-                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
-        
-                            return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
-                            
-                        })
-                        .duration(1000)
-                        .on("end", function() {
-                            d3.select("#countrySerious").text(numberWithCommas(d3.select("#countrySerious").text()));
-                        });
-                }else{
-                    d3.select("#countrySerious").text("-")
-                }
-
-
-
-
-
-
-
-
 
 		//===================================================
         
@@ -415,7 +323,7 @@
         
         // Mild and Critical Chart
        
-        d3.select("#barcritical")
+        /*d3.select("#barcritical")
             .style("width", currentData["serious%"]+"%")
             .text(currentData["serious%"]+"%")
 
@@ -425,7 +333,25 @@
         // Cases with outcomechart Chart
         d3.select("#baroutcome")
             .style("width", currentData["outcomeRecovered%"]+"%")
-            .text(currentData["outcomeRecovered%"]+"%")
+            .text(currentData["outcomeRecovered%"]+"%")*/
+        var recovered_p = currentData[0]["recovered_p"];
+        var critical_p = currentData[0]["critical_p"];
+        var mild_condition_p = currentData[0]["mild_condition_p"];
+        currentData[0]["critical_p"] = currentData[0]["critical_p"].replace("%", "");
+        currentData[0]["mild_condition_p"] = currentData[0]["mild_condition_p"].replace("%", "");
+        
+        currentData[0]["recovered_p"] = currentData[0]["recovered_p"].replace("%", "");
+        d3.select("#barcritical")
+            .style("width", critical_p)
+            .text(currentData[0]["critical_p"]+"%")
+
+        d3.select("#barmild").text(currentData[0]["mild_condition_p"]+"%")
+        
+        
+        // Cases with outcomechart Chart
+        d3.select("#baroutcome")
+            .style("width", recovered_p)
+            .text(currentData[0]["recovered_p"]+"%")
 
 
         drawWorldMap(".worldmap");
