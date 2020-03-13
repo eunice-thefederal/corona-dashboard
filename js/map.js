@@ -1,3 +1,6 @@
+
+
+
 function drawWorldMap(selector){
     var width = 350, height = 250, scale = 55, center = [10, 45];
     var source = "https://unpkg.com/visionscarto-world-atlas@0.0.4/world/50m.json";
@@ -22,6 +25,33 @@ function drawWorldMap(selector){
     .scale(scale)
     .center(center)
     .translate([width / 2, height / 2])
+
+    let zoom = d3.zoom().on("zoom", zoomed);
+
+    var zoomControls = d3.select(selector)
+        .append("div")
+        .attr("class", "zoomControls")
+    
+    zoomControls.append("button")
+        .attr("id", "zoom_in")
+        .html('+')
+    
+    zoomControls.append("button")
+        .attr("id", "zoom_out")
+        .html('&#8722;')
+
+    d3.select("#zoom_in").on("click", function() {
+        zoom.scaleBy(svg.transition().duration(750), 1.2);
+    });
+
+    d3.select("#zoom_out").on("click", function() {
+        zoom.scaleBy(svg.transition().duration(750), 0.8);
+    });
+    
+    function zoomed() {
+        g.attr("transform", d3.event.transform);
+    }
+
     var geoPath = d3.geoPath()
         .projection(projection)
         function centroids(boundarydata){
@@ -32,6 +62,11 @@ function drawWorldMap(selector){
                 }
             });
         }
+
+       
+        
+
+        
     d3.json(source, function(error, mapboundary){
         var countrywise = topojson.feature(mapboundary, mapboundary.objects.countries).features;
         var stateCentroid = centroids(countrywise);
@@ -40,12 +75,12 @@ function drawWorldMap(selector){
                 .attr("d", geoPath)
                 .attr("class", "country")
                 .attr('fill', "#dcdcdc")
+
         svg.call(d3.zoom()
             .extent([[0, 0], [width, height]])
             .scaleExtent([1, 8])
-            .on("zoom", function(){
-                g.attr("transform", d3.event.transform);
-            }));
+            .on("zoom", zoomed));
+
         g.selectAll(".country-center")
             .data(filterData).enter().append("circle")
             .attr("class", "country-center")
