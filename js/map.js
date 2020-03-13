@@ -1,6 +1,3 @@
-
-
-
 function drawWorldMap(selector){
     var width = 350, height = 250, scale = 55, center = [10, 45];
     var source = "https://unpkg.com/visionscarto-world-atlas@0.0.4/world/50m.json";
@@ -39,13 +36,17 @@ function drawWorldMap(selector){
     zoomControls.append("button")
         .attr("id", "zoom_out")
         .html('&#8722;')
-
+    var zoomCounter = 1;
     d3.select("#zoom_in").on("click", function() {
+        zoomCounter++;
         zoom.scaleBy(svg.transition().duration(750), 1.2);
     });
 
     d3.select("#zoom_out").on("click", function() {
-        zoom.scaleBy(svg.transition().duration(750), 0.8)
+        if(zoomCounter>=1) {
+            zoom.scaleBy(svg.transition().duration(750), 0.8)
+            zoomCounter--;
+        }
     });
     
     function zoomed() {
