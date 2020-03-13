@@ -45,7 +45,7 @@ function drawWorldMap(selector){
     });
 
     d3.select("#zoom_out").on("click", function() {
-        zoom.scaleBy(svg.transition().duration(750), 0.8);
+        zoom.scaleBy(svg.transition().duration(750), 0.8)
     });
     
     function zoomed() {
@@ -79,7 +79,8 @@ function drawWorldMap(selector){
         svg.call(d3.zoom()
             .extent([[0, 0], [width, height]])
             .scaleExtent([1, 8])
-            .on("zoom", zoomed));
+            .on("zoom", zoomed))
+            .on("wheel.zoom", null);
 
         g.selectAll(".country-center")
             .data(filterData).enter().append("circle")
