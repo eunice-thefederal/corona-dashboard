@@ -1,3 +1,4 @@
+var lastupdate;
 var countrywisedata = (function() {
     var countrywisedata = null;
     jQuery.ajax({
@@ -7,6 +8,7 @@ var countrywisedata = (function() {
         'url': 'https://thefederal.com/api/scraper.php?m=Corona&t=totalCases',
         'success': function(data) {
             countrywisedata = data["records"];
+            lastupdate = data["last_updated"];
               // console.log("JSON RECORDS DATA:"+JSON.stringify(data["records"], null, 4));
             //console.log("DATA:"+data);
         }

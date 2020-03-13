@@ -73,6 +73,7 @@
 					<img src="img/Asset1.png" alt="The Federal" />
 				</figure>
 				<figcaption>Coronavirus <br/>dashboard</figcaption>
+				<p id="lastupdatedtime"></p>
 			</div>
 		</section>
 		<section class="total-affected">
@@ -210,7 +211,9 @@
     <script src="js/linechart.js"></script>
     <script src="js/loadData.js?v=133202032"></script>
     <script src="js/map.js?v=13320205555"></script>
-    <script type='text/javascript'>
+	<script type='text/javascript'>
+	
+		
 		var defaultMapData = countrywisedata.filter(function(item){
             return item['countryId'] === "156" ;
         })
@@ -227,7 +230,8 @@
                 lastThree = ',' + lastThree;
             res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
             return res;
-        }
+		}
+		d3.select("#lastupdatedtime").text(lastupdate)
 		const renderCard = () => {
 			d3.select("#totAffected").text(numberWithCommas(globalTotalData[0]["Total Cases"]))
 			d3.select("#totDeath").text(numberWithCommas(globalTotalData[0]["Total Deaths"]))

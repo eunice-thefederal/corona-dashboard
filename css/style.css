@@ -412,6 +412,12 @@ svg.barchart{
 	max-width: 100%;
 }
 
+#lastupdatedtime {
+	font-size: 12px;
+    line-height: 16px;
+    margin: 10px 0 0 0;
+}
+
 @media screen and (max-width: 767px) {
 	.covidDash-wrapper .dashboard-header figure {
 		width: 100px;
