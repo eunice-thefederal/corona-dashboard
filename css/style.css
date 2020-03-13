@@ -419,6 +419,14 @@ svg.barchart{
 }
 
 @media screen and (max-width: 767px) {
+	.worldmap {
+		width: 100%;
+	}
+
+	.countrywiseData {
+		width: 100%;
+	}
+	
 	.covidDash-wrapper .dashboard-header figure {
 		width: 100px;
 	}
