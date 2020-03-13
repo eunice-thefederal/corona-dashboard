@@ -77,12 +77,34 @@ function drawWorldMap(selector){
                         .style("font-size", "46px")
                         .style("line-height", "55px")
                 }
-                animator("Total Cases","countrytotalcases");
-                animator("New Cases","countrynewcases");
-                animator("Total Deaths","countrytotaldeaths");
-                animator("New Deaths","countrynewdeaths");
-                animator("Total Recovered","countrytotalRecovered");       
-                animator("Serious","countrySerious");
+                animator2("Total Cases","countrytotalcases");
+                animator2("New Cases","countrynewcases");
+                animator2("Total Deaths","countrytotaldeaths");
+                animator2("New Deaths","countrynewdeaths");
+                animator2("Total Recovered","countrytotalRecovered");       
+                animator2("Serious","countrySerious");
+                function animator2(fieldName,fieldId) {
+                    if(d[fieldName] !== "NULL"){
+                        var countrySerious = d3.select("#"+fieldId).text(0)
+                        countrySerious.transition()
+                            .tween("text", function() {
+                                
+                                var selection = d3.select(this);    // selection of node being transitioned
+                                var start = d3.select(this).text(); // start value prior to transition
+                                var end = parseInt(d[fieldName]);                     // specified end value
+                                var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
+            
+                                return function(t) { selection.text(Math.round(interpolator(t))); };  // return value
+                                
+                            })
+                            .duration(1000)
+                            .on("end", function() {
+                                d3.select("#"+fieldId).text(numberWithCommas(d3.select("#"+fieldId).text()));
+                            });
+                    }else{
+                        d3.select("#"+fieldId).text("-")
+                    }
+                }
             })
     });
 }
