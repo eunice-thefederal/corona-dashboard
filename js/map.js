@@ -30,12 +30,13 @@ function drawWorldMap(selector){
         .attr("class", "zoomControls")
     
     zoomControls.append("button")
-        .attr("id", "zoom_in")
-        .html('+')
-    
-    zoomControls.append("button")
         .attr("id", "zoom_out")
         .html('&#8722;')
+    
+    zoomControls.append("button")
+        .attr("id", "zoom_in")
+        .html('+')
+
     var zoomCounter = 1;
     d3.select("#zoom_in").on("click", function() {
         zoomCounter++;
