@@ -138,6 +138,7 @@
 			<p>Click on a country</p>
 			<div class="map-wrapper">
 				<div class="worldmap"></div>
+				<select class="dropdown" onchange="showCountryData()"></select>
 				<div class="countrywiseData">
 					<div class="country">
 						<h2>Country,  Other</h2>
@@ -153,6 +154,7 @@
 					</div>
 				</div>
 			</div>
+			
 		</section>
 		<section class="dangerData">
 			<div class="totalandNew">
@@ -207,6 +209,7 @@
 	<script src="js/d3-tip.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="https://thefederal.com/embed/common-js/underscore-min.js"></script>
+    <script src="js/functions.js"></script>
     <script src="js/barchart.js"></script>
     <script src="js/linechart.js"></script>
     <script src="js/loadData.js?v=133202032"></script>
@@ -218,7 +221,7 @@
             return item['countryId'] === "156" ;
         })
         var filterData = countrywisedata.filter(function(item){
-            return item['Total Cases'] !== null ;
+            return item["Total Cases"] !== "NULL" ;
         })
 		var formatComma = d3.format(",")
 		function numberWithCommas(x) {
@@ -292,7 +295,8 @@
         d3.select("#baroutcome")
             .style("width", recovered_p)
             .text(currentData[0]["recovered_p"]+"%")
-        drawWorldMap(".worldmap");
+		drawWorldMap(".worldmap");
+		createDropDowns(".dropdown", filterData)
         drawBarchart(".dailydeathbar")
 		drawLinechart(".dailydeathline")
 		setTimeout(() => {	renderCard();	}, 1000);

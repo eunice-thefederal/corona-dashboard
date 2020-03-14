@@ -74,7 +74,7 @@ function drawBarchart(selector){
         .attr("fill", "#E20613")
         .attr("x", function(d) { return x(d.Date); })
         .attr("y", function(d) {
-            console.log(d["Daily Deaths"], typeof(d["Daily Deaths"]));
+            // console.log(d["Daily Deaths"], typeof(d["Daily Deaths"]));
             
              return y(parseInt(d["Daily Deaths"])); })
         .attr("width", x.bandwidth())

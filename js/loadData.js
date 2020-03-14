@@ -24,7 +24,7 @@ var dailyDeathData = (function() {
         'url': 'https://thefederal.com/api/scraper.php?m=Corona&t=dailyDeaths',
         'success': function(data) {
             dailyDeathData = data;
-            console.log("JSON RECORDS DAILY DEATH DATA:"+JSON.stringify(data, null, 4));
+            // console.log("JSON RECORDS DAILY DEATH DATA:"+JSON.stringify(data, null, 4));
         }
     });
     return dailyDeathData;

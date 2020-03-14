@@ -422,7 +422,19 @@ svg.barchart{
     margin: 10px 0 0 0;
 }
 
+.dropdown {
+	background-color: #000000;
+    color: #ffffff;
+	padding: 7px 10px 5px 10px;
+	/* display: none; */
+}
+
+
 @media screen and (max-width: 767px) {
+
+	.dropdown{
+		display: block;
+	}
 	.worldmap {
 		width: 100%;
 	}
