@@ -221,7 +221,9 @@
             return item['countryId'] === "156" ;
         })
         var filterData = countrywisedata.filter(function(item){
-            return item["Total Cases"] !== "NULL" ;
+			if( item["countryId"] !== "NULL"){
+				return item["Total Cases"] !== "NULL";
+			}
         })
 		var formatComma = d3.format(",")
 		function numberWithCommas(x) {
