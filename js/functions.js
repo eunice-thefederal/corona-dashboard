@@ -1,6 +1,6 @@
 function createDropDowns(selector, dropdowndata){
     // console.log("dropdowndata", dropdowndata);
-
+    
     var select = d3.select(selector)
     select.html(null);
       var options = select.selectAll('option')
@@ -11,7 +11,9 @@ function createDropDowns(selector, dropdowndata){
             })
             .text(function (d) { 
                 return d["Country"]; 
-            });   
+            });  
+
+        document.querySelector(selector).selectedIndex = "24";
     
 }
 
