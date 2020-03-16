@@ -27,6 +27,13 @@ function createDropDowns(selector, dropdowndata, valuelabel, contentlabel, type)
                         header.attr("selected", 'selected');
                 });
             })
+            .each(function(d) {
+            var header = d3.select(this);
+                d3.keys(d).forEach(function(key) {
+                    if(d["Country"]=="China")
+                        header.attr("selected", 'selected');
+                });
+            })
             .text(function (d) { 
                 return d[contentlabel]; 
             });  
@@ -97,26 +104,4 @@ function showCountryData(){
     animatedFormatData(fdContent[0]["Serious"],"#countrySerious");
 
 }
-<<<<<<< HEAD
 
-function showStateData(){
-    var selectedValue = document.querySelector(".dropdownstate").value;
-    
-    var fdContent = _.filter(indiaData, function(d){
-        return d["stateId"] === selectedValue;
-    });
-    
-    console.log("selectedValue", fdContent[0]);
-
-    if(fdContent[0] !== undefined){
-        // return colorScale(fd[0]["totalIndianCases"]);
-        d3.select("#statename").text(fdContent[0].StateName)
-        animatedFormatData(fdContent[0]["totalIndianCases"],"#stateConfIndians")
-        animatedFormatData(fdContent[0]["totalForeignCases"],"#stateConfForeigners")
-        animatedFormatData(fdContent[0]["Cured"],"#stateCured")
-        animatedFormatData(fdContent[0]["Death"],"#stateDead")
-    }
-
-}
-=======
->>>>>>> c3ddec13d6b82d29d78dd8ecfe687edf133e40b9
