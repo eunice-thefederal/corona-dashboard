@@ -182,6 +182,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="criticalData">
 				<div class="recoverCounts">
 					<h2>Total Recovered</h2>
@@ -192,6 +193,53 @@
 					<h1 id="countrySerious">4,794</h1>
 				</div>
 			</div>
+		</section>
+		<section class="world-impact">
+			<h1>COVID-19 India impact</h1>
+			<p>Click on a state</p>
+			<ul class="legend">
+				<li><span style="background-color: #EEEEEE;"></span>0</li>
+				<li><span style="background-color: #FEE5D9;"></span>1-5</li>
+				<li><span style="background-color: #FCBBA1;"></span>6-10</li>
+				<li><span style="background-color: #FC9272;"></span>11-25</li>
+				<li><span style="background-color: #FB6A4A;"></span>26-100</li>
+				<li><span style="background-color: #DE2D26;"></span>101-1000</li>
+				<li><span style="background-color: #A50F15;"></span>> 1000</li>
+			</ul>
+			<div class="map-wrapper">
+				<div class="indiamap"></div>
+				<select class="dropdownstate" onchange="showStateData()"></select>
+				<div class="countrywiseData indiaData">
+					<div class="country">
+						<h2>State</h2>
+						<h1 id="statename">China</h1>
+					</div>
+					<div class="otherdata">
+						<div class="totCases">
+							<h2>Total confirmed cases (Indians)</h2>
+							<h1 id="stateConfIndians">80,757</h1>
+						</div>
+						<div class="totCases">
+							<h2>Total confirmed cases (Foreigners)</h2>
+							<h1 id="stateConfForeigners">22</h1>
+						</div>
+						<div class="newCases">
+							<h2>Cured / Discharged</h2>
+							<h1 id="stateCured">22</h1>
+						</div>
+						<div class="stateDeaths">
+							<figure>
+								<img src="img/Asset6.png">
+							</figure>
+							<div class="contentcolumne">
+								<h2>Deaths</h2>
+								<h1 id="stateDead">22</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 		</section>
 		<section class="dailyDeaths">
 			<h1>Daily Deaths</h1>
@@ -207,24 +255,32 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 	<script src="https://thefederal.com/embed/common-js/d3.v4.min.js"></script>
 	<script src="js/d3-tip.js"></script>
-    <script src="https://d3js.org/topojson.v2.min.js"></script>
+	<script src="https://d3js.org/topojson.v2.min.js"></script>
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://thefederal.com/embed/common-js/underscore-min.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/barchart.js"></script>
     <script src="js/linechart.js"></script>
     <script src="js/loadData.js?v=133202032"></script>
     <script src="js/map.js?v=13320205555"></script>
+    <script src="js/indiamap.js"></script>
 	<script type='text/javascript'>
 	
 		
 		var defaultMapData = countrywisedata.filter(function(item){
             return item['countryId'] === "156" ;
         })
+		var defaultIndiaMapData = indiaData.filter(function(item){
+			// console.log(item);
+			
+            return item['stateId'] === "S13" ;
+        })
         var filterData = countrywisedata.filter(function(item){
 			if( item["countryId"] !== "NULL"){
 				return item["Total Cases"] !== "NULL";
 			}
         })
+        
 		var formatComma = d3.format(",")
 		function numberWithCommas(x) {
             x=x.toString();
@@ -251,7 +307,7 @@
 			$("#totRecovered").removeClass('loading');
 
 		}
-		// Default data =======================================
+		// Default World data =======================================
 		d3.select("#countryname").text(defaultMapData[0].Country)
         function animator(fieldName,fieldId) {
             if(defaultMapData[0][fieldName] !== "NULL" ){
@@ -280,7 +336,20 @@
         animator("Total Deaths","countrytotaldeaths");
         animator("New Deaths","countrynewdeaths");
         animator("Total Recovered","countrytotalRecovered");       
-        animator("Serious","countrySerious");       
+		animator("Serious","countrySerious"); 
+		
+		// Default India Data ================================
+		
+		d3.select("#statename").text(defaultIndiaMapData[0].StateName)
+		animatedFormatData(defaultIndiaMapData[0]["totalIndianCases"],"#stateConfIndians")
+		animatedFormatData(defaultIndiaMapData[0]["totalForeignCases"],"#stateConfForeigners")
+		animatedFormatData(defaultIndiaMapData[0]["Cured"],"#stateCured")
+		animatedFormatData(defaultIndiaMapData[0]["Death"],"#stateDead")
+
+
+
+
+
 		//===================================================
         // Mild and Critical Chart
         var recovered_p = currentData[0]["recovered_p"];
@@ -298,7 +367,9 @@
             .style("width", recovered_p)
             .text(currentData[0]["recovered_p"]+"%")
 		drawWorldMap(".worldmap");
-		createDropDowns(".dropdown", filterData)
+		drawIndiaMap(".indiamap")
+		createDropDowns(".dropdown", filterData, "countryId", "Country", "world")
+		createDropDowns(".dropdownstate", indiaData, "stateId", "StateName", "india")
         drawBarchart(".dailydeathbar")
 		drawLinechart(".dailydeathline")
 		setTimeout(() => {	renderCard();	}, 1000);

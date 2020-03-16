@@ -72,5 +72,20 @@ var currentData = (function() {
     });
     return currentData;
 })();
+var indiaData = (function() {
+    var indiaData = null;
+    jQuery.ajax({
+        'async': false,
+        'global': false,
+        'dataType': 'json',
+        'url': 'https://thefederal.com/api/scraper.php?m=Corona&t=StateWise',
+        'success': function(data) {
+            indiaData = data["list"];
+            // console.log("data", data["list"]);
+            
+        }
+    });
+    return indiaData;
+})();
 
 

@@ -1,20 +1,40 @@
-function createDropDowns(selector, dropdowndata){
+function createDropDowns(selector, dropdowndata, valuelabel, contentlabel, type){
     // console.log("dropdowndata", dropdowndata);
-    
+
     var select = d3.select(selector)
     select.html(null);
       var options = select.selectAll('option')
             .data(dropdowndata).enter()
             .append('option')
             .attr("value", function (d) { 
-                return d["countryId"]; 
+                return d[valuelabel]; 
+            })
+            .each(function(d) {
+                var header = d3.select(this);
+                d3.keys(d).forEach(function(key) {
+                    if(d[contentlabel]=="China"){
+                        
+                        header.attr("selected", 'selected');
+                    }else if(d[contentlabel]=="Maharashtra"){
+                        header.attr("selected", 'selected');
+                    }
+                });
+            })
+            .each(function(d) {
+            var header = d3.select(this);
+                d3.keys(d).forEach(function(key) {
+                    if(d["Country"]=="China")
+                        header.attr("selected", 'selected');
+                });
             })
             .text(function (d) { 
-                return d["Country"]; 
+                return d[contentlabel]; 
             });  
 
-        document.querySelector(selector).selectedIndex = "24";
+        // document.querySelector(selector).selectedIndex = "24";
     
+        
+   
 }
 
 
@@ -47,6 +67,7 @@ function animatedFormatData(inputdata,selector) {
 }
 
 
+
 function showCountryData(){
     var selectedValue = document.querySelector(".dropdown").value;
 
@@ -76,3 +97,26 @@ function showCountryData(){
     animatedFormatData(fdContent[0]["Serious"],"#countrySerious");
 
 }
+<<<<<<< HEAD
+
+function showStateData(){
+    var selectedValue = document.querySelector(".dropdownstate").value;
+    
+    var fdContent = _.filter(indiaData, function(d){
+        return d["stateId"] === selectedValue;
+    });
+    
+    console.log("selectedValue", fdContent[0]);
+
+    if(fdContent[0] !== undefined){
+        // return colorScale(fd[0]["totalIndianCases"]);
+        d3.select("#statename").text(fdContent[0].StateName)
+        animatedFormatData(fdContent[0]["totalIndianCases"],"#stateConfIndians")
+        animatedFormatData(fdContent[0]["totalForeignCases"],"#stateConfForeigners")
+        animatedFormatData(fdContent[0]["Cured"],"#stateCured")
+        animatedFormatData(fdContent[0]["Death"],"#stateDead")
+    }
+
+}
+=======
+>>>>>>> c3ddec13d6b82d29d78dd8ecfe687edf133e40b9
