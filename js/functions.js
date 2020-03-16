@@ -1,6 +1,6 @@
 function createDropDowns(selector, dropdowndata){
     // console.log("dropdowndata", dropdowndata);
-    
+
     var select = d3.select(selector)
     select.html(null);
       var options = select.selectAll('option')
@@ -9,12 +9,18 @@ function createDropDowns(selector, dropdowndata){
             .attr("value", function (d) { 
                 return d["countryId"]; 
             })
+            .each(function(d) {
+            var header = d3.select(this);
+                d3.keys(d).forEach(function(key) {
+                    if(d["Country"]=="China")
+                        header.attr("selected", 'selected');
+                });
+            })
             .text(function (d) { 
                 return d["Country"]; 
             });  
-
-        document.querySelector(selector).selectedIndex = "24";
-    
+        
+   
 }
 
 
