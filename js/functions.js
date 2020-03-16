@@ -105,3 +105,24 @@ function showCountryData(){
 
 }
 
+function showStateData(){
+    var selectedValue = document.querySelector(".dropdownstate").value;
+    
+    var fdContent = _.filter(indiaData, function(d){
+        return d["stateId"] === selectedValue;
+    });
+    
+    console.log("selectedValue", fdContent[0]);
+
+    if(fdContent[0] !== undefined){
+        // return colorScale(fd[0]["totalIndianCases"]);
+        d3.select("#statename").text(fdContent[0].StateName)
+        animatedFormatData(fdContent[0]["totalIndianCases"],"#stateConfIndians")
+        animatedFormatData(fdContent[0]["totalForeignCases"],"#stateConfForeigners")
+        animatedFormatData(fdContent[0]["Cured"],"#stateCured")
+        animatedFormatData(fdContent[0]["Death"],"#stateDead")
+    }
+
+}
+
+
