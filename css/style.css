@@ -298,7 +298,7 @@
 .countrywiseData {
 	width: 25%;
 }
-.dailyDeaths h1, .totalDeaths h1 {
+.dailyDeaths h1, .totalDeaths h1, .faqs h1 {
 	font-family: 'Rubik', sans-serif;
 	font-size: 46px;
 	line-height: 55px;
@@ -473,6 +473,30 @@ svg.barchart{
 	width: 70%;
 	padding: 0;
     margin: 0;
+}
+
+.anchor-nav{
+	text-align: center;
+	margin: 50px auto;
+}
+
+.anchor-nav ul {
+	list-style: none;
+}
+
+.anchor-nav ul li{
+	display: inline-block;
+}
+
+.anchor-nav ul li a{
+	text-decoration: none;
+    padding: 5px 24px;
+	font-family: 'Rubik', sans-serif;
+	font-size: 14px;
+    color: white;
+    background-color: #000000;
+    border-radius: 5px;
+    text-transform: uppercase;
 }
 
 

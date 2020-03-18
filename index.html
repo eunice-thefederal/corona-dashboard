@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="css/style.css?v=1232020">
+	<!-- <link rel="stylesheet" href="css/style.css?v=1232020"> -->
+	<link rel="stylesheet" href="css/style.css">
 	<style>
 		/* .dailydeathline{
 			position: relative;
@@ -64,7 +65,7 @@
         <div class="worldmap"></div>
     </div> -->
     <div class="covidDash-wrapper">
-		<section class="dashboard-header">
+		<section class="dashboard-header" id="header">
 			<figure>
 				<img src="img/Asset2.png" alt="Covid" />
 			</figure>
@@ -76,7 +77,17 @@
 				<p id="lastupdatedtime"></p>
 			</div>
 		</section>
-		<section class="total-affected">
+		<nav class="anchor-nav">
+			<ul>
+				<li><a href="#global">Global</a></li>
+				<li><a href="#world-impact">World Impact</a></li>
+				<li><a href="#india-impact">India Impact</a></li>
+				<li><a href="#daily-deaths">Daily Deaths</a></li>
+				<li><a href="#total-deaths">Total Deaths</a></li>
+				<li><a href="#faqs">FAQs</a></li>
+			</ul>
+		</nav>
+		<section class="total-affected" id="global">
 			<h1 id="totAffected" class="loading"></h1>
 			<p>TOTAL AFFECTED PERSONS</p>
 		</section>
@@ -133,7 +144,7 @@
                 </div>
 			</div>
 		</section>
-		<section class="world-impact">
+		<section class="world-impact" id="world-impact">
 			<h1>COVID-19 world impact</h1>
 			<p>Click on a country</p>
 			<div class="map-wrapper">
@@ -194,7 +205,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="world-impact">
+		<section class="world-impact" id="india-impact">
 			<h1>COVID-19 India impact</h1>
 			<p>Click on a state</p>
 			<ul class="legend">
@@ -241,15 +252,18 @@
 			</div>
 			
 		</section>
-		<section class="dailyDeaths">
+		<section class="dailyDeaths" id="daily-deaths">
 			<h1>Daily Deaths</h1>
 			<p>of Novel Coronavirus (2019-nCoV)</p>
 			<div class="dailydeathbar"></div>
 		</section>
-		<section class="totalDeaths">
+		<section class="totalDeaths" id="total-deaths">
             <h1>Total Deaths</h1>
 			<p>of Novel Coronavirus (2019-nCoV)</p>
             <div class="dailydeathline"></div>
+		</section>
+		<section class="faqs" id="faqs">
+			<h1>FAQs</h1>
 		</section>
 	</div>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
