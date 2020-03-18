@@ -515,6 +515,8 @@ svg.barchart{
     width: 100%;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+    border-right: 1px solid transparent;
+    border-left: 1px solid transparent;
     text-align: left;
     outline: none;
     font-size: 22px;
