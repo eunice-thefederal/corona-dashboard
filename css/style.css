@@ -499,6 +499,57 @@ svg.barchart{
     text-transform: uppercase;
 }
 
+/* Accordion */
+
+.faqs .accordion {
+	font-family: 'Rubik', sans-serif;
+    color: #444;
+    cursor: pointer;
+    padding: 9px;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    outline: none;
+    font-size: 22px;
+    transition: 0.4s;
+  }
+  
+  .faqs .active, .faqs .accordion:hover {
+	background-color: #E8E8E8; 
+  }
+  
+  .faqs .panel {
+	padding: 0 18px;
+	display: none;
+	background-color: white;
+	overflow: hidden;
+  }
+
+  .faqs .accordion:after {
+	content: '\02795'; /* Unicode character for "plus" sign (+) */
+	font-size: 13px;
+	color: #b80505 !important;
+	float: right;
+	margin-left: 5px;
+	line-height: 28px;
+  }
+  
+  .faqs .active:after {
+	content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }
+
+  .faqs p{
+	font-size: 15px;
+	line-height: 17px;
+	font-family: 'Rubik', sans-serif;
+  }
+  .faqs .panel p{
+	font-size: 15px;
+	line-height: 17px;
+	font-family: 'Rubik', sans-serif;
+  }
+
 
 @media screen and (max-width: 767px) {
 	.countrywiseData.indiaData {
