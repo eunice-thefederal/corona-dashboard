@@ -208,6 +208,7 @@ if (typeof jQuery === 'undefined') {
             var that = this;
             this.$triggerElement.on('click', function () {
                 that.show();
+                document.getElementById("lastupdatedtime").scrollIntoView();
             });
             this.$c.find('.mobileSelect-savebtn').on('click', function (e) {
                 e.preventDefault();
