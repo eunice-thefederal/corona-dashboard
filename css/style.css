@@ -421,7 +421,13 @@ svg.barchart{
     line-height: 16px;
     margin: 10px 0 0 0;
 }
-
+.mobileSelect-container.white .list-container .mobileSelect-control {
+    color: #DC4447 !important;
+}
+.mobileSelect-container.white .list-container .mobileSelect-control.selected {
+    background-color: #DC4447 !important;
+    color: white !important;
+}
 .dropdown, .dropdownstate,.btn-mobileSelect-gen {
 	background-color: #000000;
     color: #ffffff;
