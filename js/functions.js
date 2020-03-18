@@ -40,7 +40,20 @@ function createDropDowns(selector, dropdowndata, valuelabel, contentlabel, type)
 
         // document.querySelector(selector).selectedIndex = "24";
     
-        
+        if(selector == ".dropdown") {
+		$('.dropdown').mobileSelect({				
+				onClose: function(){
+					showCountryData();
+				}
+			});
+    }
+    if(selector == ".dropdownstate") {
+		$('.dropdownstate').mobileSelect({	
+				onClose: function(){
+					showStateData();
+				}
+			});
+    }	
    
 }
 
@@ -76,7 +89,7 @@ function animatedFormatData(inputdata,selector) {
 
 
 function showCountryData(){
-    var selectedValue = document.querySelector(".dropdown").value;
+    var selectedValue = $('.dropdown option:selected').attr("data-id");
 
     
     var fdContent = _.filter(filterData, function(d){
@@ -106,7 +119,7 @@ function showCountryData(){
 }
 
 function showStateData(){
-    var selectedValue = document.querySelector(".dropdownstate").value;
+    var selectedValue = $('.dropdownstate option:selected').attr("data-id");
     
     var fdContent = _.filter(indiaData, function(d){
         return d["stateId"] === selectedValue;

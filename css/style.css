@@ -421,8 +421,14 @@ svg.barchart{
     line-height: 16px;
     margin: 10px 0 0 0;
 }
-
-.dropdown, .dropdownstate {
+.mobileSelect-container.white .list-container .mobileSelect-control {
+    color: #DC4447 !important;
+}
+.mobileSelect-container.white .list-container .mobileSelect-control.selected {
+    background-color: #DC4447 !important;
+    color: white !important;
+}
+.dropdown, .dropdownstate,.btn-mobileSelect-gen {
 	background-color: #000000;
     color: #ffffff;
 	padding: 7px 10px 5px 10px;
@@ -566,7 +572,7 @@ svg.barchart{
 		margin: 8px 0 !important;
 	}
 
-	.dropdown, .dropdownstate{
+	.dropdown, .dropdownstate,.btn-mobileSelect-gen{
 		display: block;
 	}
 	.worldmap {
