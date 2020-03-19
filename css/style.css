@@ -488,6 +488,7 @@ svg.barchart{
 
 .anchor-nav ul {
 	list-style: none;
+	padding: 0;
 }
 
 .anchor-nav ul li{
@@ -519,8 +520,10 @@ svg.barchart{
     border-left: 1px solid transparent;
     text-align: left;
     outline: none;
-    font-size: 22px;
+    font-size: 21px;
     transition: 0.4s;
+    background-color: transparent;
+    font-weight: 500;
   }
   
   .faqs .active, .faqs .accordion:hover {
@@ -560,6 +563,15 @@ svg.barchart{
 
 
 @media screen and (max-width: 767px) {
+	.anchor-nav ul li{
+		display: grid;
+		height: 30px;
+		width: 100%;
+		margin: 10px 0;
+		line-height: 20px;
+	}
+	
+	
 	.countrywiseData.indiaData {
 		display: grid;
 		grid-template-columns: 100%;
