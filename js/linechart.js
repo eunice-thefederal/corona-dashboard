@@ -4,7 +4,7 @@ function drawLinechart(selector){
 
     var reversedData = dailyTotalDeathData.reverse()
 
-    var width = 600, height = 350;
+    var width = 600, height = 450;
 
     var svg = d3.select(selector)
         .append("svg")
@@ -30,7 +30,7 @@ function drawLinechart(selector){
         .domain(reversedData.map(function(d) { return d.Date; }));
     
     var y = d3.scaleLinear()
-        .range([height-80, 0])
+        .range([height-90, 0])
         .domain([0, d3.max(reversedData, function(d) { return parseInt(d["Total Deaths"]); })]);
 
     var g = svg.append("g")
@@ -43,7 +43,7 @@ function drawLinechart(selector){
 
 
         g.append("g")
-            .attr("transform", "translate(0," + (height - 80) + ")")
+            .attr("transform", "translate(0," + (height - 90) + ")")
             .attr("class", "bottomaxis")
             .call(d3.axisBottom(x).ticks(10))
             .selectAll("text")
@@ -63,7 +63,7 @@ function drawLinechart(selector){
         .attr("class", "yaxiscaption")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
-        .attr("dy", "-5.1em")
+        .attr("dy", "-4em")
         .attr("text-anchor", "end")
         .attr("fill", "black")
         .text("Number of Deaths");

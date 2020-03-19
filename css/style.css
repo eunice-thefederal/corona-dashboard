@@ -400,10 +400,6 @@
 	
 }
 
-svg.barchart{
-	/* background-color: #f5f5f5; */
-}
-
 .barchart text{
 	font-family: 'Rubik', sans-serif;
 }
@@ -563,7 +559,7 @@ svg.barchart{
 	font-weight:  100;
   }
  .bottomaxis .tick text{
-	font-size:9px;
+	font-size:8px;
   }
 
   .yaxiscaption {
@@ -572,10 +568,24 @@ svg.barchart{
 
 
 @media screen and (max-width: 767px) {
+
+	.leftaxis .tick text, .bottomaxis .tick text{
+		font-size:16px;
+	}
+
+	.bottomaxis .tick:nth-child(even){
+		display: none;
+	}
+	
+	  .yaxiscaption {
+		  font-weight: 500;
+		  font-size:16px;
+	  }
+	
 	.anchor-nav ul li{
 		display: grid;
 		height: 30px;
-		width: 100%;403
+		width: 100%;
 		margin: 10px 0;
 		line-height: 20px;
 	}

@@ -1,6 +1,6 @@
 function drawBarchart(selector){
 
-    var width = 600, height = 350;
+    var width = 600, height = 450;
 
     var reversedData = dailyDeathData.reverse()
     
@@ -30,7 +30,7 @@ function drawBarchart(selector){
         .domain(reversedData.map(function(d) { return d.Date; }));
     
     var y = d3.scaleLinear()
-        .range([height-80, 0])
+        .range([height-90, 0])
         .domain([0, d3.max(reversedData, function(d) { 
             // console.log(d["Daily Deaths"]);
             return parseInt(d["Daily Deaths"]);
@@ -41,7 +41,7 @@ function drawBarchart(selector){
 
 
     g.append("g")
-        .attr("transform", "translate(0," + (height - 80) + ")")
+        .attr("transform", "translate(0," + (height - 90) + ")")
         .attr("class", "bottomaxis")
         .call(d3.axisBottom(x).ticks(10))
         .selectAll("text")
@@ -61,7 +61,7 @@ function drawBarchart(selector){
         .attr("class", "yaxiscaption")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
-        .attr("dy", "-5.1em")
+        .attr("dy", "-4em")
         .attr("text-anchor", "end")
         .attr("fill", "black")
         .text("Number of Deaths");
@@ -86,7 +86,7 @@ function drawBarchart(selector){
         .delay(function (d, i) {
             return i * 50;
         })
-        .attr("height", function(d) { return (height - 80) - y(parseInt(d["Daily Deaths"])); });
+        .attr("height", function(d) { return (height - 90) - y(parseInt(d["Daily Deaths"])); });
 
     g.selectAll(".barvalues")
         .data(reversedData)
