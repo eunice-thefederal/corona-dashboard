@@ -45,24 +45,24 @@ function drawBarchart(selector){
         .attr("class", "bottomaxis")
         .call(d3.axisBottom(x).ticks(10))
         .selectAll("text")
-        .attr("y", 5)
+        .attr("y", 0)
         .attr("x", -9)
         .attr("dy", ".35em")
-        .attr("font-size", "9")
-        .attr("transform", "rotate(-65)")
+        .attr("transform", "rotate(-90)")
         .style("text-anchor", "end");
         
 
     g.append("g")
+        .attr("class", "leftaxis")
         .call(d3.axisLeft(y).tickFormat(function(d){
             return d;
         }).ticks(10))
         .append("text")
+        .attr("class", "yaxiscaption")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", "-5.1em")
-        .attr("dx", "-5.1em")
-        .attr("text-anchor", "middle")
+        .attr("text-anchor", "end")
         .attr("fill", "black")
         .text("Number of Deaths");
 
@@ -71,7 +71,7 @@ function drawBarchart(selector){
         .data(reversedData)
         .enter().append("rect")
         .attr("class", "bar")
-        .attr("fill", "#E20613")
+        .attr("fill", "#3498db")
         .attr("x", function(d) { return x(d.Date); })
         .attr("y", function(d) {
             // console.log(d["Daily Deaths"], typeof(d["Daily Deaths"]));

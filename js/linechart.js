@@ -47,19 +47,20 @@ function drawLinechart(selector){
             .attr("class", "bottomaxis")
             .call(d3.axisBottom(x).ticks(10))
             .selectAll("text")
-            .attr("y", 5)
+            .attr("y", 0)
             .attr("x", -9)
             .attr("dy", ".35em")
-            .attr("font-size", "9")
-            .attr("transform", "rotate(-65)")
+            .attr("transform", "rotate(-90)")
             .style("text-anchor", "end");
         
 
     g.append("g")
+        .attr("class", "leftaxis")
         .call(d3.axisLeft(y).tickFormat(function(d){
             return d;
         }).ticks(10))
         .append("text")
+        .attr("class", "yaxiscaption")
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", "-5.1em")

@@ -401,15 +401,11 @@
 }
 
 svg.barchart{
-	background-color: #f5f5f5;
+	/* background-color: #f5f5f5; */
 }
 
 .barchart text{
 	font-family: 'Rubik', sans-serif;
-}
-
-.tick text{
-	font-size:9px;
 }
 
 .dangerData figure img {
@@ -561,12 +557,23 @@ svg.barchart{
 	font-family: 'Rubik', sans-serif;
   }
 
+ .leftaxis .tick text{
+	font-size:7px;
+  }
+ .bottomaxis .tick text{
+	font-size:9px;
+  }
+
+  .yaxiscaption {
+	  font-weight: 500;
+  }
+
 
 @media screen and (max-width: 767px) {
 	.anchor-nav ul li{
 		display: grid;
 		height: 30px;
-		width: 100%;
+		width: 100%;403
 		margin: 10px 0;
 		line-height: 20px;
 	}
