@@ -566,8 +566,84 @@
 	  font-weight: 500;
   }
 
+  .chartcontent{
+	display: grid;
+	grid-template-columns: 70% 30%;
+	margin-bottom: 15px;
+  }
+  
+  .chartcontent p{
+    text-align: left;
+  }
+  
+  .chartcontent .chartnav{
+	text-align: right;
+	
+  }
+  
+  .chartcontent .chartnav button{
+	background-color: #000;
+    color: #FFF;
+    border: none;
+    padding: 5px 10px;
+	font-size: 12px;
+	font-family: 'Rubik', sans-serif;
+	border-radius: 5px;
+    text-transform: uppercase;
+  }
+  .chartcontent .chartnav button.active{
+	background-color: rgb(164, 1, 1);
+	color: #FFF;
+	outline:0;
+  }
+  
+  .chartcontent .chartnav button:hover{
+	background-color: rgb(164, 1, 1);
+    color: #FFF;
+  }
+  .chartcontent .chartnav buttonbutton:focus {outline:0;}
+
+  .dailyDeaths p, .totalDeaths p{
+	  margin: 0 !important;
+  }
+
+  .table table {
+	  width: 100%;
+	  font-family: 'Rubik', sans-serif;
+	  text-align: left;
+	border-collapse: collapse;
+	width: 100%;
+  }
+  
+  .table td, .table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+  }
+
+  .table td{
+	  font-size: 14px;
+  }
+  
+  .table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .table tr:hover {background-color: #ddd;}
+  
+  .table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #000000;
+	color: white;
+	font-weight: 500;
+  }
 
 @media screen and (max-width: 767px) {
+
+	.chartcontent{
+		grid-template-columns: 65% 35%;
+	}
+
+	.chartcontent .chartnav button{ margin-top: -2px;}
 
 	.leftaxis .tick text, .bottomaxis .tick text{
 		font-size:16px;

@@ -256,13 +256,27 @@
 		</section>
 		<section class="dailyDeaths" id="daily-deaths">
 			<h1>Daily Deaths</h1>
-			<p>of Novel Coronavirus (2019-nCoV)</p>
+			<div class="chartcontent">
+				<p>of Novel Coronavirus (2019-nCoV)</p>
+				<div class="chartnav">
+					<button class="chartbtn active">Chart</button>
+					<button class="tablebtn">Table</button>
+				</div>
+			</div>
 			<div class="dailydeathbar"></div>
+			<div class="table" id="dailydeathstable" style="display:none"></div>
 		</section>
 		<section class="totalDeaths" id="total-deaths">
             <h1>Total Deaths</h1>
-			<p>of Novel Coronavirus (2019-nCoV)</p>
-            <div class="dailydeathline"></div>
+			<div class="chartcontent">
+				<p>of Novel Coronavirus (2019-nCoV)</p>
+				<div class="chartnav">
+					<button class="chartbtn active">Chart</button>
+					<button class="tablebtn">Table</button>
+				</div>
+			</div>
+			<div class="dailydeathline"></div>
+			<div class="table" id="totaldeathstable" style="display:none"></div>
 		</section>
 		<section class="faqs" id="faqs">
 			<h1>FAQs</h1>
@@ -388,6 +402,7 @@
     <script src="https://thefederal.com/embed/common-js/underscore-min.js"></script>
     <script src="js/accordion.js"></script>
     <script src="js/functions.js"></script>
+    <script src="js/table.js"></script>
     <script src="js/barchart.js"></script>
     <script src="js/linechart.js"></script>
     <script src="js/loadData.js?v=133202032"></script>
@@ -395,7 +410,32 @@
     <script src="js/bootstrap-fullscreen-select.js?v=3434"></script>
     <script src="js/indiamap.js"></script>
 	<script type='text/javascript'>
-	
+
+		$(".dailyDeaths .tablebtn").on("click", function(){
+			$("#dailydeathstable").css("display", "block")
+			$(".dailydeathbar").css("display", "none")
+			$(".dailyDeaths button").removeClass("active")
+			$(this).addClass("active")
+		});
+		$(".dailyDeaths .chartbtn").on("click", function(){
+			$("#dailydeathstable").css("display", "none")
+			$(".dailydeathbar").css("display", "block")
+			$(".dailyDeaths button").removeClass("active")
+			$(this).addClass("active")
+		});
+		
+		$(".totalDeaths .tablebtn").on("click", function(){
+			$("#totaldeathstable").css("display", "block")
+			$(".dailydeathline").css("display", "none")
+			$(".totalDeaths button").removeClass("active")
+			$(this).addClass("active")
+		});
+		$(".totalDeaths .chartbtn").on("click", function(){
+			$("#totaldeathstable").css("display", "none")
+			$(".dailydeathline").css("display", "block")
+			$(".totalDeaths button").removeClass("active")
+			$(this).addClass("active")
+		});
 		
 		var defaultMapData = countrywisedata.filter(function(item){
             return item['countryId'] === "156" ;
@@ -502,6 +542,8 @@
 		createDropDowns(".dropdownstate", indiaData, "stateId", "StateName", "india")
         drawBarchart(".dailydeathbar")
 		drawLinechart(".dailydeathline")
+		drawTable(dailyDeathData, "#dailydeathstable")
+		drawTable(dailyTotalDeathData, "#totaldeathstable")
 		setTimeout(() => {	renderCard();	}, 1000);
     </script>
 </body>
