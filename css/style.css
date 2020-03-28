@@ -637,10 +637,18 @@
 	font-weight: 500;
   }
 
+  #myearth{
+	width: 100%;
+    max-width: 600px;
+  }
+
 @media screen and (max-width: 767px) {
 
 	.chartcontent{
 		grid-template-columns: 65% 35%;
+	}
+	.chartcontent p{
+		line-height: 30px;
 	}
 
 	.chartcontent .chartnav button{ margin-top: -2px;}

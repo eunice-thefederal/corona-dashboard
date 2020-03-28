@@ -18,6 +18,8 @@ function drawIndiaMap(selector){
         .attr("class", "d3-tipforline")
         .offset([-15, 0])
         .html(function(d) {
+
+            
             
             var fd = _.filter(indiaData, function(items){
                 return items.stateId === d.properties.ST_CODE
@@ -26,15 +28,26 @@ function drawIndiaMap(selector){
             var fdjk = _.filter(indiaData, function(items){
                 return items.stateId === "U08"
             })
+
+            // console.log("fdjk", fdjk[0]);
             
-            var U08 = parseInt(fdjk[0]["totalIndianCases"]) + parseInt(fdjk[0]["totalForeignCases"])
+            
+            
             
             var html;
 
-            console.log(d);
+            
+
+            // if(fd[0] !== undefined){
+            //     console.log(fd[0]);
+            // }else{
+            //     console.log("No Data");
+            // }
             
 
             if(fd[0] !== undefined){
+
+                var U08 = parseInt(fdjk[0]["totalIndianCases"]) + parseInt(fdjk[0]["totalForeignCases"])
                 
                 html = "<p>"+d.properties.ST_NM+"</p> "
                 
