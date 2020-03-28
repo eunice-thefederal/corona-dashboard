@@ -642,6 +642,22 @@
     max-width: 600px;
   }
 
+  .earth-overlay{
+	  background-color: #000;
+	  border: 1px solid #FFFFFF;
+	  color: #FFF;
+    border-radius: 10px;
+    text-align: center;
+    width: 150px;
+  }
+
+  .earth-overlay img {
+    width: 100%;
+    height: auto;
+    margin-bottom: -5px;
+    border-radius: 10px 10px 0 0;
+	}
+
 @media screen and (max-width: 767px) {
 
 	.chartcontent{

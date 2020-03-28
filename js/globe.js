@@ -5,6 +5,7 @@ let reports = {};
 let countryColors = {};
 let myearth;
 let overlays = {}
+let myoverlay; 
 
 var colorScale = d3.scaleThreshold()
     .domain([1, 6, 11, 26, 101, 1001, 10000, 50000, 100000])
@@ -67,9 +68,10 @@ console.log(reports)
                 autoRotate: true,
                 autoRotateDelay: 3000,
                 mapHitTest: true,
-                mapLandColor: NONE,
+                mapLandColor: "green",
                 mapSeaColor: 'RGBA(0, 0, 0, .75)',
-                mapBorderColor: 'RGBA(0, 0, 0, 0)',
+                mapBorderColor: 'black',
+                mapBorderWidth : 0.5,
                 mapStyles: mapColors.slice(0, mapColors.length - 3),
                 transparent: true,
                 lightType: 'sun',
@@ -80,14 +82,36 @@ console.log(reports)
 
             myearth.addEventListener('click', event => {
                 console.log(event.id);
+                if (myoverlay) myoverlay.remove();
+                if (event.id) {
+                    if (event.id in countries) { 
+                        
+                        myoverlay = myearth.addOverlay( {
+                            location: { lat: countries[event.id].lat, lng: countries[event.id].lng },
+                            content : makeOverlay()
+                        } );
+        
+                        //Go to Clicked location
+                        myearth.goTo({
+                            lat: countries[event.id].lat,
+                            lng: countries[event.id].lng
+                        })
 
-                //Go to Clicked location
-                myearth.goTo({
-                    lat: countries[event.id].lat,
-                    lng: countries[event.id].lng
-                })
+                    }
+                }
+               
                 
             })
+
+            let makeOverlay = (iso, country) => {
+                return `
+                    <img src="https://restcountries.eu/data/ita.svg">
+                    <div class="title">
+                        <span><em>Italy</em><span><br/>
+                        <span class="tiny">902 total cases</span>
+                    </div>
+                `
+            }
         
         
         
