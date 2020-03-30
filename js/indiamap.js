@@ -18,44 +18,34 @@ function drawIndiaMap(selector){
         .attr("class", "d3-tipforline")
         .offset([-15, 0])
         .html(function(d) {
-
             
             
             var fd = _.filter(indiaData, function(items){
                 return items.stateId === d.properties.ST_CODE
             })
+
+            
             
             var fdjk = _.filter(indiaData, function(items){
                 return items.stateId === "U08"
             })
-
-            // console.log("fdjk", fdjk[0]);
-            
-            
             
             
             var html;
 
             
 
-            // if(fd[0] !== undefined){
-            //     console.log(fd[0]);
-            // }else{
-            //     console.log("No Data");
-            // }
-            
-
             if(fd[0] !== undefined){
 
-                var U08 = parseInt(fdjk[0]["totalIndianCases"]) + parseInt(fdjk[0]["totalForeignCases"])
+                var U08 = parseInt(fdjk[0]["totalIndianCases"])
                 
                 html = "<p>"+d.properties.ST_NM+"</p> "
                 
                 if(d.properties.ST_CODE !== "S09"){
-                    html += "<p>Total Confirmed Cases: <span>"+ (parseInt(fd[0]["totalIndianCases"]) + parseInt(fd[0]["totalForeignCases"])) +"</span></p> "
+                    html += "<p>Total Confirmed Cases: <span>"+ parseInt(fd[0]["totalIndianCases"]) +"</span></p> "
                 }else{
                     
-                    html += "<p>Total Confirmed Cases: <span>"+ (parseInt(fd[0]["totalIndianCases"]) + parseInt(fd[0]["totalForeignCases"] + U08 )) +"</span></p> "
+                    html += "<p>Total Confirmed Cases: <span>"+ (parseInt(fd[0]["totalIndianCases"]) + U08 ) +"</span></p> "
                 }
 
                 return html; 
@@ -139,7 +129,7 @@ function drawIndiaMap(selector){
                     })
 
                     var U08Indian = parseInt(fdjk[0]["totalIndianCases"]);
-                    var U08For = parseInt(fdjk[0]["totalForeignCases"]);
+                    // var U08For = parseInt(fdjk[0]["totalForeignCases"]);
                     var U08Cure = parseInt(fdjk[0]["Cured"]);
                     var U08Death = parseInt(fdjk[0]["Death"]);
                     
@@ -148,20 +138,20 @@ function drawIndiaMap(selector){
                         if(d.properties.ST_CODE !== "S09"){
                             d3.select("#statename").text(fd[0].StateName)
                             animatedFormatData(fd[0]["totalIndianCases"],"#stateConfIndians")
-                            animatedFormatData(fd[0]["totalForeignCases"],"#stateConfForeigners")
+                            // animatedFormatData(fd[0]["totalForeignCases"],"#stateConfForeigners")
                             animatedFormatData(fd[0]["Cured"],"#stateCured")
                             animatedFormatData(fd[0]["Death"],"#stateDead")
                         }else{
                             d3.select("#statename").text("Jammu & Kashmir")
                             animatedFormatData(parseInt(fd[0]["totalIndianCases"])+U08Indian,"#stateConfIndians")
-                            animatedFormatData(parseInt(fd[0]["totalForeignCases"])+U08For,"#stateConfForeigners")
+                            // animatedFormatData(parseInt(fd[0]["totalForeignCases"])+U08For,"#stateConfForeigners")
                             animatedFormatData(parseInt(fd[0]["Cured"])+U08Cure,"#stateCured")
                             animatedFormatData(parseInt(fd[0]["Death"])+U08Cure,"#stateDead")
                         }
                     }else{
                         d3.select("#statename").text(d.properties.ST_NM)
                         d3.select("#stateConfIndians").text("-")
-                        d3.select("#stateConfForeigners").text("-")
+                        // d3.select("#stateConfForeigners").text("-")
                         d3.select("#stateCured").text("-")
                         d3.select("#stateDead").text("-")
                     }

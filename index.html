@@ -232,10 +232,10 @@
 							<h2>Total confirmed cases (Indians)</h2>
 							<h1 id="stateConfIndians">80,757</h1>
 						</div>
-						<div class="totCases">
+						<!-- <div class="totCases">
 							<h2>Total confirmed cases (Foreigners)</h2>
 							<h1 id="stateConfForeigners">22</h1>
-						</div>
+						</div> -->
 						<div class="newCases">
 							<h2>Cured / Discharged</h2>
 							<h1 id="stateCured">22</h1>
@@ -512,7 +512,7 @@
 		
 		d3.select("#statename").text(defaultIndiaMapData[0].StateName)
 		animatedFormatData(defaultIndiaMapData[0]["totalIndianCases"],"#stateConfIndians")
-		animatedFormatData(defaultIndiaMapData[0]["totalForeignCases"],"#stateConfForeigners")
+		// animatedFormatData(defaultIndiaMapData[0]["totalForeignCases"],"#stateConfForeigners")
 		animatedFormatData(defaultIndiaMapData[0]["Cured"],"#stateCured")
 		animatedFormatData(defaultIndiaMapData[0]["Death"],"#stateDead")
 
