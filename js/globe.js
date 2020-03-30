@@ -94,8 +94,8 @@ console.log("overlays", overlays)
                 autoRotate: true,
                 // autoRotateDelay: 3000,
                 mapHitTest: true,
-                mapLandColor: "green",
-                mapSeaColor: 'RGBA(0, 0, 0, .75)',
+                mapLandColor: "#FFFFFF",
+                mapSeaColor: '#011F67', //#011F67 or 004BE0 or 07FDFE
                 mapBorderColor: 'black',
                 mapBorderWidth : 0.5,
                 mapStyles: mapColors.slice(0, mapColors.length - 3),
