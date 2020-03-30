@@ -102,7 +102,10 @@ console.log("overlays", overlays)
                 transparent: true,
                 lightType: 'sun',
                 lightIntensity: 1,
-                quality: 4
+                quality: 4,
+                zoom: 1,
+                zoomMax: 2,
+                zoomable: !0
                 // mapStyles : '#FR, #ES, #DE, #IT, #GB, #BE, #NL, #LU, #DK, #SE, #FI, #IE, #PT, #GR, #EE, #LV, #LT, #PL, #CZ, #AT, #BG, #MT, #SK, #SI, #HR, #HU, #RO, #CY { fill: red; } #GL, #GF { fill: #red; }'
             } );
 
