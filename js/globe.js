@@ -33,7 +33,37 @@ for (let iso in countries){
     reports[iso] = countries[iso].cases ;
 }
 
-console.log(reports)
+let testFunction = function(){
+    return `
+        <img src="https://restcountries.eu/data/ita.svg">
+        <div class="title">
+            <span><em>Italy</em><span><br/>
+            <span class="tiny">902 total cases</span>
+        </div>
+        `
+}
+
+let makeOverlay = (iso, country) => {
+    return `
+        <img src="https://restcountries.eu/data/ita.svg">
+        <div class="title">
+            <span><em>Italy</em><span><br/>
+            <span class="tiny">902 total cases</span>
+        </div>
+    `
+}
+
+for (let iso in countries){
+    overlays[iso] = {
+        reports: countries[iso].reports, 
+        cases: countries[iso].cases, 
+        deaths: countries[iso].deaths,
+        location: { lat: countries[iso].lat, lng: countries[iso].lng },
+        content : makeOverlay()
+    };
+}
+
+console.log(overlays)
     
 
     function createGlobe(){
@@ -81,11 +111,15 @@ console.log(reports)
             } );
 
             myearth.addEventListener('click', event => {
-                console.log(event.id);
+                // console.log(event.id);
                 if (myoverlay) myoverlay.remove();
                 if (event.id) {
+                    
                     if (event.id in countries) { 
-                        
+
+
+                        console.log(event.id);
+
                         myoverlay = myearth.addOverlay( {
                             location: { lat: countries[event.id].lat, lng: countries[event.id].lng },
                             content : makeOverlay()
@@ -103,15 +137,7 @@ console.log(reports)
                 
             })
 
-            let makeOverlay = (iso, country) => {
-                return `
-                    <img src="https://restcountries.eu/data/ita.svg">
-                    <div class="title">
-                        <span><em>Italy</em><span><br/>
-                        <span class="tiny">902 total cases</span>
-                    </div>
-                `
-            }
+            
         
         
         
