@@ -33,37 +33,33 @@ for (let iso in countries){
     reports[iso] = countries[iso].cases ;
 }
 
-let testFunction = function(){
+let makeOverlay = (countrydata) => {
     return `
-        <img src="https://restcountries.eu/data/ita.svg">
+        <img src="${countrydata.flag}">
         <div class="title">
-            <span><em>Italy</em><span><br/>
-            <span class="tiny">902 total cases</span>
-        </div>
-        `
-}
-
-let makeOverlay = (iso, country) => {
-    return `
-        <img src="https://restcountries.eu/data/ita.svg">
-        <div class="title">
-            <span><em>Italy</em><span><br/>
-            <span class="tiny">902 total cases</span>
+            <span><em>${countrydata.name}</em><span><br/>
+            <span class="tiny">Total cases: ${countrydata.cases} </span>
         </div>
     `
 }
 
 for (let iso in countries){
+    // console.log(countries[iso]);
+    
     overlays[iso] = {
-        reports: countries[iso].reports, 
-        cases: countries[iso].cases, 
-        deaths: countries[iso].deaths,
         location: { lat: countries[iso].lat, lng: countries[iso].lng },
-        content : makeOverlay()
+        content : makeOverlay(countries[iso])
     };
+    // overlays[iso] = {
+    //     reports: countries[iso].reports, 
+    //     cases: countries[iso].cases, 
+    //     deaths: countries[iso].deaths,
+    //     location: { lat: countries[iso].lat, lng: countries[iso].lng },
+    //     content : makeOverlay(countries[iso])
+    // };
 }
 
-console.log(overlays)
+console.log("overlays", overlays)
     
 
     function createGlobe(){
@@ -76,7 +72,7 @@ console.log(overlays)
         let color, mapColors = '';
         for (let iso in reports) {
             // console.log("color", reports[iso]);
-            console.log("color", colorScale(reports[iso]));
+            // console.log("color", colorScale(reports[iso]));
             
             color = colorScale(reports[iso]);
             // color = lerpHex(START, STOP, reports[iso] / reports[max]);
@@ -96,7 +92,7 @@ console.log(overlays)
 
             myearth = new Earth( "myearth", {
                 autoRotate: true,
-                autoRotateDelay: 3000,
+                // autoRotateDelay: 3000,
                 mapHitTest: true,
                 mapLandColor: "green",
                 mapSeaColor: 'RGBA(0, 0, 0, .75)',
@@ -124,10 +120,11 @@ console.log(overlays)
 
                         console.log(event.id);
 
-                        myoverlay = myearth.addOverlay( {
-                            location: { lat: countries[event.id].lat, lng: countries[event.id].lng },
-                            content : makeOverlay()
-                        } );
+                        myoverlay = myearth.addOverlay( overlays[event.id] );
+                        // myoverlay = myearth.addOverlay( {
+                        //     location: { lat: countries[event.id].lat, lng: countries[event.id].lng },
+                        //     content : makeOverlay()
+                        // } );
         
                         //Go to Clicked location
                         myearth.goTo({
