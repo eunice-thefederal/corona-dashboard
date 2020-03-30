@@ -150,9 +150,10 @@
 			<h1>COVID-19 world impact</h1>
 			<p>Click on a country</p>
 			<div class="map-wrapper">
-				<div class="worldmap"></div>
-				<select class="dropdown" onchange="showCountryData()"></select>
-				<div class="countrywiseData">
+				<div id="myearth"></div>
+				<!-- <div class="worldmap"></div>
+				<select class="dropdown" onchange="showCountryData()"></select> -->
+				<!-- <div class="countrywiseData">
 					<div class="country">
 						<h2>Country,  Other</h2>
 						<h1 id="countryname">China</h1>
@@ -165,11 +166,11 @@
 						<h2>New Cases</h2>
 						<h1 id="countrynewcases">22</h1>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			
 		</section>
-		<section class="dangerData">
+		<!-- <section class="dangerData">
 			<div class="totalandNew">
 				<figure>
 					<img src="img/Asset6.png">
@@ -194,7 +195,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			
 			<div class="criticalData">
 				<div class="recoverCounts">
@@ -399,7 +400,10 @@
 	<script src="js/d3-tip.js"></script>
 	<script src="https://d3js.org/topojson.v2.min.js"></script>
 	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <script src="https://thefederal.com/embed/common-js/underscore-min.js"></script>
+	<script src="https://thefederal.com/embed/common-js/underscore-min.js"></script>
+	<script src="js/miniature.earth.js"></script>
+    <script src="js/test-api.js"></script>
+    <script src="js/globe.js"></script>
     <script src="js/accordion.js"></script>
     <script src="js/functions.js"></script>
     <script src="js/table.js"></script>
@@ -478,35 +482,35 @@
 
 		}
 		// Default World data =======================================
-		d3.select("#countryname").text(defaultMapData[0].Country)
-        function animator(fieldName,fieldId) {
-            if(defaultMapData[0][fieldName] !== "NULL" ){
-                    var countrytotalcases = d3.select("#"+fieldId).text(0)
-                    countrytotalcases.transition()
-                        .tween("text", function() {
-                            var selection = d3.select(this);    // selection of node being transitioned
-                            var start = d3.select(this).text(); // start value prior to transition
-                            var end = parseInt(defaultMapData[0][fieldName]);                     // specified end value
-                            var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
-                            return function(t) { 
-                                    selection.text(Math.round(interpolator(t)));
-                            };  // return value
-                        })
-                        .duration(1000)
-                        .on("end", function() {
-                            d3.select("#"+fieldId).text(numberWithCommas(d3.select("#"+fieldId).text()));
-                        });
+		// d3.select("#countryname").text(defaultMapData[0].Country)
+        // function animator(fieldName,fieldId) {
+        //     if(defaultMapData[0][fieldName] !== "NULL" ){
+        //             var countrytotalcases = d3.select("#"+fieldId).text(0)
+        //             countrytotalcases.transition()
+        //                 .tween("text", function() {
+        //                     var selection = d3.select(this);    // selection of node being transitioned
+        //                     var start = d3.select(this).text(); // start value prior to transition
+        //                     var end = parseInt(defaultMapData[0][fieldName]);                     // specified end value
+        //                     var interpolator = d3.interpolateNumber(start,end); // d3 interpolator
+        //                     return function(t) { 
+        //                             selection.text(Math.round(interpolator(t)));
+        //                     };  // return value
+        //                 })
+        //                 .duration(1000)
+        //                 .on("end", function() {
+        //                     d3.select("#"+fieldId).text(numberWithCommas(d3.select("#"+fieldId).text()));
+        //                 });
 
-                }else{
-                    d3.select("#"+fieldId).text("-")
-                }
-        }      
-        animator("Total Cases","countrytotalcases");
-        animator("New Cases","countrynewcases");
-        animator("Total Deaths","countrytotaldeaths");
-        animator("New Deaths","countrynewdeaths");
-        animator("Total Recovered","countrytotalRecovered");       
-		animator("Serious","countrySerious"); 
+        //         }else{
+        //             d3.select("#"+fieldId).text("-")
+        //         }
+        // }      
+        // animator("Total Cases","countrytotalcases");
+        // animator("New Cases","countrynewcases");
+        // animator("Total Deaths","countrytotaldeaths");
+        // animator("New Deaths","countrynewdeaths");
+        // animator("Total Recovered","countrytotalRecovered");       
+		// animator("Serious","countrySerious"); 
 		
 		// Default India Data ================================
 		
@@ -536,7 +540,7 @@
         d3.select("#baroutcome")
             .style("width", recovered_p)
             .text(currentData[0]["recovered_p"]+"%")
-		drawWorldMap(".worldmap");
+		// drawWorldMap(".worldmap");
 		drawIndiaMap(".indiamap")
 		createDropDowns(".dropdown", filterData, "countryId", "Country", "world")
 		createDropDowns(".dropdownstate", indiaData, "stateId", "StateName", "india")

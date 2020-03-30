@@ -639,7 +639,8 @@
 
   #myearth{
 	width: 100%;
-    max-width: 600px;
+	max-width: 600px;
+	margin: 0 auto;
   }
 
   .earth-overlay{
@@ -648,7 +649,8 @@
 	  color: #FFF;
     border-radius: 10px;
     text-align: center;
-    width: 150px;
+	width: 150px;
+	font-family: 'Rubik', sans-serif;
   }
 
   .earth-overlay img {
