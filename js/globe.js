@@ -112,7 +112,11 @@ console.log(overlays)
 
             myearth.addEventListener('click', event => {
                 // console.log(event.id);
-                if (myoverlay) myoverlay.remove();
+//                 if (myoverlay) myoverlay.remove();
+                if (myoverlay) {
+                    myoverlay.visible = 0; 
+                }
+                
                 if (event.id) {
                     
                     if (event.id in countries) { 
