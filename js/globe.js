@@ -156,7 +156,7 @@ console.log("overlays2", overlays2)
             $('#total-count').text('/' + data.worldwide.reports.toLocaleString());
 
             myearth = new Earth( "myearth", {
-                autoRotate: false,
+                autoRotate: true,
                 // autoRotateDelay: 3000,
                 mapHitTest: true,
                 mapLandColor: "#FFFFFF",
@@ -167,6 +167,7 @@ console.log("overlays2", overlays2)
                 transparent: true,
                 lightType: 'sun',
                 lightIntensity: 1,
+                occlude: true,
                 quality: 4,
                 zoom: isMobile ? 1.25 : 1.1,
                 zoomMax: 2,
