@@ -166,7 +166,7 @@ console.log("overlays2", overlays2)
                 transparent: true,
                 lightType: 'sun',
                 lightIntensity: 1,
-                occlude: true,
+                occlude: false,
                 quality: 4,
                 zoom: isMobile ? 1.25 : 1.1,
                 zoomMax: 2,
@@ -183,7 +183,7 @@ console.log("overlays2", overlays2)
                 
                 if (event.id) {
                     
-                    if (event.id in countries) { 
+                    if (event.id in threeData) { 
 
 
                         console.log(event.id);
@@ -196,8 +196,8 @@ console.log("overlays2", overlays2)
         
                         //Go to Clicked location
                         myearth.goTo({
-                            lat: countries[event.id].lat,
-                            lng: countries[event.id].lng
+                            lat: threeData[event.id].lat,
+                            lng: threeData[event.id].lng
                         })
 
                     }
