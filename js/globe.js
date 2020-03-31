@@ -5,6 +5,7 @@ let reports = {};
 let countryColors = {};
 let myearth;
 let overlays = {}
+let overlays2 = {}
 let myoverlay; 
 
 let isMobile = !1;
@@ -26,22 +27,62 @@ for (let iso in countries){
     reports[iso] = countries[iso].cases ;
 }
 
+
 let makeOverlay = (countrydata) => {
+    
+    
+
+    let noofCases = parseInt(countrydata.cases)
+    let noofDeath = parseInt(countrydata.deaths_1m)
+    let noofRecovered = parseInt(countrydata.recovered)
+    let noofNCases = countrydata.newcases
+    let noofNDeath = countrydata.newdeaths
+    let noofNCritical = parseInt(countrydata.critical)
+    var color = colorScale(countrydata.cases)
+
+    
     return `
         <img src="${countrydata.flag}">
         <div class="title">
-            <span><em>${countrydata.name}</em><span><br/>
-            <span class="tiny">Total cases: ${countrydata.cases} </span>
+            <h2><em>${countrydata.name}</em></h2>
+            <p class="points">Total Cases <br><span> ${noofCases.toLocaleString()} </span></p>
+        </div>
+        <div class="groupData">
+            <p class="points">Total Deaths <br><span> ${noofDeath.toLocaleString()} </span></p>
+            <p class="points">Total Recovered <br><span> ${noofRecovered.toLocaleString()} </span></p>
+        </div>
+        <div class="groupData">
+            <p class="points">New Cases <br><span> ${noofNCases} </span></p>
+            <p class="points">New Deaths <br><span> ${noofNDeath} </span></p>
+            <p class="points">Serious/critical <br><span> ${noofNCritical} </span></p>
         </div>
     `
 }
 
-for (let iso in countries){
+// console.log(threeData);
+
+
+// for (let iso in countries){
+//     // console.log(countries[iso]);
+    
+//     overlays[iso] = {
+//         location: { lat: countries[iso].lat, lng: countries[iso].lng },
+//         content : makeOverlay(countries[iso])
+//     };
+//     // overlays[iso] = {
+//     //     reports: countries[iso].reports, 
+//     //     cases: countries[iso].cases, 
+//     //     deaths: countries[iso].deaths,
+//     //     location: { lat: countries[iso].lat, lng: countries[iso].lng },
+//     //     content : makeOverlay(countries[iso])
+//     // };
+// }
+for (let iso in threeData){
     // console.log(countries[iso]);
     
     overlays[iso] = {
-        location: { lat: countries[iso].lat, lng: countries[iso].lng },
-        content : makeOverlay(countries[iso])
+        location: { lat: threeData[iso].lat, lng: threeData[iso].lng },
+        content : makeOverlay(threeData[iso])
     };
     // overlays[iso] = {
     //     reports: countries[iso].reports, 
@@ -53,6 +94,7 @@ for (let iso in countries){
 }
 
 console.log("overlays", overlays)
+console.log("overlays2", overlays2)
     
 
     function createGlobe(){
@@ -82,11 +124,11 @@ console.log("overlays", overlays)
             $('#total-count').text('/' + data.worldwide.reports.toLocaleString());
 
             myearth = new Earth( "myearth", {
-                autoRotate: true,
+                autoRotate: false,
                 // autoRotateDelay: 3000,
                 mapHitTest: true,
                 mapLandColor: "#FFFFFF",
-                mapSeaColor: '#0141c1', //#011F67 or 004BE0 or 07FDFE
+                mapSeaColor: '#011F67', //#011F67 or 004BE0 or 07FDFE
                 mapBorderColor: 'black',
                 mapBorderWidth : 0.5,
                 mapStyles: mapColors.slice(0, mapColors.length - 3),
@@ -94,7 +136,7 @@ console.log("overlays", overlays)
                 lightType: 'sun',
                 lightIntensity: 1,
                 quality: 4,
-                zoom: isMobile ? 1.2 : 1,
+                zoom: isMobile ? 1.25 : 1.1,
                 zoomMax: 2,
                 zoomable: !0
                 // mapStyles : '#FR, #ES, #DE, #IT, #GB, #BE, #NL, #LU, #DK, #SE, #FI, #IE, #PT, #GR, #EE, #LV, #LT, #PL, #CZ, #AT, #BG, #MT, #SK, #SI, #HR, #HU, #RO, #CY { fill: red; } #GL, #GF { fill: #red; }'

@@ -643,7 +643,7 @@
 	margin: 0 auto;
   }
 
-  .earth-overlay{
+  /* .earth-overlay{
 	  background-color: #000;
 	  border: 1px solid #FFFFFF;
 	  color: #FFF;
@@ -651,6 +651,89 @@
     text-align: center;
 	width: 150px;
 	font-family: 'Rubik', sans-serif;
+  } */
+
+  .earth-overlay {
+    color: #fff;
+    border: 1px solid #fff;
+	border-radius: 10px;
+	background-color: #000000;
+    text-align: center;
+	width: 150px;
+	font-family: 'Rubik', sans-serif;
+	margin-top: -200px;
+	margin-left: -95px;
+	
+}
+
+.earth-overlay img {
+    width: 100%;
+    height: auto;
+    margin-bottom: -5px;
+    border-radius: 10px 10px 0 0
+}
+
+.earth-overlay .title {
+    padding: 5px;
+    background-color: #000
+}
+.earth-overlay .title h2{
+	font-size: 18px;
+	line-height: 18px;
+	margin: 5px 0 5px 0;
+}
+.earth-overlay .title p{
+	font-size: 15px;
+    line-height: 18px;
+}
+.earth-overlay .title p span{
+	font-size: 20px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+.earth-overlay .groupData{
+	padding: 5px;
+	border-TOP: 1PX solid #FFFFFF;
+	background-color: #940013;
+}
+.earth-overlay .groupData p{
+	font-size: 14px;
+    line-height: 20px;
+	margin-bottom: 5px !important;
+	color: #ffdec0;
+}
+.earth-overlay .groupData p span{
+	font-size: 20px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+.earth-overlay .changed {
+    font-size: .7em
+}
+
+.earth-overlay .info {
+    padding: 5px;
+    border-radius: 0 0 10px 10px
+}
+
+.tiny {
+    color: #ccc;
+    font-size: .7em
+}
+
+
+  
+  .groupData p{
+	margin: 0 0 0 0 !important;
+	padding: 0 0 0 0 !important;
+	  font-size: 14px;
+  }
+ 
+  .groupData p span{
+	margin: 0 0 0 0 !important;
+	padding: 0 0 0 0 !important;
+	  font-size: 20px;
   }
 
   .earth-overlay img {
@@ -660,7 +743,20 @@
     border-radius: 10px 10px 0 0;
 	}
 
+	.map-wrapper{
+		margin: 20px 0 25px 0;
+	}
+
 @media screen and (max-width: 767px) {
+
+	.map-wrapper{
+		margin: 20px 0 25px 0;
+	}
+
+	.earth-overlay {
+		margin-top: -276px;
+		margin-left: -95px;
+	}
 
 	.chartcontent{
 		grid-template-columns: 65% 35%;

@@ -88,4 +88,20 @@ var indiaData = (function() {
     return indiaData;
 })();
 
+var threeData = (function() {
+    var threeData = null;
+    jQuery.ajax({
+        'async': false,
+        'global': false,
+        'dataType': 'json',
+        'url': 'https://thefederal.com/api/scraper.php?m=Corona&t=worldData',
+        'success': function(data) {
+            threeData = data["countries"];
+            // console.log("data", data["list"]);
+            
+        }
+    });
+    return threeData;
+})();
+
 
