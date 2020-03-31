@@ -639,7 +639,7 @@
 
   #myearth{
 	width: 100%;
-	max-width: 600px;
+	max-width: 900px;
 	margin: 0 auto;
   }
 
@@ -647,12 +647,12 @@
     color: #fff;
     border: 1px solid #fff;
 	border-radius: 10px;
-	background-color: #000000;
+	background-color: #FFFFFF;
     text-align: center;
 	width: 150px;
 	font-family: 'Rubik', sans-serif;
-	/* margin-top: -200px;
-	margin-left: -95px; */
+	margin-top: -200px;
+	margin-left: -95px;
 	
 }
 
@@ -665,7 +665,8 @@
 
 .earth-overlay .title {
     padding: 5px;
-    background-color: #000
+	background-color: #FFFFFF;
+	color: #000000;
 }
 .earth-overlay .title h2{
 	font-size: 18px;
@@ -679,23 +680,24 @@
 .earth-overlay .title p span{
 	font-size: 20px;
 	font-weight: bold;
-	color: #FFFFFF;
+	/* color: #000000; */
 }
 .earth-overlay .groupData{
 	padding: 5px;
-	border-TOP: 1PX solid #FFFFFF;
-	background-color: #940013;
+	border-top: 1PX solid #CCCCCC;
+	background-color: #FFFFFF;
+	/* background-color: #940013; */
 }
 .earth-overlay .groupData p{
 	font-size: 14px;
     line-height: 20px;
 	margin-bottom: 5px !important;
-	color: #ffdec0;
+	color: #cccccc;
 }
 .earth-overlay .groupData p span{
 	font-size: 20px;
 	font-weight: bold;
-	color: #FFFFFF;
+	/* color: #FFFFFF; */
 }
 
 .earth-overlay .changed {
@@ -707,9 +709,20 @@
     border-radius: 0 0 10px 10px
 }
 
-.tiny {
-    color: #ccc;
-    font-size: .7em
+.deathpoints {
+    color: #000000 !important;
+}
+.respondpoints {
+    color: #0bab02 !important;
+}
+.criticalcases{
+    color: #e67e22 !important;
+}
+.newcases{
+    color: #de0c0c !important;
+}
+ .points {
+    color: #035add !important;
 }
 
 
@@ -743,10 +756,10 @@
 		margin: 20px 0 25px 0;
 	}
 
-	/* .earth-overlay {
+	.earth-overlay {
 		margin-top: -276px;
 		margin-left: -95px;
-	} */
+	}
 
 	.chartcontent{
 		grid-template-columns: 65% 35%;

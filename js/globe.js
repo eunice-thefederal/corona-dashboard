@@ -79,13 +79,13 @@ let makeOverlay = (countrydata) => {
             <p class="points">Total Cases <br><span> ${noofCases} </span></p>
         </div>
         <div class="groupData">
-            <p class="points">Total Deaths <br><span> ${noofDeath} </span></p>
-            <p class="points">Total Recovered <br><span> ${noofRecovered} </span></p>
+            <p class="deathpoints">Total Deaths <br><span> ${noofDeath} </span></p>
+            <p class="respondpoints">Total Recovered <br><span> ${noofRecovered} </span></p>
         </div>
         <div class="groupData">
-            <p class="points">New Cases <br><span> ${noofNCases} </span></p>
-            <p class="points">New Deaths <br><span> ${noofNDeath} </span></p>
-            <p class="points">Serious/critical <br><span> ${noofNCritical} </span></p>
+            <p class="newcases">New Cases <br><span> ${noofNCases} </span></p>
+            <p class="deathpoints">New Deaths <br><span> ${noofNDeath} </span></p>
+            <p class="criticalcases">Serious/critical <br><span> ${noofNCritical} </span></p>
         </div>
     `
 }
@@ -155,13 +155,13 @@ console.log("overlays2", overlays2)
             // $('#total-count').text('/' + data.worldwide.reports.toLocaleString());
 
             myearth = new Earth( "myearth", {
-                autoRotate: true,
+                autoRotate: false,
                 // autoRotateDelay: 3000,
                 mapHitTest: true,
                 mapLandColor: "#FFFFFF",
-                mapSeaColor: '#011F67', //#011F67 or 004BE0 or 07FDFE
-                mapBorderColor: 'black',
-                mapBorderWidth : 0.5,
+                mapSeaColor: '#333333', //#011F67 or 004BE0 or 07FDFE
+                mapBorderColor: '#333333',
+                mapBorderWidth : 0.2,
                 mapStyles: mapColors.slice(0, mapColors.length - 3),
                 transparent: true,
                 lightType: 'sun',
