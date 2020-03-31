@@ -1,6 +1,5 @@
 const START = '#380000', STOP = '#ff0000', NONE = '#131313';
-let max = data.max;
-let countries = data.countries;
+// let countries = data.countries;
 let reports = {};
 let countryColors = {};
 let myearth;
@@ -23,8 +22,8 @@ var colorScale = d3.scaleThreshold()
 //     .range(d3.schemeReds[6]);
 
 
-for (let iso in countries){
-    reports[iso] = countries[iso].cases ;
+for (let iso in threeData){
+    reports[iso] = threeData[iso].cases ;
 }
 
 
@@ -153,7 +152,7 @@ console.log("overlays2", overlays2)
 
         /* setup earth */
 
-            $('#total-count').text('/' + data.worldwide.reports.toLocaleString());
+            // $('#total-count').text('/' + data.worldwide.reports.toLocaleString());
 
             myearth = new Earth( "myearth", {
                 autoRotate: true,

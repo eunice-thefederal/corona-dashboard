@@ -643,16 +643,6 @@
 	margin: 0 auto;
   }
 
-  /* .earth-overlay{
-	  background-color: #000;
-	  border: 1px solid #FFFFFF;
-	  color: #FFF;
-    border-radius: 10px;
-    text-align: center;
-	width: 150px;
-	font-family: 'Rubik', sans-serif;
-  } */
-
   .earth-overlay {
     color: #fff;
     border: 1px solid #fff;
@@ -661,8 +651,8 @@
     text-align: center;
 	width: 150px;
 	font-family: 'Rubik', sans-serif;
-	margin-top: -200px;
-	margin-left: -95px;
+	/* margin-top: -200px;
+	margin-left: -95px; */
 	
 }
 
@@ -753,10 +743,10 @@
 		margin: 20px 0 25px 0;
 	}
 
-	.earth-overlay {
+	/* .earth-overlay {
 		margin-top: -276px;
 		margin-left: -95px;
-	}
+	} */
 
 	.chartcontent{
 		grid-template-columns: 65% 35%;
