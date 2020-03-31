@@ -29,27 +29,59 @@ for (let iso in countries){
 
 
 let makeOverlay = (countrydata) => {
+    let noofCases,noofDeath, noofRecovered, noofNCases, noofNDeath, noofNCritical
+    if(countrydata.cases !== undefined){
+        noofCases = countrydata.cases
+    }else{
+        noofCases = "-"
+    }
+
+    if(countrydata.deaths !== undefined){
+        noofDeath = countrydata.deaths
+    }else{
+        noofDeath = "-"
+    }
+
+    if(countrydata.recovered !== undefined){
+        noofRecovered = countrydata.recovered
+    }else{
+        noofRecovered = "-"
+    }
+
+    if(countrydata.newcases !== undefined){
+        noofNCases = countrydata.newcases
+    }else{
+        noofNCases = "-"
+    }
     
+    if(countrydata.newdeaths !== undefined){
+        noofNDeath = countrydata.newdeaths
+    }else{
+        noofNDeath = "-"
+    }
+    
+    if(countrydata.critical !== undefined){
+        noofNCritical = countrydata.critical
+    }else{
+        noofNCritical = "-"
+    }
+
     
 
-    let noofCases = parseInt(countrydata.cases)
-    let noofDeath = parseInt(countrydata.deaths_1m)
-    let noofRecovered = parseInt(countrydata.recovered)
-    let noofNCases = countrydata.newcases
-    let noofNDeath = countrydata.newdeaths
-    let noofNCritical = parseInt(countrydata.critical)
-    var color = colorScale(countrydata.cases)
+
+
+    
 
     
     return `
         <img src="${countrydata.flag}">
         <div class="title">
             <h2><em>${countrydata.name}</em></h2>
-            <p class="points">Total Cases <br><span> ${noofCases.toLocaleString()} </span></p>
+            <p class="points">Total Cases <br><span> ${noofCases} </span></p>
         </div>
         <div class="groupData">
-            <p class="points">Total Deaths <br><span> ${noofDeath.toLocaleString()} </span></p>
-            <p class="points">Total Recovered <br><span> ${noofRecovered.toLocaleString()} </span></p>
+            <p class="points">Total Deaths <br><span> ${noofDeath} </span></p>
+            <p class="points">Total Recovered <br><span> ${noofRecovered} </span></p>
         </div>
         <div class="groupData">
             <p class="points">New Cases <br><span> ${noofNCases} </span></p>
