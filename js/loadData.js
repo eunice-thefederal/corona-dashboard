@@ -1,4 +1,4 @@
-var lastupdate;
+var lastupdate, indiaTotal;
 var countrywisedata = (function() {
     var countrywisedata = null;
     jQuery.ajax({
@@ -81,6 +81,7 @@ var indiaData = (function() {
         'url': 'https://thefederal.com/api/scraper.php?m=Corona&t=StateWise',
         'success': function(data) {
             indiaData = data["list"];
+            indiaTotal = data["totals"];
             // console.log("data", data["list"]);
             
         }

@@ -81,12 +81,13 @@
 		</section>
 		<nav class="anchor-nav">
 			<ul>
+				<li><a href="https://covid19.thefederal.com/" style="background-color: #e20513;" target="_blank">Covid-19 Home</a></li>
 				<li><a href="#global">Global</a></li>
 				<li><a href="#world-impact">World Impact</a></li>
 				<li><a href="#india-impact">India Impact</a></li>
 				<li><a href="#daily-deaths">Daily Deaths</a></li>
 				<li><a href="#total-deaths">Total Deaths</a></li>
-				<li><a href="#faqs">FAQs</a></li>
+				<li><a href="#faqs">FAQs</a></li>			
 			</ul>
 		</nav>
 		<section class="total-affected points" id="global">
@@ -225,7 +226,7 @@
 				<select class="dropdownstate" onchange="showStateData()"></select>
 				<div class="countrywiseData indiaData">
 					<div class="country">
-						<h2>State</h2>
+						<h2>State, Other</h2>
 						<h1 id="statename">China</h1>
 					</div>
 					<div class="otherdata points">
@@ -515,11 +516,11 @@
 		
 		// Default India Data ================================
 		
-		d3.select("#statename").text(defaultIndiaMapData[0].StateName)
-		animatedFormatData(defaultIndiaMapData[0]["totalIndianCases"],"#stateConfIndians")
-		// animatedFormatData(defaultIndiaMapData[0]["totalForeignCases"],"#stateConfForeigners")
-		animatedFormatData(defaultIndiaMapData[0]["Cured"],"#stateCured")
-		animatedFormatData(defaultIndiaMapData[0]["Death"],"#stateDead")
+		d3.select("#statename").text("India")
+		animatedFormatData(indiaTotal[0]["totalIndians"],"#stateConfIndians")
+		// animatedFormatData(indiaTotal[0]["totalForeignCases"],"#stateConfForeigners")
+		animatedFormatData(indiaTotal[0]["totalCured"],"#stateCured")
+		animatedFormatData(indiaTotal[0]["totalDeaths"],"#stateDead")
 
 
 
