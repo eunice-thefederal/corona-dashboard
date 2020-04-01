@@ -64,14 +64,7 @@ let makeOverlay = (countrydata) => {
     }else{
         noofNCritical = "-"
     }
-
-    
-
-
-
-    
-
-    
+  
     return `
         <img src="${countrydata.flag}">
         <div class="title">
@@ -198,6 +191,9 @@ console.log("overlays2", overlays2)
                         myearth.goTo({
                             lat: threeData[event.id].lat,
                             lng: threeData[event.id].lng
+                        }, {
+                            relativeDuration: 200,
+                            zoom: isMobile ? .9 : 1.1
                         })
 
                     }
@@ -205,6 +201,13 @@ console.log("overlays2", overlays2)
                
                 
             })
+
+            myearth.addEventListener("dragstart", () => {
+                if (myoverlay) {
+                    myoverlay.visible = 0; 
+                }
+            })
+              
 
             
         
