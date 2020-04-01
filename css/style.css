@@ -757,6 +757,9 @@
 /*}*/
 
 @media screen and (max-width: 767px) {
+
+	.barchart .right-chart {
+		padding-left: 0px;}
     .earth-overlay {
 		margin-top: -276px;
 		margin-left: -95px;
@@ -789,6 +792,7 @@
     .countrywiseData.indiaData {
 		display: grid;
 		grid-template-columns: 100%;
+		margin: 10px 0 0 0;
 	}
 	.anchor-nav ul {
 	    /*column-count: 3;*/
@@ -869,7 +873,7 @@
 		margin: 25px 0;
 	}
 	.barchart .totalData div {
-		margin: 15px;
+		margin: 0px 5px 0 0;
 	}
 	.barchart .totalData h1, .barchart .right-chart p {
 		font-size: 20px;
@@ -880,7 +884,7 @@
 		line-height: 20px;
 	}
 	.horstackchart {
-		margin: 15px 0;
+		margin: 0px 0;
 	}
 	.left-chart .horstackchart .bar100 {
 		height: 55px;
