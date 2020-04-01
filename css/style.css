@@ -1,643 +1,4 @@
-.covidDash-wrapper {
-	max-width: 1040px;
-	/*width: 80%;*/
-	display: block;
-	padding: 20px 10px;
-	box-sizing: border-box;
-	margin: 0 auto;
-	overflow: hidden;
-}
-.covidDash-wrapper .dashboard-header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.covidDash-wrapper .dashboard-title {
-	font-family: 'Rubik', sans-serif;
-	font-size: 51px;
-	line-height: 49px;
-	font-weight: 400;
-}
-.covidDash-wrapper .dashboard-header figure, .deathdata figure, 
-.recoverdata figure {
-	margin: 0;
-	z-index: 999;
-}
-.covidDash-wrapper .dashboard-header figure img, .deathdata figure img, 
-.recoverdata figure img {
-	max-width: 100%;
-}
-.covidDash-wrapper .total-affected {
-	text-align: center;
-	margin: 45px 0;
-}
-.covidDash-wrapper .total-affected h1#totAffected {
-	font-family: 'Rubik', sans-serif;
-	font-size: 170px;
-	line-height: 170px;
-	/*line-height: 236px;*/
-	font-weight: 400;
-	margin: 0 auto;
-}
-.covidDash-wrapper .total-affected p {
-	font-family: 'Rubik', sans-serif;
-	font-size: 28px;
-	line-height: 33px;
-	font-weight: 300;
-	margin: 0 auto;
-}
-.deathdata, .recoverdata {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.deaths-recoverData {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 65px;
-}
-.deathdata {
-	background: #1d1d1b
-}
-
-.recoverdata {
-	background: #eaf4ceba;
-}
-.deathdata {
-	color: #fff;
-}
-.deathdata h2, .recoverdata h2 {
-	font-family: 'Rubik', sans-serif;
-	font-size: 40px;
-	line-height: 45px;
-	font-weight: 300;
-	margin: 0 auto;
-}
-.deathdata h1, .recoverdata h1 {
-	font-family: 'Rubik', sans-serif;
-	font-size: 80px;
-	line-height: 90px;
-	font-weight: 300;
-	margin: 0 auto;
-}
-
-.deathdata, .recoverdata {
-	padding: 15px 40px;
-	margin: 5px;
-	box-sizing: border-box;
-	border-radius: 20px;
-}
-.deathdata {
-	padding: 15px 60px;
-}
-.deathCount , .recoverCount {
-	margin-left: 25px;
-}
-.barchart {
-	display: flex;
-	justify-content: space-between;
-	/* align-items: center; */
-	margin: 45px 0;
-}
-
-.dailydeathbar .barchart, .dailydeathline .barchart  {
-	margin: 10px 0;
-}
-.barchart .mildCondition {
-	color: #f8b133;
-}
-.barchart .criticalCondition {
-	color: #e20613;
-}
-.totalData {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.countrywiseData {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-}
-.countrywiseData div {
-	margin: 20px 0;
-}
-.dangerData, .totalandNew {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.topCounts, .downCounts {
-	display: flex;
-	/* justify-content: center; */
-	align-items: center;
-	padding: 5px 0;
-}
-.topCounts {
-	border-bottom: 1px solid #6f6f6e;
-}
-.totalandNew {
-	background: #ececec;
-	padding: 10px 20px;
-	box-sizing: border-box;
-	border-radius: 6%;
-}
-.dangerData {
-	margin: 25px 0;
-}
-.dangerData figure {
-	margin: 0;
-}
-.deathCounts {
-	margin-left: 50px;
-}
-.countValue {
-	padding: 10px 20px;
-	box-sizing: border-box;
-}
-.topCounts h2, .downCounts h2,
-.criticalData h2 {
-	font-family: 'Rubik', sans-serif;
-	font-size: 22px;
-	line-height: 26px;
-	font-weight: 500;
-	margin: 0 auto;
-}
-.topCounts h1, .downCounts h1,
-.criticalData h1 {
-	font-family: 'Rubik', sans-serif;
-	font-size: 91px;
-	line-height: 108px;
-	font-weight: 400;
-	margin: 0 auto;
-	color: #e20613;
-}
-/*.barchart .left-chart img {
-	width: 900px;
-}*/
-.criticalData {
-	border: 1px solid #d9d9d9;
-	border-radius: 6%;
-	padding: 6px 20px;
-	box-sizing: border-box;
-}
-.criticalCounts, .recoverCounts {
-	padding: 10px 0;
-}
-.criticalData h2 {
-	color: #868686
-}
-.recoverCounts {
-	border-bottom: 1px solid #d9d9d9;
-}
-.criticalData h1 {
-	color: #39a935
-}
-.barchart .totalData div {
-	margin: 10px 18px;
-}
-.barchart .totalData h2 {
-	font-family: 'Rubik', sans-serif;
-	font-size: 21px;
-	line-height: 28px;
-	font-weight: 300;
-	margin: 0 auto;
-}
-.barchart .totalData h1 {
-	font-family: 'Rubik', sans-serif;
-	font-size: 61px;
-	line-height: 74px;
-	font-weight: 700;
-	margin: 0 auto;
-}
-.barchart .right-chart h1 {
-	font-family: 'Rubik', sans-serif;
-	font-size: 27px;
-	line-height: 32px;
-	font-weight: 300;
-	margin: 0 auto;
-	/* padding-right: 25px;
-	box-sizing: border-box; */
-}
-.barchart .right-chart {
-	padding-left: 15px;
-	box-sizing: border-box;
-}
-.barchart .right-chart p {
-	font-family: 'Rubik', sans-serif;
-	font-size: 61px;
-	line-height: 74px;
-	font-weight: 700;
-	margin: 0 auto;
-}
-.map-wrapper {
-	display: flex;
-}
-.world-impact h1 {
-	font-family: 'Rubik', sans-serif;
-	font-size: 46px;
-	line-height: 55px;
-	font-weight: 400;
-	margin: 0 auto;
-}
-.world-impact p {
-	font-family: 'Rubik', sans-serif;
-	font-size: 23px;
-	line-height: 27px;
-	font-weight: 400;
-	color: #9c9b9b;
-	margin: 0 auto;
-}
-.countrywiseData h2 {
-	font-family: 'Rubik', sans-serif;
-	font-size: 22px;
-	line-height: 26px;
-	font-weight: 500;
-	color: #e20613;
-	margin: 0 auto;
-}
-.countrywiseData h1 {
-	font-family: 'Rubik', sans-serif;
-	font-size: 80px;
-	line-height: 89px;
-	font-weight: 400;
-	/* color: #e20613; */
-	margin: 0 auto;
-}
-.countrywiseData .country h1 {
-	font-size: 46px;
-	line-height: 55px;
-}
-.countrywiseData .newCases h2, .countrywiseData .newCases h1 {
-	color: #f29100 !important;
-}
-.worldmap, .indiamap {
-	width: 75%;
-	position: relative;
-}
-
-.zoomControls{
-	position: absolute;
-    top: 15px;
-    left: 15px;
-}
-.zoomControls button{
-	cursor: pointer;
-	border: none;
-    background-color: #93C01F;
-    color: #FFFFFF;
-    font-size: 20px;
-    padding: 2px 10px;
-    margin: 5px;
-}
-
-.zoomControls button:hover{
-    background-color: rgb(116, 155, 19);
-}
-.countrywiseData {
-	width: 25%;
-}
-.dailyDeaths h1, .totalDeaths h1, .faqs h1 {
-	font-family: 'Rubik', sans-serif;
-	font-size: 46px;
-	line-height: 55px;
-	font-weight: 400;
-	/*color: #e20613;*/
-	margin: 0 auto;
-}
-.dailyDeaths p, .totalDeaths p {
-	font-family: 'Rubik', sans-serif;
-	font-size: 22px;
-	line-height: 26px;
-	font-weight: 300;
-	/*color: #e20613;*/
-	margin: 0 auto;
-}
-.dailyDeaths, .totalDeaths {
-	margin: 55px 0;
-}
-.country {
-	stroke: #ffffff;
-	fill: #000000;
-    stroke-width: 0.05;
-}
-
-/* .country:hover {
-    fill: #000000;
-} */
-
-.country-center{
-	fill: red;
-	stroke: brown;
-    stroke-width: 0.5;
-}
-
-.maptooltip{
-	background-color: #000;
-	color: #FFFFFF;
-	position: absolute;
-	padding: 5px 10px;
-	box-sizing: border-box;
-	transition: all 0.2s;
-	display: none;
-}
-
-
-.left-chart .horstackchart div{
-	display: inline-block;
-    line-height: 75px;
-	font-size: 38px;
-	font-family: 'Rubik', sans-serif;
-	color: #FFFFFF;
-	box-sizing: border-box;
-}
-.right-chart .horstackchart div{
-	display: inline-block;
-    line-height: 48px;
-	font-size: 38px;
-	font-family: 'Rubik', sans-serif;
-	color: #FFFFFF;
-	box-sizing: border-box;
-}
-.horstackchart .bar100{
-    width: 100%;
-	border-radius: 15px;
-	
-}
-
-.left-chart .horstackchart .bar100 {
-	height: 75px;
-	background-color: #f8b133;
-	text-align: right;
-}
-
-.right-chart .horstackchart .bar100 {
-	height: 48px;
-	background-color: #c6c6c5;
-	text-align: left;
-	margin: 11px 0;
-}
-.horstackchart, .horstackchart div{
-	transition: all 1.5s;
-}
-.horstackchart #barcritical{
-	height: 100%;
-    width: 20%;
-    background-color: #e20613;
-	border-radius: 15px;
-	text-align: center;
-	
-}
-.horstackchart #baroutcome{
-	height: 100%;
-    width: 20%;
-    background-color: #bd1622;
-    border-radius: 15px;
-    text-align: left;
-    padding: 0 0 0 11px;
-    /* box-sizing: border-box; */
-	
-}
-
-.barchart text{
-	font-family: 'Rubik', sans-serif;
-}
-
-.dangerData figure img {
-	max-width: 100%;
-}
-
-#lastupdatedtime {
-	font-size: 12px;
-    line-height: 16px;
-    margin: 10px 0 0 0;
-}
-.mobileSelect-container.white .list-container .mobileSelect-control {
-    color: #DC4447 !important;
-}
-.mobileSelect-container.white .list-container .mobileSelect-control.selected {
-    background-color: #DC4447 !important;
-    color: white !important;
-}
-.dropdown, .dropdownstate,.btn-mobileSelect-gen {
-	background-color: #000000;
-    color: #ffffff;
-	padding: 7px 10px 5px 10px;
-	display: none;
-}
-
-.state:hover{
-	fill: #000000;
-	cursor: pointer;
-}
-
-.legend{
-	font-family: 'Rubik', sans-serif;
-	list-style: none;
-}
-.legend{
-	list-style: none;
-	margin: 0;
-    padding: 0;
-}
-.legend li{
-	display: inline-block;
-	margin-right: 15px;
-}
-.legend li span{
-	width: 10px;
-	height: 10px;
-	display: inline-block;
-	background-color: #000000;
-	margin-right: 5px;
-	border: 1px solid #000000;
-}
-
-.stateDeaths {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	align-items: center;
-	background: #ececec;
-    padding: 0px 20px;
-    box-sizing: border-box;
-    border-radius: 6%;
-}
-.stateDeaths figure {
-	padding: 0;
-    margin: 0;
-}
-.stateDeaths img {
-	width: 70%;
-	padding: 0;
-    margin: 0;
-}
-
-.anchor-nav{
-	text-align: center;
-	margin: 50px auto;
-}
-
-.anchor-nav ul {
-	list-style: none;
-	padding: 0;
-}
-
-.anchor-nav ul li{
-	display: inline-block;
-}
-
-.anchor-nav ul li a{
-	text-decoration: none;
-    padding: 5px 24px;
-	font-family: 'Rubik', sans-serif;
-	font-size: 14px;
-    color: white;
-    background-color: #000000;
-    border-radius: 5px;
-    text-transform: uppercase;
-}
-
-/* Accordion */
-
-.faqs .accordion {
-	font-family: 'Rubik', sans-serif;
-    color: #444;
-    cursor: pointer;
-    padding: 9px;
-    width: 100%;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-right: 1px solid transparent;
-    border-left: 1px solid transparent;
-    text-align: left;
-    outline: none;
-    font-size: 21px;
-    transition: 0.4s;
-    background-color: transparent;
-    font-weight: 500;
-  }
-  
-  .faqs .active, .faqs .accordion:hover {
-	background-color: #E8E8E8; 
-  }
-  
-  .faqs .panel {
-	padding: 0 18px;
-	display: none;
-	background-color: white;
-	overflow: hidden;
-  }
-
-  .faqs .accordion:after {
-	content: '\02795'; /* Unicode character for "plus" sign (+) */
-	font-size: 13px;
-	color: transparent;  
-  	text-shadow: 0 0 0 red;
-	float: right;
-	margin-left: 5px;
-	line-height: 28px;
-  }
-  
-  .faqs .active:after {
-	content: "\2796"; /* Unicode character for "minus" sign (-) */
-  }
-
-  .faqs p{
-	font-size: 15px;
-	line-height: 17px;
-	font-family: 'Rubik', sans-serif;
-  }
-  .faqs .panel p{
-	font-size: 15px;
-	line-height: 17px;
-	font-family: 'Rubik', sans-serif;
-  }
-
- .leftaxis .tick text{
-	font-size:8px;
-	font-weight:  100;
-  }
- .bottomaxis .tick text{
-	font-size:8px;
-  }
-
-  .yaxiscaption {
-	  font-weight: 500;
-  }
-
-  .chartcontent{
-	display: grid;
-	grid-template-columns: 70% 30%;
-	margin-bottom: 15px;
-  }
-  
-  .chartcontent p{
-    text-align: left;
-  }
-  
-  .chartcontent .chartnav{
-	text-align: right;
-	
-  }
-  
-  .chartcontent .chartnav button{
-	background-color: #000;
-    color: #FFF;
-    border: none;
-    padding: 5px 10px;
-	font-size: 12px;
-	font-family: 'Rubik', sans-serif;
-	border-radius: 5px;
-    text-transform: uppercase;
-  }
-  .chartcontent .chartnav button.active{
-	background-color: rgb(164, 1, 1);
-	color: #FFF;
-	outline:0;
-  }
-  
-  .chartcontent .chartnav button:hover{
-	background-color: rgb(164, 1, 1);
-    color: #FFF;
-  }
-  .chartcontent .chartnav buttonbutton:focus {outline:0;}
-
-  .dailyDeaths p, .totalDeaths p{
-	  margin: 0 !important;
-  }
-
-  .table table {
-	  width: 100%;
-	  font-family: 'Rubik', sans-serif;
-	  text-align: left;
-	border-collapse: collapse;
-	width: 100%;
-  }
-  
-  .table td, .table th {
-	border: 1px solid #ddd;
-	padding: 8px;
-  }
-
-  .table td{
-	  font-size: 14px;
-  }
-  
-  .table tr:nth-child(even){background-color: #f2f2f2;}
-  
-  .table tr:hover {background-color: #ddd;}
-  
-  .table th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: #000000;
-	color: white;
-	font-weight: 500;
-  }
-
-  #myearth{
+#myearth{
 	width: 100%;
 	max-width: 900px;
 	margin: 0 auto;
@@ -645,7 +6,7 @@
 
   .earth-overlay {
     color: #fff;
-    border: 1px solid #fff;
+    border: 1px solid #cccccc;
 	border-radius: 10px;
 	background-color: #FFFFFF;
     text-align: center;
@@ -749,29 +110,666 @@
 	.map-wrapper{
 		margin: 20px 0 25px 0;
 	}
+.covidDash-wrapper {
+	max-width: 1040px;
+	/*width: 80%;*/
+	display: block;
+	padding: 20px 10px;
+	box-sizing: border-box;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.covidDash-wrapper .dashboard-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.covidDash-wrapper .dashboard-title {
+	font-family: 'Rubik', sans-serif;
+	font-size: 51px;
+	line-height: 49px;
+	font-weight: 400;
+}
+.covidDash-wrapper .dashboard-header figure, .deathdata figure, 
+.recoverdata figure {
+	margin: 0;
+	z-index: 999;
+}
+.covidDash-wrapper .dashboard-header figure img, .deathdata figure img, 
+.recoverdata figure img {
+	max-width: 100%;
+}
+.covidDash-wrapper .total-affected {
+	text-align: center;
+	margin: 45px 0;
+}
+.covidDash-wrapper .total-affected h1#totAffected {
+	font-family: 'Rubik', sans-serif;
+	font-size: 170px;
+	line-height: 170px;
+	/*line-height: 236px;*/
+	font-weight: 400;
+	margin: 0 auto;
+}
+.covidDash-wrapper .total-affected p {
+	font-family: 'Rubik', sans-serif;
+	font-size: 28px;
+	line-height: 33px;
+	font-weight: 300;
+	margin: 0 auto;
+}
+.deathdata, .recoverdata {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.deaths-recoverData {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 65px;
+}
+.deathdata {
+	background: #1d1d1b
+}
+
+.recoverdata {
+	background: #eaf4ceba;
+}
+.deathdata h2, .deathdata h1 {
+	color: #fff!important;
+}
+.deathdata h2, .recoverdata h2 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 40px;
+	line-height: 45px;
+	font-weight: 300;
+	margin: 0 auto;
+}
+.deathdata h1, .recoverdata h1 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 80px;
+	line-height: 90px;
+	font-weight: 300;
+	margin: 0 auto;
+}
+
+.deathdata, .recoverdata {
+	padding: 15px 40px;
+	margin: 5px;
+	box-sizing: border-box;
+	border-radius: 20px;
+}
+.deathdata {
+	padding: 15px 60px;
+}
+.deathCount , .recoverCount {
+	margin-left: 25px;
+}
+.barchart {
+	display: flex;
+	justify-content: space-between;
+	/* align-items: center; */
+	margin: 45px 0;
+}
+
+.dailydeathbar .barchart, .dailydeathline .barchart  {
+	margin: 10px 0;
+}
+.barchart .mildCondition h2, .barchart .mildCondition h1 {
+	color: #f8b133 !important;
+}
+.barchart .criticalCondition h2, .barchart .criticalCondition h1 {
+	color: #e20613 !important;
+}
+.totalData {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.countrywiseData {
+	display: flex;
+	margin-left:10px;
+	justify-content: center;
+	flex-direction: column;
+}
+.countrywiseData div {
+	margin: 20px 0;
+}
+.dangerData, .totalandNew {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.topCounts, .downCounts {
+	display: flex;
+	/* justify-content: center; */
+	align-items: center;
+	padding: 5px 0;
+}
+.topCounts {
+	border-bottom: 1px solid #6f6f6e;
+}
+.totalandNew {
+	background: #ececec;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	border-radius: 6%;
+}
+.dangerData {
+	margin: 25px 0;
+}
+.dangerData figure {
+	margin: 0;
+}
+.deathCounts {
+	margin-left: 50px;
+}
+.countValue {
+	padding: 10px 20px;
+	box-sizing: border-box;
+}
+.topCounts h2, .downCounts h2,
+.criticalData h2 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 22px;
+	line-height: 26px;
+	font-weight: 500;
+	margin: 0 auto;
+}
+.topCounts h1, .downCounts h1,
+.criticalData h1 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 91px;
+	line-height: 108px;
+	font-weight: 400;
+	margin: 0 auto;
+	color: #e20613;
+	text-align:center;
+}
+/*.barchart .left-chart img {
+	width: 900px;
+}*/
+.criticalData {
+	border: 1px solid #d9d9d9;
+	border-radius: 6%;
+	padding: 6px 20px;
+	box-sizing: border-box;
+}
+.criticalCounts, .recoverCounts {
+	padding: 10px 0;
+}
+.criticalData h2 {
+	color: #868686
+}
+.recoverCounts {
+	border-bottom: 1px solid #d9d9d9;
+}
+.criticalData h1 {
+	color: #39a935
+}
+.barchart .totalData div {
+	margin: 10px 18px;
+}
+.barchart .totalData h2 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 21px;
+	line-height: 28px;
+	font-weight: 300;
+	margin: 0 auto;
+}
+.barchart .totalData h1 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 55px;
+	line-height: 60px;
+	font-weight: 700;
+	margin: 0 auto;
+}
+.barchart .right-chart h1 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 27px;
+	line-height: 32px;
+	font-weight: 300;
+	margin: 0 auto;
+	/* padding-right: 25px;
+	box-sizing: border-box; */
+}
+.barchart .right-chart {
+	padding-left: 15px;
+	box-sizing: border-box;
+}
+.barchart .right-chart p {
+	font-family: 'Rubik', sans-serif;
+	font-size: 50px;
+	line-height: 55px;
+	font-weight: 700;
+	margin: 0 auto;
+}
+.map-wrapper {
+	display: flex;
+}
+.world-impact h1 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 46px;
+	line-height: 55px;
+	font-weight: 400;
+	margin: 0 auto;
+}
+.world-impact p {
+	font-family: 'Rubik', sans-serif;
+	font-size: 23px;
+	line-height: 27px;
+	font-weight: 400;
+	color: #9c9b9b;
+	margin: 6px auto !important;
+}
+.countrywiseData h2 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 22px;
+	line-height: 26px;
+	font-weight: 500;
+	color: #e20613;
+	margin: 0 auto;
+}
+.countrywiseData h1 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 80px;
+	line-height: 89px;
+	font-weight: 400;
+	/* color: #e20613; */
+	margin: 0 auto;
+}
+.countrywiseData .country h1 {
+	font-size: 46px;
+	line-height: 55px;
+}
+.countrywiseData .newCases h2, .countrywiseData .newCases h1 {
+	color: #f29100 !important;
+}
+.worldmap, .indiamap {
+	width: 75%;
+	position: relative;
+}
+
+.countrywiseData {
+	width: 25%;
+}
+.dailyDeaths h1, .totalDeaths h1 {
+	font-family: 'Rubik', sans-serif;
+	font-size: 46px;
+	line-height: 55px;
+	font-weight: 400;
+	/*color: #e20613;*/
+	margin: 0 auto;
+}
+.dailyDeaths p, .totalDeaths p {
+	font-family: 'Rubik', sans-serif;
+	font-size: 22px;
+	line-height: 26px;
+	font-weight: 300;
+	/*color: #e20613;*/
+	margin: 0 auto;
+}
+.dailyDeaths, .totalDeaths {
+	margin: 55px 0;
+}
+.country {
+	stroke: #ffffff;
+	fill: #000000;
+    stroke-width: 0.05;
+}
+
+/* .country:hover {
+    fill: #000000;
+} */
+
+.country-center{
+	fill: red;
+	stroke: brown;
+    stroke-width: 0.5;
+}
+
+.maptooltip{
+	background-color: #000;
+	color: #FFFFFF;
+	position: absolute;
+	padding: 5px 10px;
+	box-sizing: border-box;
+	transition: all 0.2s;
+	display: none;
+}
+
+
+.left-chart .horstackchart div{
+	display: inline-block;
+    line-height: 75px;
+	font-size: 38px;
+	font-family: 'Rubik', sans-serif;
+	color: #FFFFFF;
+	box-sizing: border-box;
+}
+.right-chart .horstackchart div{
+	display: inline-block;
+    line-height: 48px;
+	font-size: 38px;
+	font-family: 'Rubik', sans-serif;
+	color: #FFFFFF;
+	box-sizing: border-box;
+}
+.horstackchart .bar100{
+    width: 100%;
+	border-radius: 15px;
+	
+}
+
+.left-chart .horstackchart .bar100 {
+	height: 75px;
+	background-color: #f8b133;
+	text-align: right;
+}
+
+.right-chart .horstackchart .bar100 {
+	height: 48px;
+	background-color: #c6c6c5;
+	text-align: left;
+	margin: 11px 0;
+}
+.horstackchart, .horstackchart div{
+	transition: all 1.5s;
+}
+.horstackchart #barcritical{
+	height: 100%;
+    width: 20%;
+    background-color: #e20613;
+	border-radius: 15px;
+	text-align: center;
+	
+}
+.horstackchart #baroutcome{
+	height: 100%;
+    width: 20%;
+    background-color: #bd1622;
+    border-radius: 15px;
+    text-align: left;
+    padding: 0 0 0 11px;
+    /* box-sizing: border-box; */
+	
+}
+
+/*svg.barchart{*/
+/*	background-color: #f5f5f5;*/
+/*}*/
+
+.barchart text{
+	font-family: 'Rubik', sans-serif;
+}
+
+/*.tick text{*/
+/*	font-size:9px;*/
+/*}*/
+
+.dangerData figure img {
+	max-width: 100%;
+}
+.zoomControls{
+	position: absolute;
+    top: 15px;
+    left: 15px;
+}
+.zoomControls button{
+    cursor:pointer;
+	border: none;
+    background-color: #93C01F;
+    color: #FFFFFF;
+    font-size: 20px;
+    padding: 2px 10px;
+    margin: 5px;
+}
+#lastupdatedtime {
+	font-size: 12px;
+    line-height: 16px;
+    margin: 10px 0 0 0;
+}
+.mobileSelect-container.white .list-container .mobileSelect-control {
+    color: white !important;
+}
+.mobileSelect-container.white .list-container .mobileSelect-control.selected {
+    background-color: #DC4447 !important;
+    color: white !important;
+}
+.dropdown, .dropdownstate,.btn-mobileSelect-gen {
+	background-color: #000000;
+    color: #ffffff;
+	padding: 7px 10px 5px 10px;
+	display: none;
+}
+
+.state:hover{
+	fill: #000000;
+	cursor: pointer;
+}
+
+.legend{
+	font-family: 'Rubik', sans-serif;
+	list-style: none;
+}
+.legend{
+	list-style: none;
+	margin: 10px 0;
+    padding: 0;
+}
+.legend li{
+	display: inline-block;
+	margin-right: 15px;
+}
+.legend li span{
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	background-color: #000000;
+	margin-right: 5px;
+	border: 1px solid #000000;
+}
+
+.stateDeaths {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	align-items: center;
+	background: #ececec;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    border-radius: 6%;
+}
+.stateDeaths figure {
+	padding: 0;
+    margin: 0;
+}
+.stateDeaths img {
+	width: 70%;
+	padding: 0;
+    margin: 0;
+}
+.anchor-nav{
+	text-align: center;
+	margin: 50px auto;
+}
+
+.anchor-nav ul {
+	list-style: none;
+}
+
+.anchor-nav ul li{
+	display: inline-block;
+}
+
+.anchor-nav ul li a{
+	text-decoration: none;
+    padding: 5px 15px;
+	font-family: 'Rubik', sans-serif;
+	font-size: 14px;
+    color: white;
+    background-color: #000000;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+/* Accordion */
+
+.faqs .accordion {
+	font-family: 'Rubik', sans-serif;
+    color: #444;
+    cursor: pointer;
+    padding: 9px;
+    width: 100%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid transparent;
+    border-left: 1px solid transparent;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    transition: 0.4s;
+    background-color: transparent;
+    font-weight: 500;
+  }
+  .anchor-nav ul {
+      lilst-style: none;
+      padding:0;
+  }
+  .faqs .active, .faqs .accordion:hover {
+	background-color: #E8E8E8; 
+  }
+  
+  .faqs .panel {
+	padding: 0 18px;
+	display: none;
+	background-color: white;
+	overflow: hidden;
+  }
+.faqs .accordion:after {
+	content: '\02795'; /* Unicode character for "plus" sign (+) */
+	font-size: 16px;
+	color: transparent;  
+  	text-shadow: 0 0 0 red;
+	float: right;
+	margin-left: 5px;
+	line-height: 28px;
+  }
+  
+  .faqs .active:after {
+	content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }
+.faqs h1{
+	font-family: 'Rubik', sans-serif;
+}
+  .faqs p{
+	font-size: 15px;
+	line-height: 17px;
+	font-family: 'Rubik', sans-serif;
+	margin: 15px 0!important;
+  }
+  .faqs .panel p{
+	font-size: 15px;
+	line-height: 17px;
+	font-family: 'Rubik', sans-serif;
+  }
+ .chartcontent{
+    display: grid;
+    grid-template-columns: 100%;
+    margin-bottom: 15px;
+    line-height:18px;
+  }
+  
+  .chartcontent p{
+    text-align: left;
+    margin:14px 0 !important;
+  }
+  
+  .chartcontent .chartnav{
+    text-align: left;
+    
+  }
+  
+  .chartcontent .chartnav button{
+    background-color: #000;
+    color: #FFF;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-family: 'Rubik', sans-serif;
+    border-radius: 5px;
+    text-transform: uppercase;
+  }
+  .chartcontent .chartnav button.active{
+    background-color: rgb(164, 1, 1);
+    color: #FFF;
+    outline:0;
+  }
+  
+  .chartcontent .chartnav button:hover{
+    background-color: rgb(164, 1, 1);
+    color: #FFF;
+  }
+  .chartcontent .chartnav buttonbutton:focus {outline:0;}
+
+  .dailyDeaths p, .totalDeaths p{
+      margin: 0 !important;
+  }
+
+  .table table {
+      width: 100%;
+      font-family: 'Rubik', sans-serif;
+      text-align: left;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table td, .table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .table td{
+      font-size: 14px;
+  }
+  
+  .table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .table tr:hover {background-color: #ddd;}
+  
+  .table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #000000;
+    color: white;
+    font-weight: 500;
+  }
+/*@media screen and (min-width: 401px) and (max-width: 767px) {*/
+/*    .anchor-nav ul li a {*/
+/*        font-size:11px !important;*/
+/*    }*/
+/*}*/
 
 @media screen and (max-width: 767px) {
-
-	.map-wrapper{
-		margin: 20px 0 25px 0;
-	}
-
-	.earth-overlay {
+    .earth-overlay {
 		margin-top: -276px;
 		margin-left: -95px;
 	}
+    .chartcontent{
+        grid-template-columns:100%;
+     
+        line-height:18px;
+    }
+.chartcontent p{
+    margin: 14px 0 !important;
+}
 
-	.chartcontent{
-		grid-template-columns: 65% 35%;
-	}
-	.chartcontent p{
-		line-height: 30px;
-	}
-
-	.chartcontent .chartnav button{ margin-top: -2px;}
-
-	.leftaxis .tick text, .bottomaxis .tick text{
-		font-size:16px;
+.chartcontent .chartnav {
+    text-align: left;
+}
+    .chartcontent .chartnav button{ margin-top: -2px;}
+    .leftaxis .tick text, .bottomaxis .tick text{
+		font-size:17px !important;
 	}
 
 	.bottomaxis .tick:nth-child(even){
@@ -782,21 +780,26 @@
 		  font-weight: 500;
 		  font-size:16px;
 	  }
-	
-	.anchor-nav ul li{
-		display: grid;
-		height: 30px;
-		width: 100%;
-		margin: 10px 0;
-		line-height: 20px;
-	}
-	
-	
-	.countrywiseData.indiaData {
+    .countrywiseData.indiaData {
 		display: grid;
 		grid-template-columns: 100%;
 	}
-
+	.anchor-nav ul {
+	    /*column-count: 3;*/
+	    padding: 0 10px;
+	}
+	.anchor-nav ul li {
+	    display: inline-flex;
+	    height: 25px;
+	    width: 100px;
+	    margin: 5px;
+	    line-height:20px;
+	}
+    .anchor-nav ul li a {
+        width: 100%;
+        padding: 2px 10px;
+        font-size:10px !important;
+    }
 	.countrywiseData.indiaData .otherdata {
 		display: grid;
 		grid-template-columns: 50% 50%;
@@ -809,14 +812,12 @@
 	.dropdown, .dropdownstate,.btn-mobileSelect-gen{
 		display: block;
 	}
-	.worldmap {
+    .worldmap,.indiamap {
 		width: 100%;
 	}
-
 	.countrywiseData {
 		width: 100%;
 	}
-	
 	.covidDash-wrapper .dashboard-header figure {
 		width: 100px;
 	}
@@ -865,12 +866,12 @@
 		margin: 15px;
 	}
 	.barchart .totalData h1, .barchart .right-chart p {
-		font-size: 25px;
-		line-height: 30px;
+		font-size: 20px;
+		line-height: 28px;
 	}
 	.barchart .totalData h2, .barchart .right-chart h1 {
-		font-size: 18px;
-		line-height: 22px;
+		font-size: 16px;
+		line-height: 20px;
 	}
 	.horstackchart {
 		margin: 15px 0;
@@ -891,15 +892,15 @@
 	}
 	.countrywiseData .country h1 {
 		font-size: 28px;
-		line-height: 30px;
+		line-height: 45px;
 	}
 	.countrywiseData h1 {
-		font-size: 40px;
+		font-size: 30px;
 		line-height: 45px;
 	}
 	.dangerData {
 		flex-direction: column;
-		margin: 10px 0;
+		margin: 30px 0;
 	}
 	.left-chart .horstackchart div, .right-chart .horstackchart div {
 		font-size: 22px;
@@ -913,6 +914,7 @@
 	.countrywiseData {
 		flex-direction: row;
 		justify-content: space-between;
+		width:auto;
 	}
 	.deathCounts {
 		margin-left: 15px;
@@ -936,6 +938,7 @@
 	.topCounts h1, .downCounts h1, .criticalData h1 {
 		font-size: 30px;
 		line-height: 40px;
+		text-align:center;
 	}
 	.criticalCounts, .recoverCounts {
 		padding: 10px 52px;
@@ -1046,4 +1049,29 @@
 }
 .loading#countrytotalcases, .loading#countrynewcases {
 	height: 90px;
+}
+
+
+.leftaxis .tick text{
+	font-size:8px;
+	font-weight:  100;
+  }
+ .bottomaxis .tick text{
+	font-size:8px;
+  }
+
+  .yaxiscaption {
+	  font-weight: 500;
+  }
+.indiamap small {
+    position: absolute;
+    bottom: -8px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 400;
+    margin: 16px 0;
+}
+svg.india.map {
+    margin: 20px 0;
 }
