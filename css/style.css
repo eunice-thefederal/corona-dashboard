@@ -85,6 +85,9 @@
  .points {
     color: #035add !important;
 }
+ .greypoints, .greypoints h1, .greypoints p {
+    color: #828282 !important;
+}
 
 
   
@@ -220,7 +223,7 @@
 	color: #f8b133 !important;
 }
 .barchart .criticalCondition h2, .barchart .criticalCondition h1 {
-	color: #e20613 !important;
+	color: #e67e22 !important;
 }
 .totalData {
 	display: flex;
@@ -368,7 +371,7 @@
 	font-size: 22px;
 	line-height: 26px;
 	font-weight: 500;
-	color: #e20613;
+	/* color: #e20613; */
 	margin: 0 auto;
 }
 .countrywiseData h1 {
@@ -383,9 +386,9 @@
 	font-size: 46px;
 	line-height: 55px;
 }
-.countrywiseData .newCases h2, .countrywiseData .newCases h1 {
+/* .countrywiseData .newCases h2, .countrywiseData .newCases h1 {
 	color: #f29100 !important;
-}
+} */
 .worldmap, .indiamap {
 	width: 75%;
 	position: relative;
@@ -443,7 +446,7 @@
 .left-chart .horstackchart div{
 	display: inline-block;
     line-height: 75px;
-	font-size: 38px;
+	font-size: 30px;
 	font-family: 'Rubik', sans-serif;
 	color: #FFFFFF;
 	box-sizing: border-box;
@@ -480,7 +483,7 @@
 .horstackchart #barcritical{
 	height: 100%;
     width: 20%;
-    background-color: #e20613;
+    background-color: #e67e22;
 	border-radius: 15px;
 	text-align: center;
 	
@@ -488,7 +491,7 @@
 .horstackchart #baroutcome{
 	height: 100%;
     width: 20%;
-    background-color: #bd1622;
+    background-color: #828282;
     border-radius: 15px;
     text-align: left;
     padding: 0 0 0 11px;
@@ -575,7 +578,7 @@
 	display: grid;
 	grid-template-columns: 50% 50%;
 	align-items: center;
-	background: #ececec;
+	background: #000000;
     padding: 0px 20px;
     box-sizing: border-box;
     border-radius: 6%;
@@ -588,6 +591,9 @@
 	width: 70%;
 	padding: 0;
     margin: 0;
+}
+.stateDeaths h1,  .stateDeaths h2{
+	color: #FFFFFF;
 }
 .anchor-nav{
 	text-align: center;
