@@ -43,28 +43,23 @@ function drawAccTable(data, selector){
 
       
 
-      console.log("stateData", stateData);
-      console.log("districtData", districtData);
-      console.log(stateData,":" ,sum);
-      
-      var rowsState = tbody.append('tr')
-        .attr("class", "stateRow")
-        .append('td')
-        .attr("colspan", "5")
-        .text(stateData)
+      // console.log("stateData", stateData);
+      // console.log("districtData", districtData);
+      // console.log(stateData,":" ,sum);
+      // console.log(stateLevelData ,stateLevelData);
 
-      var rows = tbody.selectAll('districtRow')
-        .data(districtData)
+
+      var rowsState = tbody.selectAll('districtRow')
+        .data(stateLevelData)
         .enter()
         .append('tr')
-        .attr("class", "districtRow");
+        .attr("class", "stateRow");
 
-      // create a cell in each row for each column
-      var cells = rows.selectAll('td')
+        var stateCells = rowsState.selectAll('td')
         .data(function (row) {
           return labels.map(function (column) {
-            // console.log("column", column);
-            // console.log("row", row);
+            console.log("column", column);
+            console.log("row", row);
             
             return {column: column, value: row[column]};
           });
@@ -72,6 +67,35 @@ function drawAccTable(data, selector){
         .enter()
         .append('td')
           .text(function (d) { return d.value; });
+
+
+          var rows = tbody.selectAll('districtRow')
+          .data(districtData)
+          .enter()
+          .append('tr')
+          .attr("class", "districtRow");
+  
+        // create a cell in each row for each column
+        var cells = rows.selectAll('td')
+          .data(function (row) {
+            return labels.map(function (column) {
+              // console.log("column", column);
+              // console.log("row", row);
+              
+              return {column: column, value: row[column]};
+            });
+          })
+          .enter()
+          .append('td')
+            .text(function (d) { return d.value; });
+      
+      // var rowsState = tbody.append('tr')
+      //   .attr("class", "stateRow")
+      //   .append('td')
+      //   .attr("colspan", "5")
+      //   .text(stateData)
+
+     
 
 
       
