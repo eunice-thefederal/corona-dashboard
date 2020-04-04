@@ -2,7 +2,7 @@ function drawAccTable(data, selector){
 
   var stateKey = "state", districtKey = "districtData";
    
-    var labels = ["district", "confirmed", "active", "recovered", "deceased"];
+    var labels = ["district", "confirmed"];
     var sublabels = ["district", "confirmed"];
     // var labels = d3.keys(data[0][districtKey][0]); 
 
