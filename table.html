@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Miniature Earth | Test Demo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+    #myacctable table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    #myacctable table tr{
+        width: 100%;
+        position: relative;
+    }
+
+    /* #myacctable table td{
+        width: 20%;
+    } */
+
+    #myacctable table td, #myacctable table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #myacctable table tr:nth-child(even){background-color: #f2f2f2;}
+
+    #myacctable table tr:hover {background-color: #ddd;}
+
+    #myacctable table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+    #myacctable table .stateRow {
+        background-color: #f8f8f8;
+    }
+    #myacctable table .stateRow td {
+        font-weight: bold;
+        color: red;
+    }
+    .stateRow:after {
+        content: '\02795';
+        font-size: 13px;
+        color: #777;
+        /* float: right; */
+        margin-left: -4px;
+        margin-top: 8px;
+        right: 94px;
+        position: absolute;
+        }
+
+        .active:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
+        }
+</style>
+
+
+</head>
+
+<body>
+    <div class="covidDash-wrapper">
+        <div id="header" style="display: block;">
+            <h1>COVID-19</h1>
+            <p>Click on a country or territory to see cases, deaths, and recoveries.</p>
+        </div>
+        <div id="myacctable"></div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://thefederal.com/embed/common-js/underscore-min.js"></script>
+    <script src="js/miniature.earth.js"></script>
+    <script src="js/table-api.js"></script>
+    <script src="js/accordion-table.js"></script>
+
+    <script>
+
+    // $(document).ready(function(){
+
+    //     $(".districtRow").hide();
+    //     $('.stateRow').click(function(){
+    //         $(this).nextUntil('tr.stateRow').slideToggle(200);
+    //         this.classList.toggle("active");
+    //     })
+    // })
+
+
+    drawAccTable(testData, "#myacctable")
+    
+    </script>
+
+
+
+</body>
+</html>
