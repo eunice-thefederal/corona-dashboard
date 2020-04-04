@@ -105,4 +105,20 @@ var threeData = (function() {
     return threeData;
 })();
 
+var indiaDistrictData = (function() {
+    var indiaDistrictData = null;
+    jQuery.ajax({
+        'async': false,
+        'global': false,
+        'dataType': 'json',
+        'url': 'https://thefederal.com/api/scraper.php?m=Corona&t=distData',
+        'success': function(data) {
+            indiaDistrictData = data;
+            // console.log("data", data["list"]);
+            
+        }
+    });
+    return indiaDistrictData;
+})();
+
 
