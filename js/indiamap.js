@@ -11,9 +11,11 @@ function drawIndiaMap(selector){
     //     "10": "#FEE5D9",
     //     "30": "#FEE5D9",
     // }
+   
     var colorScale = d3.scaleThreshold()
-    .domain([1, 6, 11, 26, 101, 1001])
-    .range(d3.schemeReds[6]);
+    .domain([1, 180, 350, 530, 700, 890])
+    .range(["#fde8de", "#FDD5C3", "#FCA487", "#FA7254", "#E83A2E", "#BC171C"]);
+    // .range(d3.schemeReds[6]);
     var tool_tip = d3.tip()
         .attr("class", "d3-tipforline")
         .offset([-15, 0])
