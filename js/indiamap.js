@@ -1,6 +1,6 @@
 function drawIndiaMap(selector){
     var width = 300, height = 332, scale = 580, center = [82.8, 23.4];
-    var source = "js/maps/india_state.json";
+    var source = "js/maps/india_2019";
     var svg = d3.select(selector)
     .append("svg")
     .attr("class", "india map")
@@ -37,16 +37,13 @@ function drawIndiaMap(selector){
 
             if(fd[0] !== undefined){
 
-                var U08 = parseInt(fdjk[0]["totalIndianCases"])
+
                 
                 html = "<p>"+d.properties.ST_NM+"</p> "
                 
-                if(d.properties.ST_CODE !== "S09"){
+            
                     html += "<p>Total Confirmed Cases: <span>"+ parseInt(fd[0]["totalIndianCases"]) +"</span></p> "
-                }else{
-                    
-                    html += "<p>Total Confirmed Cases: <span>"+ (parseInt(fd[0]["totalIndianCases"]) + U08 ) +"</span></p> "
-                }
+   
 
                 return html; 
             }else{
