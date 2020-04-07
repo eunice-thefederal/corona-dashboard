@@ -134,19 +134,11 @@ function drawIndiaMap(selector){
                     
                     if(fd[0] !== undefined){
                         // return colorScale(fd[0]["totalIndianCases"]);
-                        if(d.properties.ST_CODE !== "S09"){
                             d3.select("#statename").text(fd[0].StateName)
                             animatedFormatData(fd[0]["totalIndianCases"],"#stateConfIndians")
                             // animatedFormatData(fd[0]["totalForeignCases"],"#stateConfForeigners")
                             animatedFormatData(fd[0]["Cured"],"#stateCured")
                             animatedFormatData(fd[0]["Death"],"#stateDead")
-                        }else{
-                            d3.select("#statename").text("Jammu & Kashmir")
-                            animatedFormatData(parseInt(fd[0]["totalIndianCases"])+U08Indian,"#stateConfIndians")
-                            // animatedFormatData(parseInt(fd[0]["totalForeignCases"])+U08For,"#stateConfForeigners")
-                            animatedFormatData(parseInt(fd[0]["Cured"])+U08Cure,"#stateCured")
-                            animatedFormatData(parseInt(fd[0]["Death"])+U08Cure,"#stateDead")
-                        }
                     }else{
                         d3.select("#statename").text(d.properties.ST_NM)
                         d3.select("#stateConfIndians").text("-")
