@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <!--<script src="https://code.highcharts.com/modules/series-label.js"></script>-->
+        <figure class="highcharts-figure">
+            <div id="container"></div>
+        </figure>
+        <figure class="highcharts-figure">
+            <div id="totalDeath-container"></div>
+        </figure>
+        <style>
+            .highcharts-credits {
+                display: none;
+            }
+        .highcharts-figure, .highcharts-data-table table {
+            min-width: 360px;
+            max-width: 800px;
+            margin: 1em auto;
+        }
+
+        .highcharts-data-table table {
+                font-family: Verdana, sans-serif;
+                border-collapse: collapse;
+                border: 1px solid red;
+                margin: 10px auto;
+                text-align: center;
+                width: 100%;
+                max-width: 500px;
+        }
+        .highcharts-data-table caption {
+            padding: 1em 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+        .highcharts-data-table th {
+                font-weight: 600;
+            padding: 0.5em;
+        }
+        .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+            padding: 0.5em;
+        }
+        .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+        .highcharts-data-table tr:hover {
+            background: #f1f7ff;
+        }
+        #totalDeath-container .highcharts-graph, #totalDeath-container .highcharts-label-box.highcharts-tooltip-box {
+            stroke: #f00;
+        }
+        #totalDeath-container .highcharts-point, #totalDeath-container .highcharts-halo.highcharts-color-0,
+        #totalDeath-container .highcharts-markers.highcharts-series-0.highcharts-line-series.highcharts-color-0.highcharts-tracker.highcharts-series-hover path {
+            fill: #f00;
+        }
+        #totalDeath-container .highcharts-label.highcharts-tooltip.highcharts-color-0  text tspan:nth-child(2) {
+            fill: #f00!important;
+        }
+        #container .highcharts-graph, #container .highcharts-label-box.highcharts-tooltip-box {
+            stroke: orange;
+        }
+        #container .highcharts-point, #container .highcharts-halo.highcharts-color-0,
+        #container .highcharts-markers.highcharts-series-0.highcharts-line-series.highcharts-color-0.highcharts-tracker.highcharts-series-hover path {
+            fill: orange;
+        }
+        #container .highcharts-label.highcharts-tooltip.highcharts-color-0  text tspan:nth-child(2) {
+            fill: orange!important;
+        }
+
+        </style>
+        <script>
+        $(document).ready(function() {
+            Highcharts.setOptions({
+    lang: {
+      thousandsSep: ','
+    }
+  });
+        var totalCases = [];
+		var deathDate = [];
+        var dates = [];
+        $.ajax ({
+        'async': false,
+                'global': false,
+                'dataType': 'json',
+        'url': 'https://thefederal.com/api/scraper.php?m=Corona&t=dailyDeaths',
+            'success': function(data) {
+                //console.log(data)
+				data.forEach(function(key,value) {
+						totalCases.push(parseInt(key["Daily Deaths"]));
+						deathDate.push(key["Date"]);
+					});
+                    
+				totalCases.reverse();
+				deathDate.reverse();
+                    if(screen.width <= 767) {
+                        stepValue = { step: 10};
+                    } else {
+                        stepValue = { step: 5};  
+                    }
+        // console.log("Deaths"+JSON.stringify(deathDate));
+        }
+
+        });
+
+        Highcharts.chart('container', {
+
+            title: {
+                text: ''
+            },
+
+            subtitle: {
+                text: ''
+            },
+
+            yAxis: {
+        
+                title: {
+                    text: 'Number of Deaths'
+                }
+            },
+
+           /* xAxis: {
+            type: 'datetime',
+                accessibility: {
+                    rangeDescription: 'Range: 2010 to 2017'
+                }
+            },
+
+
+            plotOptions: {
+                series: {
+                    label: {
+                        connectorAllowed: false
+                    },
+                    pointStart: Date.UTC(2020, 0, 02),
+                    pointInterval: 24 * 3600 * 1000,
+                }
+            },*/
+			xAxis: {
+
+                type: 'datetime',
+                tickPixelInterval: 400,
+				categories : deathDate,
+                labels:  stepValue
+            },
+
+            series: [{
+                name: 'Daily Deaths',
+                data: totalCases
+            }, ],
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500,
+                    },
+
+                    chartOptions: {
+
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+
+        });
+        });
+
+
+        </script>
+                <script>
+        $(document).ready(function() {
+        var totalDeaths = [];
+		var totdeathDate = [];
+        var dates = [];
+        $.ajax ({
+        'async': false,
+                'global': false,
+                'dataType': 'json',
+        'url': 'https://thefederal.com/api/scraper.php?m=Corona&t=totalDeaths',
+            'success': function(data) {
+                //console.log(data)
+				data.forEach(function(key,value) {
+						totalDeaths.push(parseInt(key["Total Deaths"]));
+						totdeathDate.push(key["Date"]);
+					});
+                    
+				totalDeaths.reverse();
+				totdeathDate.reverse();
+                    if(screen.width <= 767) {
+                        stepValue = { step: 10};
+                    } else {
+                        stepValue = { step: 5};  
+                    }
+        // console.log("Deaths"+JSON.stringify(totdeathDate));
+        }
+
+        });
+
+        Highcharts.chart('totalDeath-container', {
+
+            title: {
+                text: ''
+            },
+
+            subtitle: {
+                text: ''
+            },
+
+            yAxis: {
+        
+                title: {
+                    text: 'Number of Deaths'
+                }
+            },
+
+           /* xAxis: {
+            type: 'datetime',
+                accessibility: {
+                    rangeDescription: 'Range: 2010 to 2017'
+                }
+            },
+
+
+            plotOptions: {
+                series: {
+                    label: {
+                        connectorAllowed: false
+                    },
+                    pointStart: Date.UTC(2020, 0, 02),
+                    pointInterval: 24 * 3600 * 1000,
+                }
+            },*/
+			xAxis: {
+
+                type: 'datetime',
+                tickPixelInterval: 400,
+				categories : totdeathDate,
+                labels:  stepValue
+            },
+
+            series: [{
+                name: 'Total Deaths',
+                data: totalDeaths
+            }, ],
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500,
+                    },
+
+                    chartOptions: {
+
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+
+        });
+        });
+
+        </script>
+    </body>
+</html>
