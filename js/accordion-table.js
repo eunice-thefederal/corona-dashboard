@@ -32,10 +32,15 @@ function drawAccTable(data, selector){
       var sum = d3.sum(districtData, function(d) {
         return d.confirmed;
       })
+      
+      var sumDelta = d3.sum(districtData, function(d) {
+        return d.delta.confirmed;
+      })
 
       stateLevelData.push({
         "district": stateData,
-        "confirmed": sum
+        "confirmed": sum,
+        "delta": sumDelta
       });
 
       
@@ -58,18 +63,27 @@ function drawAccTable(data, selector){
         var stateCells = rowsState.selectAll('td')
         .data(function (row) {
           return labels.map(function (column) {
-            console.log("column", column);
-            console.log("row", row);
-            
-            return {column: column, value: row[column]};
+            console.log(column)
+            return {column: column, value: row[column], delta: row["delta"]};
           });
         })
         .enter()
         .append('td')
-          .text(function (d) { return d.value; });
+          .html(function (d) { 
+            if(d.delta > 0){
+              if(d.column === "confirmed"){
+                return " <span>+"+d.delta+"</span> " + d.value;
+              }else{
+                return d.value;
+              }
+              
+            }else{
+              return d.value;
+            }
+          });
 
 
-          var rows = tbody.selectAll('districtRow')
+        var rows = tbody.selectAll('districtRow')
           .data(districtData)
           .enter()
           .append('tr')
@@ -79,21 +93,29 @@ function drawAccTable(data, selector){
         var cells = rows.selectAll('td')
           .data(function (row) {
             return labels.map(function (column) {
-              // console.log("column", column);
-              // console.log("row", row);
-              
-              return {column: column, value: row[column]};
+              return {column: column, value: row[column], delta:row['delta']};
             });
           })
           .enter()
           .append('td')
-            .text(function (d) { return d.value; });
-      
-      // var rowsState = tbody.append('tr')
-      //   .attr("class", "stateRow")
-      //   .append('td')
-      //   .attr("colspan", "5")
-      //   .text(stateData)
+            .html(function (d) { 
+              
+              
+              if(d.column === "confirmed"){
+                if(d.delta.confirmed > 0){
+                  // console.log("tabled", d);
+                  return " <span>+"+d.delta.confirmed+"</span> " + d.value;
+                }else{
+                  return d.value;
+                }
+              }else{
+                
+                return d.value ;
+              }
+
+              // return d.value; 
+            });
+
 
      
 
