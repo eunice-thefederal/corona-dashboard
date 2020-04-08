@@ -933,6 +933,18 @@
 
 @media screen and (max-width: 767px) {
 
+	#myacctable { margin-bottom: 30px; }
+
+	.indiaData .otherdata h1 { font-size: 36px; }
+
+	.indiaData .otherdata { grid-template-columns: 33% 33% 33.9%; }
+
+	.stateDeaths { grid-template-columns: 45% 55%; padding: 10px 10px; }
+
+	.stateDeaths img { width: 78%;}
+
+	.country{ margin-bottom: 15px;}
+
 	.flexcontainer {
 		grid-template-columns: 100%;
 	}
