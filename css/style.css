@@ -696,12 +696,12 @@
   
   .chartcontent .chartnav{
     text-align: left;
-    
+	margin: 12px 0 4px 0;
   }
   
   .chartcontent .chartnav button{
-    background-color: #000;
-    color: #FFF;
+    background-color: #dddddd;
+    color: #4c4c4c;
     border: none;
     padding: 5px 10px;
     font-size: 12px;
@@ -710,14 +710,14 @@
     text-transform: uppercase;
   }
   .chartcontent .chartnav button.active{
-    background-color: rgb(164, 1, 1);
-    color: #FFF;
-    outline:0;
+    color: #ff0000;
+    background-color: #d4d2d2;
+	outline:0;
   }
   
   .chartcontent .chartnav button:hover{
-    background-color: rgb(164, 1, 1);
-    color: #FFF;
+    color: #ff0000;
+    background-color: #d4d2d2;
   }
   .chartcontent .chartnav buttonbutton:focus {outline:0;}
 
@@ -965,7 +965,8 @@
 }
 
 .chartcontent .chartnav {
-    text-align: left;
+	text-align: left;
+	margin: 6px 0 4px 0;
 }
     .chartcontent .chartnav button{ margin-top: -2px;}
     .leftaxis .tick text, .bottomaxis .tick text{
