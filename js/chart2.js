@@ -34,7 +34,7 @@ function drawchart2(){
         Highcharts.chart('totalDeath-container', {
     
             chart: {
-                height: 400
+                height: 350
             },
             title: {
                 text: ''
