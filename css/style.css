@@ -351,6 +351,10 @@
 .map-wrapper {
 	display: flex;
 }
+.map-wrapper1 {
+	display: flex;
+	flex-direction: column;
+}
 .world-impact h1 {
 	font-family: 'Rubik', sans-serif;
 	font-size: 46px;
@@ -390,12 +394,12 @@
 	color: #f29100 !important;
 } */
 .worldmap, .indiamap {
-	width: 75%;
+	width: 100%;
 	position: relative;
 }
 
 .countrywiseData {
-	width: 25%;
+	width: 100%;
 }
 .dailyDeaths h1, .totalDeaths h1 {
 	font-family: 'Rubik', sans-serif;
@@ -579,9 +583,9 @@
 	grid-template-columns: 50% 50%;
 	align-items: center;
 	background: #000000;
-    padding: 0px 20px;
+    padding: 10px 20px;
     box-sizing: border-box;
-    border-radius: 6%;
+    border-radius: 10px;
 }
 .stateDeaths figure {
 	padding: 0;
@@ -756,7 +760,112 @@
 /*    }*/
 /*}*/
 
+.flexcontainer{
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-column-gap: 30px;
+	margin: 20px 0 25px 0;
+}
+
+.indian-map-section {
+	flex-direction: column;
+}
+
+.indian-map-section p {
+	margin: 0 !important;
+}
+
+.indiaData .otherdata{
+	display: grid;
+    grid-template-columns: 33% 33% 30%;
+}
+.indiaData .otherdata h2{
+	font-family: 'Rubik', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+    margin: 0px 0 0 0;
+}
+
+.indiaData .otherdata h1 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 45px;
+    line-height: 45px;
+    font-weight: 400;
+    margin: 0 auto;
+}
+
+#myacctable {
+	position: relative;
+ }
+ #myacctable table {
+	 font-family: 'Rubik', sans-serif;
+	 border-collapse: collapse;
+	 width: 100%;
+ }
+ #myacctable table tr{
+	 width: 100%;
+	 position: relative;
+ }
+
+ /* #myacctable table td{
+	 width: 20%;
+ } */
+
+ #myacctable table td, #myacctable table th {
+
+	 padding: 8px;
+	 
+ }
+
+ #myacctable table th {
+	 text-transform: uppercase;
+ }
+ #myacctable table th { width: 50%; }
+
+ #myacctable table tr.districtRow{border-bottom: 1px solid #d6d6d6;}
+ #myacctable table tr.districtRow td:first-child { padding-left: 33px;}
+
+ #myacctable table tr.stateRow {background-color: #FFFFFF;border-bottom: 1px solid #d6d6d6;transition: all .5s;}
+ #myacctable table tr.stateRow.active {background-color: #d6d6d6; font-weight: 500;}
+ #myacctable table tr.stateRow:hover {background-color: #ccc;}
+
+ #myacctable table th {
+	 padding-top: 12px;
+	 padding-bottom: 12px;
+	 text-align: left;
+	 background-color: rgb(92, 92, 92);
+	 color: white;
+	 font-weight: normal;
+ }
+ #myacctable table .stateRow {
+	 background-color: #f8f8f8;
+ }
+ #myacctable table .stateRow td {
+	 color: #000000;
+ }
+ #myacctable table .stateRow td:first-child {
+	padding-left: 25px;
+ }
+ .stateRow:after {
+	content: '\02795';
+    font-size: 13px;
+    color: transparent;
+    text-shadow: 0 0 0 red;
+    margin-left: -4px;
+    margin-top: 6px;
+    left: 8px;
+    position: absolute;
+}
+
+	 .active:after {
+	 content: "\2796"; /* Unicode character for "minus" sign (-) */
+	 }
+
 @media screen and (max-width: 767px) {
+
+	.flexcontainer {
+		grid-template-columns: 100%;
+	}
 
 	.barchart .right-chart {
 		padding-left: 0px;}
@@ -918,9 +1027,7 @@
 	.barchart .right-chart {
 		margin: 16px 0 0 0;
 	}
-	.map-wrapper {
-		flex-direction: column;
-	}
+	
 	.countrywiseData {
 		flex-direction: row;
 		justify-content: space-between;
