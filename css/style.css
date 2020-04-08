@@ -822,7 +822,7 @@
  }
  #myacctable table th { width: 50%; }
 
- #myacctable table tr.districtRow{border-bottom: 1px solid #d6d6d6;}
+ #myacctable table tr.districtRow{color: #666666;}
  #myacctable table tr.districtRow td:first-child { padding-left: 33px;}
  #myacctable table tr td span{ color: red; font-size: 13px; }
 
