@@ -128,6 +128,8 @@ function drawAccTable(data, selector){
     
 }
 
+drawAccTable(indiaDistrictData, "#myacctable")
+
 $(document).ready(function(){
 
   $(".districtRow").hide();
