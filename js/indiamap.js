@@ -1,6 +1,6 @@
 function drawIndiaMap(selector){
     var width = 300, height = 332, scale = 580, center = [82.8, 23.4];
-    var source = "js/maps/india_2019";
+    var source = "js/maps/india_2019.json";
     var svg = d3.select(selector)
     .append("svg")
     .attr("class", "india map")
