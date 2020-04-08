@@ -253,12 +253,12 @@
 						<li><span style="background-color: #E83A2E;"></span>700-889</li>
 						<li><span style="background-color: #BC171C;"></span>> 890</li>
 					</ul>
-					<figure class="highcharts-figure">
+					<!-- <figure class="highcharts-figure">
 						<div id="dailydeath-container"></div>
-					</figure>
-					<figure class="highcharts-figure">
+					</figure> -->
+					<!-- <figure class="highcharts-figure">
 						<div id="totalDeath-container"></div>
-					</figure>
+					</figure> -->
 				</div>
 			</div>
 			
@@ -272,7 +272,10 @@
 					<button class="tablebtn">Table</button>
 				</div>
 			</div>
-			<div class="dailydeathbar"></div>
+			<!-- <div class="dailydeathbar"></div> -->
+			<figure class="highcharts-figure dailydeathbar">
+				<div id="dailydeath-container"></div>
+			</figure>
 			<div class="table" id="dailydeathstable" style="display:none"></div>
 		</section>
 		<section class="totalDeaths" id="total-deaths">
@@ -284,7 +287,10 @@
 					<button class="tablebtn">Table</button>
 				</div>
 			</div>
-			<div class="dailydeathline"></div>
+			<!-- <div class="dailydeathline"></div> -->
+			<figure class="highcharts-figure dailydeathline">
+				<div id="totalDeath-container"></div>
+			</figure>
 			<div class="table" id="totaldeathstable" style="display:none"></div>
 		</section>
 		<section class="faqs" id="faqs">
@@ -556,8 +562,8 @@
 		drawIndiaMap(".indiamap")
 		createDropDowns(".dropdown", filterData, "countryId", "Country", "world")
 		createDropDowns(".dropdownstate", indiaData, "stateId", "StateName", "india")
-        drawBarchart(".dailydeathbar")
-		drawLinechart(".dailydeathline")
+        // drawBarchart(".dailydeathbar")
+		// drawLinechart(".dailydeathline")
 		drawTable(dailyDeathData, "#dailydeathstable")
 		drawTable(dailyTotalDeathData, "#totaldeathstable")
 		setTimeout(() => {	renderCard();	}, 1000);

@@ -38,7 +38,7 @@ function drawchart1(){
 
         Highcharts.chart('dailydeath-container', {
             chart: {
-                height: 350
+                height: 300
             },
             title: {
                 text: ''
