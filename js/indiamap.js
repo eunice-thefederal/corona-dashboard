@@ -11,11 +11,17 @@ function drawIndiaMap(selector){
     //     "10": "#FEE5D9",
     //     "30": "#FEE5D9",
     // }
+
+    
    
     var colorScale = d3.scaleThreshold()
-    .domain([1, 180, 350, 530, 700, 890])
-    .range(["#fde8de", "#FDD5C3", "#FCA487", "#FA7254", "#E83A2E", "#BC171C"]);
+    .domain([0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000])
+    .range(["#fff5f0"  ,"#fee0d2","#fcbba1" ,"#fc9272" ,"#fb6a4a" ,"#ef3b2c" ,"#cb181d" ,"#a50f15" ,"#67000d"]);
+    // var colorScale = d3.scaleThreshold()
+    // .domain([1, 180, 350, 530, 700, 890])
+    // .range(["#fde8de", "#FDD5C3", "#FCA487", "#FA7254", "#E83A2E", "#BC171C"]);
     // .range(d3.schemeReds[6]);
+
     var tool_tip = d3.tip()
         .attr("class", "d3-tipforline")
         .offset([-15, 0])
